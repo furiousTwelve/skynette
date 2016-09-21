@@ -3,7 +3,7 @@ package main.presentation;
 import javax.swing.JFrame;
 
 public class FenetrePrincipale extends JFrame {
-
+    private panelIcone f1 = new panelIcone();
 	private PanelDetails f= new PanelDetails();
 	
 	public  FenetrePrincipale(){
@@ -12,7 +12,7 @@ public class FenetrePrincipale extends JFrame {
 	        this.setLocationRelativeTo(null);
 	        this.getAccessibleContext ();
 	        this.setVisible(true);
-	        this.setContentPane(f);
+	        this.setContentPane(f1);
 	}
 	 
 	

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -36,7 +37,7 @@ public class PanelDetails extends JPanel {
 
 	protected JPanel chartPanel = new JPanel();
 
-	protected JLabel runingDaysIcone = new JLabel();
+	protected JLabel runingDaysIcone = new JLabel(new ImageIcon("C:\\Users\\34011-82-04\\git\\skynette\\icon_weather\\rain-1.png"));
 	protected JLabel countRuningDays = new JLabel("13 jours ");
 
 	// protected JLabel empty = new JLabel();
@@ -93,8 +94,8 @@ public class PanelDetails extends JPanel {
 
 	// Layout to be used
 	GridLayout g = new GridLayout(1, 7);
-	GridLayout g1 = new GridLayout(2, 5);
-	GridLayout g2 = new GridLayout(4, 1);
+	GridLayout g1 = new GridLayout(2, 7);
+	//GridLayout g2 = new GridLayout(4, 1);
 
 	BorderLayout b = new BorderLayout();
 
@@ -115,9 +116,12 @@ public class PanelDetails extends JPanel {
 		panelNorth.add(empty);
 		panelNorth.add(empty);
 		panelNorth.add(empty);
+		panelNorth.add(empty);
+		panelNorth.add(empty);
 		panelNorth.add(sunnyDaysIcone);
 
 		panelNorth.add(countRuningDays);
+		panelNorth.add(empty);
 		panelNorth.add(empty);
 		panelNorth.add(empty);
 		panelNorth.add(empty);
@@ -145,7 +149,7 @@ public class PanelDetails extends JPanel {
 		panelDay_3.add(windSpeed1);
 		panelDay_3.add(windDirection1);
 		
-		
+		panelCenter.add(panelDay_3);
 		 
 		 
 		// panel 2 days ago
