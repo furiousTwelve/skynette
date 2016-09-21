@@ -54,6 +54,7 @@ public class PanelDetails extends JPanel {
 	protected JLabel empty = new JLabel();
 
 	protected JLabel temperatureIcone1 = new JLabel();
+	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("C:\\Users\\34011-82-04\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone2 = new JLabel();
 	protected JLabel temperatureIcone3 = new JLabel();
 	protected JLabel temperatureIcone4 = new JLabel();
@@ -63,7 +64,7 @@ public class PanelDetails extends JPanel {
 	
 	
 
-	protected JLabel temperature1 = new JLabel();
+	protected JLabel temperature1 = new JLabel("27°");
 	protected JLabel temperature2 = new JLabel();
 	protected JLabel temperature3 = new JLabel();
 	protected JLabel temperature4 = new JLabel();
@@ -103,7 +104,7 @@ public class PanelDetails extends JPanel {
 	// Layout to be used
 	GridLayout g = new GridLayout(1, 7);
 	GridLayout g1 = new GridLayout(2, 7);
-	//GridLayout g2 = new GridLayout(4, 1);
+	GridLayout g2 = new GridLayout(4, 1);
 
 	BorderLayout b = new BorderLayout();
 
@@ -112,6 +113,7 @@ public class PanelDetails extends JPanel {
 	}
 
 	public void run() {
+		temperature1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		panelCenter.setBackground(Color.WHITE);
 		panelNorth.setBackground(Color.WHITE);
 		panelSouth.setBackground(Color.WHITE);
@@ -145,21 +147,21 @@ public class PanelDetails extends JPanel {
 
 		// setLayout for panelCenter's panels
 		panelCenter.setLayout(g);
-		// panelDay_3.setLayout(g2);
-		// panelDay_2.setLayout(g2);
-		// panelDay_1.setLayout(g2);
-		// panelDay.setLayout(g2);
-		// panelNextDay1.setLayout(g2);
-		// panelNextDay2.setLayout(g2);
-		// panelNextDay3.setLayout(g2);
+		 panelDay_3.setLayout(g2);
+		 panelDay_2.setLayout(g2);
+		 panelDay_1.setLayout(g2);
+		panelDay.setLayout(g2);
+		 panelNextDay1.setLayout(g2);
+		 panelNextDay2.setLayout(g2);
+		panelNextDay3.setLayout(g2);
 
 		// panelCenter's Construction
 
 		// panel 3 days ago
-		panelDay_3.setBackground(Color.CYAN);
+		//panelDay_3.setBackground(Color.CYAN);
+		temperatureIcone1.setIcon(icontemp1);
 		panelDay_3.add(temperatureIcone1);
 		panelDay_3.add(temperature1);
-
 		panelDay_3.add(windIcone);
 		panelDay_3.add(windSpeed1);
 		panelDay_3.add(windDirection1);
