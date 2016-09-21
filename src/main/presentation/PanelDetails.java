@@ -1,9 +1,12 @@
 package main.presentation;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -37,11 +40,15 @@ public class PanelDetails extends JPanel {
 	protected JPanel chartPanel = new JPanel();
 
 	protected JLabel runingDaysIcone = new JLabel();
-	protected JLabel countRuningDays = new JLabel("13 jours ");
+	ImageIcon iconRain = new ImageIcon(new ImageIcon("C:\\Users\\34011-82-04\\git\\skynette\\icon_weather\\rain-1.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+	protected JLabel countRuningDays = new JLabel("13 jours");
+	
 
 	// protected JLabel empty = new JLabel();
 
 	protected JLabel sunnyDaysIcone = new JLabel();
+	ImageIcon iconSun = new ImageIcon(new ImageIcon("C:\\Users\\34011-82-04\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+
 	protected JLabel countSunnygDays = new JLabel("275 jours ");
 
 	protected JLabel empty = new JLabel();
@@ -53,6 +60,8 @@ public class PanelDetails extends JPanel {
 	protected JLabel temperatureIcone5 = new JLabel();
 	protected JLabel temperatureIcone6 = new JLabel();
 	protected JLabel temperatureIcone7 = new JLabel();
+	
+	
 
 	protected JLabel temperature1 = new JLabel();
 	protected JLabel temperature2 = new JLabel();
@@ -93,8 +102,8 @@ public class PanelDetails extends JPanel {
 
 	// Layout to be used
 	GridLayout g = new GridLayout(1, 7);
-	GridLayout g1 = new GridLayout(2, 5);
-	GridLayout g2 = new GridLayout(4, 1);
+	GridLayout g1 = new GridLayout(2, 7);
+	//GridLayout g2 = new GridLayout(4, 1);
 
 	BorderLayout b = new BorderLayout();
 
@@ -103,7 +112,11 @@ public class PanelDetails extends JPanel {
 	}
 
 	public void run() {
-
+		panelCenter.setBackground(Color.WHITE);
+		panelNorth.setBackground(Color.WHITE);
+		panelSouth.setBackground(Color.WHITE);
+		this.setBackground(Color.WHITE);
+		chartPanel.setBackground(Color.WHITE);
 		panelGlobal.setLayout(b);
 		panelGlobal.add(panelNorth, BorderLayout.NORTH);
 		panelGlobal.add(panelCenter, BorderLayout.CENTER);
@@ -111,7 +124,11 @@ public class PanelDetails extends JPanel {
 
 		// PanelNorth's Construction
 		panelNorth.setLayout(g1);
+		runingDaysIcone.setIcon(iconRain);
+		sunnyDaysIcone.setIcon(iconSun);
 		panelNorth.add(runingDaysIcone);
+		panelNorth.add(empty);
+		panelNorth.add(empty);
 		panelNorth.add(empty);
 		panelNorth.add(empty);
 		panelNorth.add(empty);
@@ -122,7 +139,9 @@ public class PanelDetails extends JPanel {
 		panelNorth.add(empty);
 		panelNorth.add(empty);
 		panelNorth.add(empty);
+		panelNorth.add(empty);
 		panelNorth.add(countSunnygDays);
+		g1.setHgap(2000);
 
 		// setLayout for panelCenter's panels
 		panelCenter.setLayout(g);
@@ -137,7 +156,7 @@ public class PanelDetails extends JPanel {
 		// panelCenter's Construction
 
 		// panel 3 days ago
-		
+		panelDay_3.setBackground(Color.CYAN);
 		panelDay_3.add(temperatureIcone1);
 		panelDay_3.add(temperature1);
 
@@ -209,6 +228,10 @@ public class PanelDetails extends JPanel {
 		panelCenter.add(panelNextDay1);
 		panelCenter.add(panelNextDay2);
 		panelCenter.add(panelNextDay3);
+		
+		//space between columns,
+		g.setHgap(50);
+		g1.setHgap(50);
 
 		// panelSouth's Construction
 		panelSouth.setLayout(g);
