@@ -32,7 +32,7 @@ public class panelIcone extends JFrame {
 	private JLabel directionVent;
 	private JLabel vitesseVent;
 	private Font font;
-	private panelDetail panDetail; 
+	private PanelDetails panDetail; 
 	
 	public panelIcone(){
 		
@@ -87,7 +87,7 @@ public class panelIcone extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				panelIcone.this.getContentPane().removeAll();
-				panDetail = new panelDetail();
+				panDetail = new PanelDetails();
 				panelIcone.this.setContentPane(panDetail);
 				panelIcone.this.validate();
 			}
