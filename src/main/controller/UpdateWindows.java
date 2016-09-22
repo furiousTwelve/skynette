@@ -13,13 +13,13 @@ import main.presentation.panelIcone;
  *          update the widget with fresh data fetched from SQLite database
  *
  */
-public class UpdateWidget {
+public class UpdateWindows {
 
 	panelIcone panIcon = new panelIcone();
 
 	// CONSTRUCTOR //
 
-	public UpdateWidget() {
+	public UpdateWindows() {
 
 	}
 
