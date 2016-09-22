@@ -24,12 +24,14 @@ import java.awt.event.*;
  * @author khadidja
  * 
  *
- *         this window must describ the weather for montpellier city for seven
- *         days, lets' go!
+ *  this window must describ the weather for montpellier city for seven days, lets' go!
+ *  
  *
  */
 
-public class PanelDetails extends JPanel implements ActionListener,MouseListener{
+
+public class PanelDetails extends JPanel implements ActionListener, MouseListener {
+
 
 	protected JPanel panelGlobal = new JPanel(); // panelGlobal contains all the
 													// composents
