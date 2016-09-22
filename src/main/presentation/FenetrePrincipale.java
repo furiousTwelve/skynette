@@ -2,12 +2,22 @@ package main.presentation;
 
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
-import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.SQLException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+
+import com.mysql.jdbc.Blob;
+
+import main.controller.DatasForIcon;
 
 
 /**
@@ -23,10 +33,11 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	private PanelIcon icon = new PanelIcon();
 
 	private PanelDetails f = new PanelDetails();
-
+	DatasForIcon datas = new DatasForIcon();
 	
-	public  FenetrePrincipale(){
+	public  FenetrePrincipale() throws SQLException, IOException{
 			
+		
 			this.setSize(new Dimension(150, 300));
 			int x = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
 			int y = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
@@ -34,7 +45,8 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	    	this.setUndecorated(true);
 	        this.getAccessibleContext();
 
-	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
+//	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
+	        this.setIconImage(imageConvert(datas.logoWeather).getImage());
 	        this.setTitle("Skynette"); 
 	        icon.addMouseListener(this);
 	        this.setContentPane(icon);
@@ -44,13 +56,48 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 	}
 	 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException, IOException {
 
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		
 	}
 
 
+	public static ImageIcon imageConvert(Blob imageDb) throws SQLException, IOException
+	{
+		System.out.println(imageDb);
+		ImageIcon iconeImage = null;
+		File fichierTemp = new File("c:/imgtemp.png");
+//		File fichierTemp2 = new File();
+		String str = "imgtemp";
+		File fichierTemp2 = fichierTemp.createTempFile(str, "png", new File("c:/"));
+		byte[] imgData = null ;
+		BufferedImage bImageFromConvert = null; 
+		if(imageDb != null){
+			System.out.println("salut 2");
+			imgData = imageDb.getBytes(1,(int)imageDb.length());
+			InputStream in = new ByteArrayInputStream(imgData);
+			try {
+				System.out.println("salut 3");
+				bImageFromConvert = ImageIO.read(in);
+				ImageIO.write(bImageFromConvert, "png", fichierTemp2);
+				iconeImage= new ImageIcon(fichierTemp2.getPath());
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else{
+			System.out.println("salut 4");
+			iconeImage =  new ImageIcon("JobJob.png");
+		}
+		
+		boolean effacer = fichierTemp2.delete();
+		System.out.println(effacer);
+		return iconeImage;
+		
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -105,5 +152,6 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 		
 	}
+	
 
 }
