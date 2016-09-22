@@ -2,7 +2,7 @@ package main.presentation;
 
 
 import java.awt.BorderLayout;
-
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -44,17 +44,17 @@ public class panelIcone extends JPanel {
 		Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newmeteo = new ImageIcon(newimg);
 		imageDescription = new JLabel(newmeteo);
+		Color back = new Color(1f,0f,0f,0.2f);
+		
 		
 		JPanel panelDescription = new JPanel();
 		panelDescription.setLayout(new FlowLayout());
 		panelDescription.add(imageDescription);
 
-		
 		//Constitution du panel avec la température
 		temp = new JLabel("20°C");
 		temp.setFont(font);
 
-		
 		JPanel panelTemp = new JPanel();
 		panelTemp.setLayout(new FlowLayout());
 		panelTemp.add(temp);
@@ -86,8 +86,8 @@ public class panelIcone extends JPanel {
 		//Constitution du panel général
 		this.setLayout(new BorderLayout());
 		this.add(panelCentral, BorderLayout.CENTER);
-		
 		this.setVisible(true);
+		this.setBackground(back);
 		
 	}
 
