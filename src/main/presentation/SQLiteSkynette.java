@@ -51,5 +51,16 @@ public class SQLiteSkynette{
 	}
 	stmt.executeUpdate(chaine);
   }
-  
+  	public void recupere(){
+  		Connection c = null;
+  		Statement stmt = null;
+  		try {
+  			stmt = c.createStatement();
+  			int i = stmt.executeUpdate("INSERT INTO city VALUES (") ;
+	
+  			} catch (SQLException e) 
+  		{
+  			e.printStackTrace();
+  		}  
+  	}
 }
