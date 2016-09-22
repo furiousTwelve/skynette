@@ -3,8 +3,10 @@ package main.presentation;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -136,6 +138,8 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 	protected JLabel coldestDayLabel = new JLabel("Coldest day of the year");
 	protected JLabel maxAvgTempLabel = new JLabel("Max temperatures' average");
 	protected JLabel minAvgTempLabel = new JLabel("Min temperatures' average");
+	
+	protected Image img;
 
 	// Layout to be used
 	GridLayout g = new GridLayout(1, 7);
@@ -154,6 +158,14 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 		run();
 	}
 
+	//Work in progress for the backgroundPanel
+//	public void paint(Graphics g)
+//	    {
+//	        // Draws the img to the BackgroundPanel.
+//	        g.drawImage(img, 0, 0, null);
+//	    }
+	
+	
 	public JPanel createChartPanel() {
 		String titre = "temperature / pressure disturbance for 7 days";
 		String titre_x = "Days";
@@ -195,7 +207,10 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 	}
 
 	public void run() {
-
+		
+		//work in progress for the background of the panel
+		img=Toolkit.getDefaultToolkit().createImage("./icon_weather/sky.jpg");
+		
 		chartPanel = createChartPanel();
 
 		temperatureIcone1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -250,6 +265,7 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 		panelSouth.setBackground(Color.WHITE);
 		this.setBackground(Color.WHITE);
 
+		
 		chartPanel.setBackground(Color.WHITE);
 		panelGlobal.setLayout(b);
 		panelGlobal.add(panelNorth, BorderLayout.NORTH);
@@ -418,6 +434,7 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 		// add panels to (this)
 		this.add(panelGlobal);
 		this.add(chartPanel);
+		
 	}
 
 	@Override
@@ -454,6 +471,12 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g){
+		super.paintComponent(g);
+        g.drawImage(img, 0, 0, null);
 	}
 
 }

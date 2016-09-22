@@ -1,6 +1,7 @@
 package main.presentation;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
@@ -26,6 +27,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	private PanelIcon icon = new PanelIcon();
 	private PanelDetails fenetre = new PanelDetails();
 	private Countdown count = new Countdown(8);
+	Color backcolor = new Color(1f, 0f, 0f, 0f);
 	
 	
 	/**
@@ -46,6 +48,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
         this.setContentPane(icon);
         this.setVisible(true);
         setOpacity(0.95f);
+        this.setBackground(backcolor);
         
         count.start();
 	}
