@@ -9,9 +9,9 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-<<<<<<< HEAD
-import java.awt.event.*;
-=======
+
+
+
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -22,7 +22,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import java.awt.event.*;
 
->>>>>>> origin/feautures/presentation/khadidja
+
 /**
  * 
  * @author khadidja
@@ -32,13 +32,11 @@ import java.awt.event.*;
  *         days, lets' go!
  *
  */
-<<<<<<< HEAD
+
 
 public class PanelDetails extends JPanel implements ActionListener,MouseListener{
 
-=======
-public class PanelDetails extends JPanel implements ActionListener, MouseListener {
->>>>>>> origin/feautures/presentation/khadidja
+
 	protected JPanel panelGlobal = new JPanel(); // panelGlobal contains all the
 													// composents
 
@@ -419,61 +417,37 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> origin/feautures/presentation/khadidja
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> origin/feautures/presentation/khadidja
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> origin/feautures/presentation/khadidja
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> origin/feautures/presentation/khadidja
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> origin/feautures/presentation/khadidja
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> origin/feautures/presentation/khadidja
 	}
 
 }
