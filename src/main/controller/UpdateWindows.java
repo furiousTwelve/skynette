@@ -4,13 +4,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
+ * This class aims to update the widget whenever the timer goes off and
+ * big Window with fresh data fetched from SQLite database
  * @author AnaisGueyte
  * @date 21/09/2016
- * @version skynette 0.1
- * 
- *          This class aims to update the widget whenever the timer goes off and
- *          big Window with fresh data fetched from SQLite database
- *
+ * @version 0.1
  */
 public class UpdateWindows {
 
@@ -20,22 +18,19 @@ public class UpdateWindows {
 	DataForWindow bigDatas = new DataForWindow();
 
 	/**
+	 *  Method to update the desktop icon every 30 min when the
+	 *  countdown reaches 0. This method must be called in the
+	 *  MainWindow whenever the countdown = 0. First we call on the
+	 *  SQLiteBDD method to fetch the data needed. Add them into an
+	 *  object of type DataForIcon (internal class declared below) and
+	 *  return that variable for the update of panelIcone
 	 * @author AnaisGueyte
 	 * @date 22/09/2016
-	 * @version skynette 0.1
-	 * 
-	 *          Method to update the desktop icon every 30 min when the
-	 *          countdown reaches 0. This method must be called in the
-	 *          MainWindow whenever the countdown = 0. First we call on the
-	 *          SQLiteBDD method to fetch the data needed. Add them into an
-	 *          object of type DataForIcon (internal class declared below) and
-	 *          return that variable for the update of panelIcone
-	 * 
+	 * @version 0.1
 	 * @return Object type DataForIcon named "datas"
 	 */
-
-	public DataForIcon updateIcon() {
-
+	public DataForIcon updateIcon() 
+	{
 		// >> Appel de la methode base de donnée pour recuper les données
 		// >> Mettre a jour le nom de la classe bdd et la methode.
 
@@ -44,28 +39,23 @@ public class UpdateWindows {
 		 * SQLiteBDD sqlitebdd = new SQLiteBDD(); datas =
 		 * sqlite.methodeWitchFetcdata();
 		 */
-
 		return datas;
-
 	}
 
 	/**
+	 * Method to refresh datas of the main window when its open via the
+	 * widget. This methode must be called with the listener in the
+	 * PanelIcone class. First we call on the SQLiteBDD method to fetch
+	 * the data needed. Add them into an object of type DataForWindow
+	 * (internal class declared below) and return that variable for the
+	 *  update of panelDetails.
 	 * @author AnaisGueyte
 	 * @date 22/09/2016
-	 * @version skynette 0.1
-	 * 
-	 *          Method to refresh datas of the main window when its open via the
-	 *          widget. This methode must be called with the listener in the
-	 *          PanelIcone class. First we call on the SQLiteBDD method to fetch
-	 *          the data needed. Add them into an object of type DataForWindow
-	 *          (internal class declared below) and return that variable for the
-	 *          update of panelDetails.
-	 * 
+	 * @version 0.1
 	 * @return Object type DataForWindow named "bigDatas"
 	 */
-
-	public DataForWindow updateMainWindow() {
-
+	public DataForWindow updateMainWindow() 
+	{
 		// >> Appel de la methode base de donnée pour recuper les données
 		// >> Mettre a jour le nom de la classe bdd et la methode.
 
@@ -75,59 +65,60 @@ public class UpdateWindows {
 		 * bigDatas =
 		 * sqlite.methodeWitchFetcdataForTheBigWindow();
 		 */
-
 		return bigDatas;
-
 	}
 
 	// ***************** EXTERNAL CLASSES ***************** //
 
 	/**
+	 * Creation of a private and internal class to create a structure
+	 * of data needed to save those fetched from the databse and to
+	 * pass them into the PanelIcone (Widget of datas).
 	 * @author AnaisGueyte
 	 * @date 22/09/2016
-	 * @version skynette 0.1
-	 * 
-	 *          Creation of a private and internal class to create a structure
-	 *          of data needed to save those fetched from the databse and to
-	 *          pass them into the PanelIcone (Widget of datas).
+	 * @version 0.1       
 	 */
-
-	private class DataForIcon {
-
+	private class DataForIcon 
+	{
 		ImageIcon logoWeather;
 		JLabel temperature;
 		JLabel windDirection;
 		JLabel windSpeed;
 		// ArrayList<DataForIcon> list = new ArrayList<DataForIcon>(); DO i need
 		// this ?
+		
+		/**
+		 * Constructor
+		 */
+		public DataForIcon() {}
 
-		public DataForIcon(ImageIcon logoWeather, JLabel temperature, JLabel windDirection, JLabel windSpeed) {
+		/**
+		 * Display stuff for weather view
+		 * @param logoWeather icon for weather
+		 * @param temperature label for temperature
+		 * @param windDirection label for wind direction
+		 * @param windSpeed label for wind speed
+		 */
+		public DataForIcon(ImageIcon logoWeather, JLabel temperature, JLabel windDirection, JLabel windSpeed) 
+		{
 			this.logoWeather = logoWeather;
 			this.temperature = temperature;
 			this.windDirection = windDirection;
 			this.windSpeed = windSpeed;
 		}
-
-		public DataForIcon() {
-
-		}
-
-	}
+	} // end to internal class DataForIcon
 
 	/**
+	 * Creation of a private and internal class to create a structure
+	 * of data needed to save those fetched from the databse and to
+	 * pass them into the PanelDetails (BigWindow of datas).
 	 * @author AnaisGueyte
 	 * @date 22/09/2016
-	 * @version skynette 0.1
-	 * 
-	 *          Creation of a private and internal class to create a structure
-	 *          of data needed to save those fetched from the databse and to
-	 *          pass them into the PanelDetails (BigWindow of datas).
+	 * @version 0.1        
 	 */
-
-	private class DataForWindow {
-
+	private class DataForWindow 
+	{
 		// DECLARATION OF ALL THE VARIABLES NEEDED IN THE BIGWINDOW //
-
 		JLabel runingDaysIcone;
 		JLabel countRuningDays;
 		JLabel sunnyDaysIcone;
@@ -169,9 +160,52 @@ public class UpdateWindows {
 		// ArrayList<DataForWindow> list = new ArrayList<DataForWindow>(); DO i
 		// need
 		// this ?
+		
+		/**
+		 * Constructor
+		 */
+		public DataForWindow() {}
 
-		// Sweet sweet CONSTRUCTOR //
-
+		/**
+		 * Sweet sweet CONSTRUCTOR 
+		 * @param runingDaysIcone
+		 * @param countRuningDays
+		 * @param sunnyDaysIcone
+		 * @param countSunnygDays
+		 * @param temperatureIcone1
+		 * @param temperatureIcone2
+		 * @param temperatureIcone3
+		 * @param temperatureIcone4
+		 * @param temperatureIcone5
+		 * @param temperatureIcone6
+		 * @param temperatureIcone7
+		 * @param temperature1
+		 * @param temperature2
+		 * @param temperature3
+		 * @param temperature4
+		 * @param temperature5
+		 * @param temperature6
+		 * @param temperature7
+		 * @param HotestDay
+		 * @param coldestDay
+		 * @param windDirection1
+		 * @param windSpeed1
+		 * @param windDirection2
+		 * @param windSpeed2
+		 * @param windDirection3
+		 * @param windSpeed3
+		 * @param windDirection4
+		 * @param windSpeed4
+		 * @param windDirection5
+		 * @param windSpeed5
+		 * @param windDirection
+		 * @param windSpeed6
+		 * @param windDirection7
+		 * @param windSpeed7
+		 * @param windIcone
+		 * @param maxTemperatureAverage
+		 * @param minTemperatureAverage
+		 */
 		public DataForWindow(JLabel runingDaysIcone, JLabel countRuningDays, JLabel sunnyDaysIcone,
 				JLabel countSunnygDays, JLabel temperatureIcone1, JLabel temperatureIcone2, JLabel temperatureIcone3,
 				JLabel temperatureIcone4, JLabel temperatureIcone5, JLabel temperatureIcone6, JLabel temperatureIcone7,
@@ -219,11 +253,5 @@ public class UpdateWindows {
 			this.maxTemperatureAverage = maxTemperatureAverage;
 			this.minTemperatureAverage = minTemperatureAverage;
 		}
-
-		public DataForWindow() {
-
-		}
-
-	}
-
+	} // end of internal class DataForWindow
 }

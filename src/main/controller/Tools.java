@@ -1,16 +1,22 @@
 package main.controller;
 
-public class Tools {
-
+/**
+ * Add tools to convert units, etc
+ * @author Mathieu
+ *
+ */
+public class Tools 
+{
 	/**
 	 * Convert a degree (where the wind come from, ...) in a direction (N,S, E, W, NNW ...)
+	 * Can be called without object instantiation
 	 * @author Mathieu
-	 * @param degree
-	 * @return
+	 * @param degree wind degree
+	 * @return wind direction in string format
 	 */
-	public String convertDegreesToDirection(float degree) {
+	public static String convertDegreesToDirection(float degree) 
+	{
         String direction = "";
-
         // degree should be between 0 and 360
         if ((degree < 0.0f) || (degree > 360.0f)) {
 
