@@ -37,7 +37,6 @@ public class panelIcone extends JFrame {
 	public panelIcone(){
 		
 		font = new Font("Arial",Font.BOLD,20);
-		
 		//Constitution du panel avec l'image
 		ImageIcon meteo = new ImageIcon("cloudy.png");
 		Image img = meteo.getImage();
@@ -128,6 +127,54 @@ public class panelIcone extends JFrame {
 		this.setUndecorated(true);
 		this.setVisible(true);
 		
+	}
+
+	public JLabel getImageDescription() {
+		return imageDescription;
+	}
+
+	public void setImageDescription(JLabel imageDescription) {
+		this.imageDescription = imageDescription;
+	}
+
+	public JLabel getTemp() {
+		return temp;
+	}
+
+	public void setTemp(JLabel temp) {
+		this.temp = temp;
+	}
+
+	public JLabel getDirectionVent() {
+		return directionVent;
+	}
+
+	public void setDirectionVent(JLabel directionVent) {
+		this.directionVent = directionVent;
+	}
+
+	public JLabel getVitesseVent() {
+		return vitesseVent;
+	}
+
+	public void setVitesseVent(JLabel vitesseVent) {
+		this.vitesseVent = vitesseVent;
+	}
+
+	public Font getFont() {
+		return font;
+	}
+
+	public void setFont(Font font) {
+		this.font = font;
+	}
+
+	public PanelDetails getPanDetail() {
+		return panDetail;
+	}
+
+	public void setPanDetail(PanelDetails panDetail) {
+		this.panDetail = panDetail;
 	}
 	
 }
