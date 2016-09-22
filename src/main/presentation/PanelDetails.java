@@ -20,35 +20,21 @@ import org.jfree.data.xy.XYSeriesCollection;
 import java.awt.event.*;
 
 /**
- * 
+ * This window must describe the weather for montpellier city for seven days, lets' go!
  * @author khadidja
- * 
- *
- *  this window must describ the weather for montpellier city for seven days, lets' go!
- *  
- *
  */
 
 
-public class PanelDetails extends JPanel implements ActionListener, MouseListener {
-
-
-	protected JPanel panelGlobal = new JPanel(); // panelGlobal contains all the
-													// composents
-
-	protected JPanel panelNorth = new JPanel(); // panelNorth situated in the
-												// orth of panelGlobal
-
-	protected JPanel panelCenter = new JPanel(); // panelNorth situated in the
-													// center of panelGlobal
-	protected JPanel panelSouth = new JPanel(); // panelNorth situated in the
-												// south of panelGlobal
-
+public class PanelDetails extends JPanel implements ActionListener, MouseListener 
+{
+	protected JPanel panelGlobal = new JPanel(); // panelGlobal contains all the composents
+	protected JPanel panelNorth = new JPanel(); // panelNorth situated in the orth of panelGlobal
+	protected JPanel panelCenter = new JPanel(); // panelNorth situated in the center of panelGlobal
+	protected JPanel panelSouth = new JPanel(); // panelNorth situated in the south of panelGlobal
 	protected JPanel panelSouth1 = new JPanel();
 	protected JPanel panelSouth2 = new JPanel();
 	protected JPanel panelSouth3 = new JPanel();
 	protected JPanel panelSouth4 = new JPanel();
-
 	protected JPanel panelDay_3 = new JPanel();
 	protected JPanel panelDay_2 = new JPanel();
 	protected JPanel panelDay_1 = new JPanel();
@@ -56,33 +42,17 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	protected JPanel panelNextDay1 = new JPanel();
 	protected JPanel panelNextDay2 = new JPanel();
 	protected JPanel panelNextDay3 = new JPanel();
-
 	protected JPanel chartPanel = new JPanel();
-
 	protected JLabel runingDaysIcone = new JLabel();
-
-
 	ImageIcon iconRain = new ImageIcon(new ImageIcon("./icon_weather/rain-1.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
-
-
 	protected JLabel countRuningDays = new JLabel("13 jours");
-
 	// protected JLabel empty = new JLabel();
-
 	protected JLabel sunnyDaysIcone = new JLabel();
-
-
 	ImageIcon iconSun = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
-
 	protected JLabel countSunnygDays = new JLabel("275 jours ");
-
 	protected JLabel empty = new JLabel("       ", 10);
-
 	protected JLabel temperatureIcone1 = new JLabel();
-
 	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
-
-
 	protected JLabel temperatureIcone2 = new JLabel();
 	ImageIcon icontemp2 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone3 = new JLabel();
@@ -95,7 +65,6 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	ImageIcon icontemp6 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone7 = new JLabel();
 	ImageIcon icontemp7 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
-
 
 	protected JLabel temperature1 = new JLabel("27°");
 	protected JLabel temperature2 = new JLabel("25°");
@@ -151,12 +120,21 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	
 	//new colour
 	Color background = new Color(0f, 0.3f, 1f, 0.5f);
-
-	public PanelDetails() {
+	
+	/**
+	 * Constructor which call the run methods
+	 */
+	public PanelDetails() 
+	{
 		run();
 	}
 
-	public JPanel createChartPanel() {
+	/**
+	 * Create a chart panel
+	 * @return a jpanel with the chart inside
+	 */
+	public JPanel createChartPanel() 
+	{
 		String titre = "temperature / pressure disturbance for 7 days";
 		String titre_x = "Days";
 		String titre_y = "temperature";
@@ -166,7 +144,11 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		return new ChartPanel(chart);
 	}
 
-	protected XYDataset createDataset() {
+	/**
+	 * Create a dataset which contains all the stuff
+	 */
+	protected XYDataset createDataset() 
+	{
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		XYSeries day1 = new XYSeries("Day-3");
 		XYSeries day2 = new XYSeries("Day-2");
@@ -196,8 +178,11 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		return dataset;
 	}
 
-	public void run() {
-
+	/**
+	 * Initialize the panel 
+	 */
+	public void run() 
+	{
 		chartPanel = createChartPanel();
 
 		temperatureIcone1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -231,7 +216,6 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		windSpeed5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		windSpeed6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		windSpeed7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
 		
 		maxAvgTempLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		maxTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -242,7 +226,6 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		coldestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		coldestDayLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-
 		panelSouth1.setBackground(Color.WHITE);
 		panelSouth2.setBackground(Color.WHITE);
 		panelSouth3.setBackground(Color.WHITE);
@@ -251,7 +234,6 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelNorth.setBackground(Color.WHITE);
 		panelSouth.setBackground(Color.WHITE);
 		this.setBackground(Color.WHITE);
-
 		chartPanel.setBackground(Color.WHITE);
 		panelGlobal.setLayout(b);
 		panelGlobal.add(panelNorth, BorderLayout.NORTH);
@@ -271,8 +253,6 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		sunnyDaysIcone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		countRuningDays.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		countSunnygDays.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-
 
 		// setLayout for panelCenter's panels
 		panelCenter.setLayout(g);
