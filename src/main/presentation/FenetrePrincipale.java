@@ -42,6 +42,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	}
 
 
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource() == this.icone){
@@ -92,6 +93,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
+
 		
 	}
 
