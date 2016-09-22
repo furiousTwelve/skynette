@@ -65,7 +65,7 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 
 	protected JLabel runingDaysIcone = new JLabel();
 
-	ImageIcon iconRain = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\rain-1.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+	ImageIcon iconRain = new ImageIcon(new ImageIcon("./icon_weather/rain-1.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
 
 
 	protected JLabel countRuningDays = new JLabel("13 jours");
@@ -74,7 +74,7 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 
 	protected JLabel sunnyDaysIcone = new JLabel();
 
-	ImageIcon iconSun = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+	ImageIcon iconSun = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
 
 	protected JLabel countSunnygDays = new JLabel("275 jours ");
 
