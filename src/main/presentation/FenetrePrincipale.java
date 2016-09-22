@@ -5,9 +5,12 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+
+import main.data.SQLite;
 
 
 /**
@@ -44,10 +47,11 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 	}
 	 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 
 		FenetrePrincipale fenetre = new FenetrePrincipale();
-		
+		SQLite database = new SQLite();
+		database.verifyDB();
 	}
 
 
