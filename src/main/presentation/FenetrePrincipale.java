@@ -9,6 +9,7 @@ public class FenetrePrincipale extends JFrame {
 
 
 	private panelIcone icone = new panelIcone();
+
 	private PanelDetails f= new PanelDetails();
 	
 	public  FenetrePrincipale(){
@@ -19,7 +20,8 @@ public class FenetrePrincipale extends JFrame {
 	        this.setVisible(true);
 	        this.setContentPane(f);
 	        this.setTitle("Skynette");
-	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
+	   
+	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\planet-earth.png").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
 
 	}
 	 
