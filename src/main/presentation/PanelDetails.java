@@ -9,7 +9,20 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+<<<<<<< HEAD
 import java.awt.event.*;
+=======
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+
+import java.awt.event.*;
+
+>>>>>>> origin/feautures/presentation/khadidja
 /**
  * 
  * @author khadidja
@@ -19,9 +32,13 @@ import java.awt.event.*;
  *         days, lets' go!
  *
  */
+<<<<<<< HEAD
 
 public class PanelDetails extends JPanel implements ActionListener,MouseListener{
 
+=======
+public class PanelDetails extends JPanel implements ActionListener, MouseListener {
+>>>>>>> origin/feautures/presentation/khadidja
 	protected JPanel panelGlobal = new JPanel(); // panelGlobal contains all the
 													// composents
 
@@ -140,17 +157,56 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 		run();
 	}
 
+	public JPanel createChartPanel() {
+		String titre = "temperature / pressure disturbance for 7 days";
+		String titre_x = "Days";
+		String titre_y = "temperature";
+
+		XYDataset dataset = createDataset();
+		JFreeChart chart = ChartFactory.createXYLineChart(titre, titre_x, titre_y, dataset);
+		return new ChartPanel(chart);
+	}
+
+	protected XYDataset createDataset() {
+		XYSeriesCollection dataset = new XYSeriesCollection();
+		XYSeries day1 = new XYSeries("Day-3");
+		XYSeries day2 = new XYSeries("Day-2");
+		XYSeries day3 = new XYSeries("Day-1");
+		XYSeries day4 = new XYSeries("Today");
+		XYSeries day5 = new XYSeries("Today+1");
+		XYSeries day6 = new XYSeries("Today+2");
+		XYSeries day7 = new XYSeries("Today+3");
+
+		day1.add(1, 25);
+		day2.add(2, 27);
+		day3.add(3, 17);
+		day4.add(4, 21);
+		day5.add(5, 24);
+		day6.add(6, 28);
+		day7.add(7, 39);
+
+		dataset.addSeries(day1);
+		dataset.addSeries(day2);
+		dataset.addSeries(day3);
+		dataset.addSeries(day4);
+		dataset.addSeries(day5);
+		dataset.addSeries(day6);
+		dataset.addSeries(day7);
+
+		// dataset.addSeries(candidat5);
+		return dataset;
+	}
+
 	public void run() {
-		 temperatureIcone1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 
-		 
-		 
+		chartPanel = createChartPanel();
+		temperatureIcone1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
 		temperature1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperature2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperature3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -159,11 +215,11 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 		temperature6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperature7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-	//otestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-//coldestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		// otestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		// coldestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-//maxTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-//minTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		// maxTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		// minTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
 		windDirection1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		windDirection2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -235,7 +291,7 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 		// panelCenter's Construction
 
 		// panel 3 days ago
-		 panelDay_3.setBackground(Color.lightGray);
+		panelDay_3.setBackground(Color.lightGray);
 		temperatureIcone1.setIcon(icontemp1);
 		panelDay_3.add(temperatureIcone1);
 		panelDay_3.add(temperature1);
@@ -363,37 +419,61 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> origin/feautures/presentation/khadidja
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> origin/feautures/presentation/khadidja
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> origin/feautures/presentation/khadidja
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> origin/feautures/presentation/khadidja
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> origin/feautures/presentation/khadidja
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> origin/feautures/presentation/khadidja
 	}
 
 }
