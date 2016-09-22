@@ -1,6 +1,7 @@
 package main.presentation;
 
 import java.awt.Dimension;
+import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -13,10 +14,11 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 	private panelIcone icone = new panelIcone();
 
-	private PanelDetails f= new PanelDetails();
+	private PanelDetails f = new PanelDetails();
 
 	
 	public  FenetrePrincipale(){
+			
 			this.setSize(new Dimension(150, 300));
 			int x = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
 			int y = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
@@ -25,19 +27,18 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	        this.getAccessibleContext();
 
 	        this.setVisible(true);
-	        this.setContentPane(f);
+
+	        this.setContentPane(icone);
 	        this.setTitle("Skynette");
 	   
 	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\planet-earth.png").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
 
-
 	}
 	 
-	
 	public static void main(String[] args) {
 
 		FenetrePrincipale fenetre = new FenetrePrincipale();
-
+		
 	}
 
 
@@ -48,7 +49,19 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 			this.getContentPane().removeAll();
 			this.setSize(new Dimension(1500, 800));
 			this.setLocationRelativeTo(null);
+			f.addMouseListener(this);
 			this.setContentPane(f);
+			this.validate();
+		}
+		if(e.getSource() == this.f){
+			icone = new panelIcone();
+			this.getContentPane().removeAll();
+			this.setSize(new Dimension(150, 300));
+			int x = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
+			int y = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
+			this.setLocation(x-150, y-300);
+			icone.addMouseListener(this);
+			this.setContentPane(icone);
 			this.validate();
 		}
 	}
