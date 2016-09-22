@@ -71,7 +71,8 @@ public class UpdateWindows {
 
 		/*
 		 * 
-		 * SQLiteBDD sqlitebdd = new SQLiteBDD(); datas =
+		 * SQLiteBDD sqlitebdd = new SQLiteBDD(); 
+		 * bigDatas =
 		 * sqlite.methodeWitchFetcdataForTheBigWindow();
 		 */
 
