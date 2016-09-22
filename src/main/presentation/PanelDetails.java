@@ -82,27 +82,21 @@ public class PanelDetails extends JPanel implements ActionListener,MouseListener
 
 	protected JLabel temperatureIcone1 = new JLabel();
 
-	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 
 
 	protected JLabel temperatureIcone2 = new JLabel();
-	ImageIcon icontemp2 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp2 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone3 = new JLabel();
-	ImageIcon icontemp3 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp3 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone4 = new JLabel();
-	ImageIcon icontemp4 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp4 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone5 = new JLabel();
-	ImageIcon icontemp5 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp5 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone6 = new JLabel();
-	ImageIcon icontemp6 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp6 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone7 = new JLabel();
-	ImageIcon icontemp7 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp7 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 
 	protected JLabel temperature1 = new JLabel("27°");
 	protected JLabel temperature2 = new JLabel("25°");

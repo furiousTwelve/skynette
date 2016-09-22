@@ -58,9 +58,11 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 		if(e.getSource() == this.icon){
 			f = new PanelDetails();
 			this.getContentPane().removeAll();
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			//this.setSize(new Dimension(2000, 1000));
+			
+			//Permet de definir la taille de la fenetre sur la résolution de l'écran du PC
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();		
 			this.setSize(screenSize);
+			
 			this.setLocationRelativeTo(null);
 			f.addMouseListener(this);
 			this.setContentPane(f);
