@@ -1,21 +1,32 @@
 package main.controller;
 
+import java.sql.SQLException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import com.mysql.jdbc.Blob;
+
+import main.data.ShuttleDatas;
 
 /**
  * This class aims to update the widget whenever the timer goes off and
  * big Window with fresh data fetched from SQLite database
+ * This class aims to update the widget whenever the timer goes off and big
+ * Window with fresh data fetched from SQLite database
+ * 
  * @author AnaisGueyte
  * @date 21/09/2016
  * @version 0.1
  */
 public class UpdateWindows {
 
-	// VARIABLES //
+	// ******* VARIABLES ******* //
 
-	DataForIcon datas = new DataForIcon();
-	DataForWindow bigDatas = new DataForWindow();
+	DatasForIcon datas = new DatasForIcon();
+	DatasForWindow bigDatas = new DatasForWindow();
+
+	// ******* METHOD ******* //
 
 	/**
 	 *  Method to update the desktop icon every 30 min when the
@@ -28,9 +39,10 @@ public class UpdateWindows {
 	 * @date 22/09/2016
 	 * @version 0.1
 	 * @return Object type DataForIcon named "datas"
+	 * @throws SQLException 
 	 */
-	public DataForIcon updateIcon() 
-	{
+
+	
 		// >> Appel de la methode base de donnée pour recuper les données
 		// >> Mettre a jour le nom de la classe bdd et la methode.
 
@@ -39,6 +51,12 @@ public class UpdateWindows {
 		 * SQLiteBDD sqlitebdd = new SQLiteBDD(); datas =
 		 * sqlite.methodeWitchFetcdata();
 		 */
+	public DatasForIcon updateIcon() throws SQLException {
+
+	 
+		 ShuttleDatas shuttledatas = new ShuttleDatas(); 
+		  datas = shuttledatas.fetchFreshData();
+
 		return datas;
 	}
 
@@ -54,7 +72,8 @@ public class UpdateWindows {
 	 * @version 0.1
 	 * @return Object type DataForWindow named "bigDatas"
 	 */
-	public DataForWindow updateMainWindow() 
+
+	public DatasForWindow updateMainWindow() 
 	{
 		// >> Appel de la methode base de donnée pour recuper les données
 		// >> Mettre a jour le nom de la classe bdd et la methode.
@@ -254,4 +273,16 @@ public class UpdateWindows {
 			this.minTemperatureAverage = minTemperatureAverage;
 		}
 	} // end of internal class DataForWindow
+
+
+	/*public DatasForWindow updateMainWindow() {
+
+		ShuttleDatas shuttledatas = new ShuttleDatas(); 
+		  bigDatas = shuttledatas.fetchFreshData();
+
+		return bigDatas;
+
+	}*/
+
+
 }
