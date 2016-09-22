@@ -4,13 +4,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
+ * This class aims to update the widget whenever the timer goes off and
+ * big Window with fresh data fetched from SQLite database
  * @author AnaisGueyte
  * @date 21/09/2016
- * @version skynette 0.1
- * 
- *          This class aims to update the widget whenever the timer goes off and
- *          big Window with fresh data fetched from SQLite database
- *
+ * @version 0.1
  */
 public class UpdateWindows {
 
