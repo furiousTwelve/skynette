@@ -21,9 +21,9 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 
 	private PanelIcon icon = new PanelIcon();
-
 	private PanelDetails f = new PanelDetails();
-
+	private Countdown count = new Countdown(8);
+	
 	
 	public  FenetrePrincipale(){
 			
@@ -41,7 +41,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	        this.setVisible(true);
 	        setOpacity(0.95f);
 	        
-
+	        count.start();
 	}
 	 
 	public static void main(String[] args) {

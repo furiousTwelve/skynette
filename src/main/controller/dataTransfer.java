@@ -1,6 +1,7 @@
 package main.controller;
 
 import java.sql.Date;
+import java.text.DateFormat;
 import java.time.LocalDateTime;
 /**
  * Allows us to make some transfer between the MySQL DBB and the SQLite's one
@@ -25,7 +26,7 @@ public class dataTransfer {
 	 * @param nameCity
 	 * @return dataTransfer
 	 */
-	public dataTransfer askDataFromMySQLBDD (Date date, String nameCity) {
+	public dataTransfer askDataFromMySQLBDD (DateFormat date, String nameCity) {
 		dataTransfer askData = new dataTransfer();
 		return askData;
 	}
@@ -38,9 +39,12 @@ public class dataTransfer {
 	 * @param nameCity
 	 * @return
 	 */
-	public dataTransfer updateSQLite(Date date, String nameCity) {
+	public dataTransfer updateSQLite(DateFormat date, String nameCity) {
 		dataTransfer dataFromMysql = new dataTransfer();	
 		dataFromMysql = this.askDataFromMySQLBDD(date, nameCity);
+		
+		System.out.println("Test DateFormat : on est le " + date.format(new java.util.Date()));
+		
 		return dataFromMysql;
 	}
 
