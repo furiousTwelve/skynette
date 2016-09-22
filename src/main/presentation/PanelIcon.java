@@ -3,99 +3,97 @@ package main.presentation;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GraphicsEnvironment;
 import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
 /**
- * Panel qui s'affiche en bas à droite de l'écran au lancement de l'application avec un résumé de la météo
+ * Panel that appears at the bottom right of the screen to launch the application with a summary of the weather
  * @author Audric
  *
  */
 
-public class panelIcone extends JPanel {
+public class PanelIcon extends JPanel {
 
 	
-	private JLabel imageDescription;
+	private JLabel descriptionPicture;
 	private JLabel temp;
-	private JLabel directionVent;
-	private JLabel vitesseVent;
+	private JLabel windDirection;
+	private JLabel windSpeed;
 	private Font font;
 	private PanelDetails panDetail; 
 	
-	public panelIcone(){
-		//this.setBackground(Color.WHITE);
+
+	public PanelIcon(){
+		
 		font = new Font("Arial",Font.BOLD,20);
-		//Constitution du panel avec l'image
+		
+		//forming the panel with the picture
+
 		ImageIcon meteo = new ImageIcon("cloudy.png");
 		Image img = meteo.getImage();
 		Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newmeteo = new ImageIcon(newimg);
-		imageDescription = new JLabel(newmeteo);
-		Color back = new Color(1f,0f,0f,0.2f);
-		
+		descriptionPicture = new JLabel(newmeteo);		
 		
 		JPanel panelDescription = new JPanel();
 		panelDescription.setLayout(new FlowLayout());
-		panelDescription.add(imageDescription);
+		panelDescription.add(descriptionPicture);
+		panelDescription.setBackground(Color.WHITE);
 
-		//Constitution du panel avec la température
+		//forming the panel with the temperature
 		temp = new JLabel("20°C");
 		temp.setFont(font);
 
 		JPanel panelTemp = new JPanel();
 		panelTemp.setLayout(new FlowLayout());
 		panelTemp.add(temp);
+		panelTemp.setBackground(Color.WHITE);
 		
-		//Constitution du panel avec la direction du vent
-		directionVent = new JLabel("NE");
-		directionVent.setFont(font);
+		//forming the panel with the wind direction
+		windDirection = new JLabel("NE");
+		windDirection.setFont(font);
 		
-		JPanel panelDirVent = new JPanel();
-		panelDirVent.setLayout(new FlowLayout());
-		panelDirVent.add(directionVent);
+		JPanel panelWindDir = new JPanel();
+		panelWindDir.setLayout(new FlowLayout());
+		panelWindDir.add(windDirection);
+		panelWindDir.setBackground(Color.WHITE);
 		
-		//Constitution du panel avec la vitesse du vent
-		vitesseVent = new JLabel("50km/h");
-		vitesseVent.setFont(font);
+		//forming the panel with the wind speed
+		windSpeed = new JLabel("50km/h");
+		windSpeed.setFont(font);
 		
-		JPanel panelVitVent = new JPanel();
-		panelVitVent.setLayout(new FlowLayout());
-		panelVitVent.add(vitesseVent);
+		JPanel panelWindSpeed = new JPanel();
+		panelWindSpeed.setLayout(new FlowLayout());
+		panelWindSpeed.add(windSpeed);
+		panelWindSpeed.setBackground(Color.WHITE);
 		
-		//Constitution du panelCentral
+		//forming the central panel
 		JPanel panelCentral = new JPanel();
 		panelCentral.setLayout(new BoxLayout(panelCentral, BoxLayout.PAGE_AXIS));
 		panelCentral.add(panelDescription);
 		panelCentral.add(panelTemp);
-		panelCentral.add(panelDirVent);
-		panelCentral.add(panelVitVent);
+		panelCentral.add(panelWindDir);
+		panelCentral.add(panelWindSpeed);
 		
-		//Constitution du panel général
+		//forming the general panel
 		this.setLayout(new BorderLayout());
 		this.add(panelCentral, BorderLayout.CENTER);
 		this.setVisible(true);
-		this.setBackground(back);
 		
 	}
 
 	public JLabel getImageDescription() {
-		return imageDescription;
+		return descriptionPicture;
 	}
 
 	public void setImageDescription(JLabel imageDescription) {
-		this.imageDescription = imageDescription;
+		this.descriptionPicture = imageDescription;
 	}
 
 	public JLabel getTemp() {
@@ -107,19 +105,19 @@ public class panelIcone extends JPanel {
 	}
 
 	public JLabel getDirectionVent() {
-		return directionVent;
+		return windDirection;
 	}
 
 	public void setDirectionVent(JLabel directionVent) {
-		this.directionVent = directionVent;
+		this.windDirection = directionVent;
 	}
 
 	public JLabel getVitesseVent() {
-		return vitesseVent;
+		return windSpeed;
 	}
 
 	public void setVitesseVent(JLabel vitesseVent) {
-		this.vitesseVent = vitesseVent;
+		this.windSpeed = vitesseVent;
 	}
 
 	public Font getFont() {
