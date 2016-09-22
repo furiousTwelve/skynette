@@ -10,7 +10,7 @@ public class Countdown {
 		public int minuteAff = 0;
 		public int secondeAff = 0;
 		String secondeAffS = "";
-		panelIcone panicone = new panelIcone();
+		PanelIcon panicone = new PanelIcon();
 		
 		
 		//Constructeur pour mon héritage Stress
