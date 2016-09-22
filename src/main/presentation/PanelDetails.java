@@ -20,14 +20,21 @@ import javax.swing.JPanel;
  *
  */
 public class PanelDetails extends JPanel {
-	protected JPanel panelGlobal = new JPanel(); // panelGlobal contains all the composents
-													
-	protected JPanel panelNorth = new JPanel(); // panelNorth situated in the orth of panelGlobal
-												
+	protected JPanel panelGlobal = new JPanel(); // panelGlobal contains all the
+													// composents
+
+	protected JPanel panelNorth = new JPanel(); // panelNorth situated in the
+												// orth of panelGlobal
+
 	protected JPanel panelCenter = new JPanel(); // panelNorth situated in the
 													// center of panelGlobal
 	protected JPanel panelSouth = new JPanel(); // panelNorth situated in the
 												// south of panelGlobal
+
+	protected JPanel panelSouth1 = new JPanel();
+	protected JPanel panelSouth2 = new JPanel();
+	protected JPanel panelSouth3 = new JPanel();
+	protected JPanel panelSouth4 = new JPanel();
 
 	protected JPanel panelDay_3 = new JPanel();
 	protected JPanel panelDay_2 = new JPanel();
@@ -40,29 +47,53 @@ public class PanelDetails extends JPanel {
 	protected JPanel chartPanel = new JPanel();
 
 	protected JLabel runingDaysIcone = new JLabel();
+<<<<<<< HEAD
 	ImageIcon iconRain = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\rain-1.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+=======
+	ImageIcon iconRain = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\rain-1.png").getImage()
+			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+>>>>>>> origin/feautures/presentation/khadidja
 	protected JLabel countRuningDays = new JLabel("13 jours");
-	
 
 	// protected JLabel empty = new JLabel();
 
 	protected JLabel sunnyDaysIcone = new JLabel();
+<<<<<<< HEAD
 	ImageIcon iconSun = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+=======
+	ImageIcon iconSun = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+>>>>>>> origin/feautures/presentation/khadidja
 
 	protected JLabel countSunnygDays = new JLabel("275 jours ");
 
-	protected JLabel empty = new JLabel( "       ", 10);
+	protected JLabel empty = new JLabel("       ", 10);
 
 	protected JLabel temperatureIcone1 = new JLabel();
+<<<<<<< HEAD
 	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+=======
+	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+>>>>>>> origin/feautures/presentation/khadidja
 	protected JLabel temperatureIcone2 = new JLabel();
+	ImageIcon icontemp2 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone3 = new JLabel();
+	ImageIcon icontemp3 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone4 = new JLabel();
+	ImageIcon icontemp4 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone5 = new JLabel();
+	ImageIcon icontemp5 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone6 = new JLabel();
+	ImageIcon icontemp6 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone7 = new JLabel();
-	
-	
+	ImageIcon icontemp7 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 
 	protected JLabel temperature1 = new JLabel("27°");
 	protected JLabel temperature2 = new JLabel("25°");
@@ -106,6 +137,8 @@ public class PanelDetails extends JPanel {
 	GridLayout g1 = new GridLayout(2, 7);
 	GridLayout g2 = new GridLayout(4, 1);
 	GridLayout g3 = new GridLayout(3, 7);
+	GridLayout g4 = new GridLayout(1, 4);
+	GridLayout g5 = new GridLayout(2, 1);
 
 	BorderLayout b = new BorderLayout();
 
@@ -114,6 +147,16 @@ public class PanelDetails extends JPanel {
 	}
 
 	public void run() {
+		 temperatureIcone1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		 temperatureIcone2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		 temperatureIcone3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		 temperatureIcone4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		 temperatureIcone5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		 temperatureIcone6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		 temperatureIcone7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		 
+		 
+		 
 		temperature1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperature2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperature3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -121,36 +164,38 @@ public class PanelDetails extends JPanel {
 		temperature5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperature6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperature7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		
-		HotestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		coldestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		
-		
-		 maxTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 minTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 
-		 windDirection1 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windDirection2 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windDirection3 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windDirection4 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windDirection5 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windDirection6 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windDirection7 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		
-		 
-		 windSpeed1 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windSpeed2 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windSpeed3 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windSpeed4 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windSpeed5 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windSpeed6 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 windSpeed7 .setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		
+
+	//otestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+//coldestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+//maxTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+//minTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+		windDirection1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windDirection2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windDirection3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windDirection4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windDirection5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windDirection6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windDirection7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+		windSpeed1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windSpeed2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windSpeed3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windSpeed4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windSpeed5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windSpeed6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		windSpeed7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+		panelSouth1.setBackground(Color.WHITE);
+		panelSouth2.setBackground(Color.WHITE);
+		panelSouth3.setBackground(Color.WHITE);
+		panelSouth4.setBackground(Color.WHITE);
 		panelCenter.setBackground(Color.WHITE);
 		panelNorth.setBackground(Color.WHITE);
 		panelSouth.setBackground(Color.WHITE);
 		this.setBackground(Color.WHITE);
-		
+
 		chartPanel.setBackground(Color.WHITE);
 		panelGlobal.setLayout(b);
 		panelGlobal.add(panelNorth, BorderLayout.NORTH);
@@ -185,39 +230,36 @@ public class PanelDetails extends JPanel {
 
 		// setLayout for panelCenter's panels
 		panelCenter.setLayout(g);
-		 panelDay_3.setLayout(g2);
-		 panelDay_2.setLayout(g2);
-		 panelDay_1.setLayout(g2);
+		panelDay_3.setLayout(g2);
+		panelDay_2.setLayout(g2);
+		panelDay_1.setLayout(g2);
 		panelDay.setLayout(g2);
-		 panelNextDay1.setLayout(g2);
-		 panelNextDay2.setLayout(g2);
+		panelNextDay1.setLayout(g2);
+		panelNextDay2.setLayout(g2);
 		panelNextDay3.setLayout(g2);
 
 		// panelCenter's Construction
 
 		// panel 3 days ago
-		//panelDay_3.setBackground(Color.CYAN);
+		 panelDay_3.setBackground(Color.lightGray);
 		temperatureIcone1.setIcon(icontemp1);
 		panelDay_3.add(temperatureIcone1);
 		panelDay_3.add(temperature1);
 		panelDay_3.add(windIcone);
 		panelDay_3.add(windSpeed1);
 		panelDay_3.add(windDirection1);
-		
-		
-		 
-		 
+
 		// panel 2 days ago
+		temperatureIcone2.setIcon(icontemp2);
 		panelDay_2.add(temperatureIcone2);
 		panelDay_2.add(temperature2);
 
 		panelDay_2.add(windIcone);
 		panelDay_2.add(windSpeed2);
 		panelDay_2.add(windDirection2);
-		
-		
 
 		// panel 1 day ago
+		temperatureIcone3.setIcon(icontemp3);
 		panelDay_1.add(temperatureIcone3);
 		panelDay_1.add(temperature3);
 
@@ -225,19 +267,17 @@ public class PanelDetails extends JPanel {
 		panelDay_1.add(windSpeed3);
 		panelDay_1.add(windDirection3);
 
-		
-		
 		// panel of the day
+		temperatureIcone4.setIcon(icontemp4);
 		panelDay.add(temperatureIcone4);
 		panelDay.add(temperature4);
 
 		panelDay.add(windIcone);
 		panelDay.add(windSpeed4);
 		panelDay.add(windDirection4);
-		
-       
-        
+
 		// panel of the next day
+		temperatureIcone5.setIcon(icontemp5);
 		panelNextDay1.add(temperatureIcone5);
 		panelNextDay1.add(temperature5);
 
@@ -246,6 +286,7 @@ public class PanelDetails extends JPanel {
 		panelNextDay1.add(windDirection5);
 
 		// panel 2 days after
+		temperatureIcone6.setIcon(icontemp6);
 		panelNextDay2.add(temperatureIcone6);
 		panelNextDay2.add(temperature6);
 
@@ -254,6 +295,7 @@ public class PanelDetails extends JPanel {
 		panelNextDay2.add(windDirection1);
 
 		// panel 3 days after
+		temperatureIcone7.setIcon(icontemp7);
 		panelNextDay3.add(temperatureIcone7);
 		panelNextDay3.add(temperature7);
 
@@ -268,35 +310,54 @@ public class PanelDetails extends JPanel {
 		panelCenter.add(panelNextDay1);
 		panelCenter.add(panelNextDay2);
 		panelCenter.add(panelNextDay3);
-		
-		//space between columns,
+
+		// space between columns,
 		g.setHgap(50);
 		g1.setHgap(50);
 
 		// panelSouth's Construction
-		panelSouth.setLayout(g3);
-		panelSouth.add(empty);
-		panelSouth.add(empty);
-		panelSouth.add(empty);
-		panelSouth.add(empty);
-		panelSouth.add(empty);
-		panelSouth.add(empty);
-		panelSouth.add(empty);
-		
-		panelSouth.add(new JLabel(" Hotest day of the year"));
-		panelSouth.add(new JLabel(" Coldest day of the year"));
-		panelSouth.add(empty);
 
-	
-		panelSouth.add(new JLabel(" Average ") );
-		panelSouth.add(new JLabel(" Average "));
-		
-		panelSouth.add(HotestDay);
-		panelSouth.add(coldestDay);
-		panelSouth.add(empty);
-		panelSouth.add(empty);
-		panelSouth.add(maxTemperatureAverage);
-		panelSouth.add(minTemperatureAverage);
+		panelSouth.setLayout(g4);
+		g4.setHgap(50);
+		panelSouth1.setLayout(g5);
+		panelSouth1.add(new JLabel("Hotest day of the year"));
+		panelSouth1.add(HotestDay);
+		panelSouth2.setLayout(g5);
+		panelSouth2.add(new JLabel("Coldest day of the year"));
+		panelSouth2.add(coldestDay);
+		panelSouth3.setLayout(g5);
+		panelSouth3.add(new JLabel("Max temperatures' average"));
+		panelSouth3.add(maxTemperatureAverage);
+		panelSouth4.setLayout(g5);
+		panelSouth4.add(new JLabel("Min temperatures' average"));
+		panelSouth4.add(minTemperatureAverage);
+
+		panelSouth.add(panelSouth1);
+		panelSouth.add(panelSouth2);
+		panelSouth.add(panelSouth3);
+		panelSouth.add(panelSouth4);
+
+		// panelSouth.add(empty);
+		// panelSouth.add(empty);
+		// panelSouth.add(empty);
+		// panelSouth.add(empty);
+		// panelSouth.add(empty);
+		// panelSouth.add(empty);
+		// panelSouth.add(empty);
+		//
+		// panelSouth.add(new JLabel(" Hotest day of the year"));
+		// panelSouth.add(new JLabel(" Coldest day of the year"));
+		// panelSouth.add(empty);
+		//
+		// panelSouth.add(new JLabel(" Average "));
+		// panelSouth.add(new JLabel(" Average "));
+		//
+		// panelSouth.add(HotestDay);
+		// panelSouth.add(coldestDay);
+		// panelSouth.add(empty);
+		// panelSouth.add(empty);
+		// panelSouth.add(maxTemperatureAverage);
+		// panelSouth.add(minTemperatureAverage);
 
 		// construction of the graphic panel
 

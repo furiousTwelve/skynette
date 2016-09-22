@@ -2,7 +2,7 @@ package main.presentation;
 
 
 import java.awt.BorderLayout;
-
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -35,9 +35,8 @@ public class panelIcone extends JPanel {
 	private PanelDetails panDetail; 
 	
 	public panelIcone(){
-		
+		//this.setBackground(Color.WHITE);
 		font = new Font("Arial",Font.BOLD,20);
-		
 		//Constitution du panel avec l'image
 		ImageIcon meteo = new ImageIcon("cloudy.png");
 		Image img = meteo.getImage();
