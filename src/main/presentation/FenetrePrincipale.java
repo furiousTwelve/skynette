@@ -1,5 +1,6 @@
 package main.presentation;
 
+
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
@@ -9,6 +10,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+
 
 
 /**
@@ -54,6 +56,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	 */
 	public static void main(String[] args) 
 	{
+
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 	}
 

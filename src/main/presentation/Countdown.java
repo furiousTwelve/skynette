@@ -83,11 +83,32 @@ public class Countdown
 			remainingTime = minuteAff + ":" + secondeAffS;
 			System.out.println(minuteAff + ":" + secondeAffS);
 		}
-		else
-		{
-			remainingTime = minuteAff + ":" + secondeAff;
-        	System.out.println(minuteAff + ":" + secondeAff);
-		}
 		return remainingTime;
-    }
+		
+		
+//	    Timer timer = new Timer();
+//	    public TimerTask tache = new TimerTask() 
+//	    {     
+//	        @Override
+//	        public void run() 
+//	        {
+//	        	if(secondPassed <= 0)
+//	        	{
+//
+//	        		secondPassed = secondTotal;
+//	        		panicone.setPreferredSize(new Dimension(200,200));
+//	        		dataTransfer dataTransfer = new dataTransfer();
+//	        		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT);
+//	        		dataTransfer.updateSQLite(shortDateFormat, "Montpellier");
+//
+//	        	}
+//	        	else
+//	        	{
+//	        		secondPassed--;
+//	        		affichage(secondPassed);
+//	        	}
+//	        }
+//	    };
+//	  
+        }
 }
