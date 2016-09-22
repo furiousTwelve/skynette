@@ -16,7 +16,7 @@ public class City {
 	private String country;
 	
 	
-	public void city() {
+	public City() {
 		
 	}
 

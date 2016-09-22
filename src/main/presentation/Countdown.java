@@ -28,6 +28,12 @@ public class Countdown {
 	    Timer timer = new Timer();
 	    public TimerTask tache = new TimerTask() 
 	    {     
+	    	/**
+	    	 * Decrements the seconds left in our Countdown.
+	    	 * When countdown finished, some other methods are launched, as .updateSQLite.
+	    	 * @author Damien
+	    	 * @authotr Mathieu
+	    	 */
 	        @Override
 	        public void run() 
 	        {

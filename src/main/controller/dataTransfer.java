@@ -10,44 +10,54 @@ import java.time.LocalDateTime;
  */
 public class dataTransfer {
 
+	//===============
+	// ATTRIBUTES & CONSTRUCTOR(S)
+	//===============
 	private City[] sevenCityTab;
 	private Records[] sevenRecordsTab;
+	private String cityName = "";
+	private DateFormat date;
 	
 	public dataTransfer() {
 		sevenCityTab = new City[7];
 		sevenRecordsTab = new Records[7];
 	}
 	
+	public dataTransfer(DateFormat date, String name) {
+		sevenCityTab = new City[7];
+		sevenRecordsTab = new Records[7];
+		this.cityName = name;
+		this.date = date;
+	}
+	
+	
+	//===============
+	// METHODS
+	//===============
+
 	/**
-	 * Asking a data set from our MySQL database.
+	 * In order to update our SQLite BDD, we ask data from our MySQL BDD.
 	 * 
 	 * @author Mathieu
 	 * @param date
 	 * @param nameCity
 	 * @return dataTransfer
 	 */
-	public dataTransfer askDataFromMySQLBDD (DateFormat date, String nameCity) {
-		dataTransfer askData = new dataTransfer();
-		return askData;
-	}
-	
-	/**
-	 * In order to update our SQLite BDD, asking data from our MySQL BDD and complete a dataTransfer Object with.
-	 * 
-	 * @author Mathieu
-	 * @param date
-	 * @param nameCity
-	 * @return
-	 */
 	public dataTransfer updateSQLite(DateFormat date, String nameCity) {
-		dataTransfer dataFromMysql = new dataTransfer();	
-		dataFromMysql = this.askDataFromMySQLBDD(date, nameCity);
+		dataTransfer dataToSend = new dataTransfer();
+		dataTransfer dataToReturn = new dataTransfer();
 		
-		System.out.println("Test DateFormat : on est le " + date.format(new java.util.Date()));
+		System.out.println("Test lancement updateSQLite : on est le " + date.format(new java.util.Date()));
+		dataToReturn = methoderecupDonneesByALBAN(date, nameCity, dataToSend); //retourne un dataTransfer remplit
 		
-		return dataFromMysql;
+		return dataToReturn;
 	}
 
+	
+	
+	//========================
+	// GETTERS AND SETTERS
+	//========================
 	public City[] getSevenCityTab() {
 		return sevenCityTab;
 	}
