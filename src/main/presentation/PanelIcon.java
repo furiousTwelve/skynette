@@ -18,9 +18,8 @@ import javax.swing.JPanel;
  *
  */
 
-public class PanelIcon extends JPanel {
-
-	
+public class PanelIcon extends JPanel 
+{
 	private JLabel descriptionPicture;
 	private JLabel temp;
 	private JLabel windDirection;
@@ -28,8 +27,11 @@ public class PanelIcon extends JPanel {
 	private Font font;
 	private PanelDetails panDetail; 
 	
-
-	public PanelIcon(){
+	/**
+	 * Constructor which implements panels and icons
+	 */
+	public PanelIcon()
+	{
 		
 		font = new Font("Arial",Font.BOLD,20);
 		
