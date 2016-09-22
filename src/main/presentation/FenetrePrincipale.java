@@ -20,6 +20,8 @@ private PanelDetails f= new PanelDetails();
 		
 		new FenetrePrincipale();
 
+		
+		
 	}
 
 }
