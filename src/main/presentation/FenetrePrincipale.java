@@ -23,6 +23,8 @@ import javax.swing.JFrame;
 import com.mysql.jdbc.Blob;
 
 import main.controller.DatasForIcon;
+import main.data.mySQL;
+
 
 
 
@@ -76,6 +78,10 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		SQLite database = new SQLite();
 		database.verifyDB();
+		// Pour test Cyril
+		mySQL BigDatabase = new mySQL();
+		BigDatabase.Connexion();
+
 	}
 
 
@@ -112,6 +118,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 		boolean effacer = fichierTemp2.delete();
 		System.out.println(effacer);
 		return iconeImage;
+
 
 	}
 
