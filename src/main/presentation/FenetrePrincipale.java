@@ -1,10 +1,6 @@
 package main.presentation;
 
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-
 public class FenetrePrincipale extends JFrame {
 
 
@@ -13,7 +9,7 @@ public class FenetrePrincipale extends JFrame {
 	private PanelDetails f= new PanelDetails();
 	
 	public  FenetrePrincipale(){
-	    	this.setSize(1200,700);
+	    	this.setSize(1200,900);
 	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        this.setLocationRelativeTo(null);
 	        this.getAccessibleContext();
@@ -21,10 +17,11 @@ public class FenetrePrincipale extends JFrame {
 
 	        this.setContentPane(f);
 	        this.setTitle("Skynette");
-	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
+//	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
+	        Countdown count = new Countdown(10);
+	        count.start();
 
 	}
-	 
 	
 	public static void main(String[] args) {
 		new FenetrePrincipale();

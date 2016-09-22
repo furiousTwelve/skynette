@@ -27,12 +27,13 @@ import javax.swing.JPanel;
 public class panelIcone extends JFrame {
 
 	
-	private JLabel imageDescription;
-	private JLabel temp;
-	private JLabel directionVent;
-	private JLabel vitesseVent;
-	private Font font;
-	private PanelDetails panDetail; 
+	protected JLabel imageDescription;
+	protected JLabel temp;
+	protected JLabel directionVent;
+	protected JLabel vitesseVent;
+	protected Font font;
+	protected PanelDetails panDetail; 
+	
 	
 	public panelIcone(){
 		

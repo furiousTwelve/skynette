@@ -29,7 +29,7 @@ public class Countdown {
 	        	if(secondPassed <= 0)
 	        	{
 	        		secondPassed = 10;
-	        		panicone.setPreferredSize(new Dimension(200,200));
+	        		
 	        		
 	        	}
 	        	else
