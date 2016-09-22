@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import main.data.SQLite;
+import main.data.mySQL;
 
 
 
@@ -64,6 +65,10 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		SQLite database = new SQLite();
 		database.verifyDB();
+		
+		// Pour test Cyril
+		mySQL BigDatabase = new mySQL();
+		BigDatabase.Connexion();
 
 	}
 
