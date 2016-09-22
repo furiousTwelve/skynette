@@ -24,7 +24,7 @@ import javax.swing.JPanel;
  *
  */
 
-public class panelIcone extends JFrame {
+public class panelIcone extends JPanel {
 
 	
 	private JLabel imageDescription;
@@ -82,52 +82,61 @@ public class panelIcone extends JFrame {
 		panelCentral.add(panelTemp);
 		panelCentral.add(panelDirVent);
 		panelCentral.add(panelVitVent);
-		panelCentral.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				panelIcone.this.getContentPane().removeAll();
-				panDetail = new PanelDetails();
-				panelIcone.this.setContentPane(panDetail);
-				panelIcone.this.validate();
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
 		
 		//Constitution du panel général
 		this.setLayout(new BorderLayout());
 		this.add(panelCentral, BorderLayout.CENTER);
-		this.setSize(new Dimension(150, 300));
-		int x = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
-		int y = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
-		this.setLocation(x-150, y-300);
-		this.setUndecorated(true);
+		
 		this.setVisible(true);
 		
+	}
+
+	public JLabel getImageDescription() {
+		return imageDescription;
+	}
+
+	public void setImageDescription(JLabel imageDescription) {
+		this.imageDescription = imageDescription;
+	}
+
+	public JLabel getTemp() {
+		return temp;
+	}
+
+	public void setTemp(JLabel temp) {
+		this.temp = temp;
+	}
+
+	public JLabel getDirectionVent() {
+		return directionVent;
+	}
+
+	public void setDirectionVent(JLabel directionVent) {
+		this.directionVent = directionVent;
+	}
+
+	public JLabel getVitesseVent() {
+		return vitesseVent;
+	}
+
+	public void setVitesseVent(JLabel vitesseVent) {
+		this.vitesseVent = vitesseVent;
+	}
+
+	public Font getFont() {
+		return font;
+	}
+
+	public void setFont(Font font) {
+		this.font = font;
+	}
+
+	public PanelDetails getPanDetail() {
+		return panDetail;
+	}
+
+	public void setPanDetail(PanelDetails panDetail) {
+		this.panDetail = panDetail;
 	}
 	
 }
