@@ -2,8 +2,12 @@ package main.presentation;
 
 import java.awt.Dimension;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import main.controller.Tools;
 
 import main.controller.dataTransfer;
 
@@ -72,9 +76,20 @@ public class Countdown
 	        	{
 	        		secondPassed = secondTotal;
 	        		panicone.setPreferredSize(new Dimension(200,200));
+
 	        		dataTransfer dataTransfer = new dataTransfer();
-	        		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT);
-	        		dataTransfer.updateSQLite(shortDateFormat, "Montpellier");
+	        		
+	        		//Création de la date et de l'heure du moment
+	        		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	        		Date today = Calendar.getInstance().getTime();       
+	        		String reportDate = df.format(today);
+	        		System.out.println("Report Date: " + reportDate);
+	        		
+	        		//On la convertit en heure arrondie pour la BDD
+	        		reportDate = Tools.arrondirDate(reportDate);
+	        		System.out.println("Report new Date :" + reportDate);
+	        		
+	        		dataTransfer.updateSQLite(reportDate, "Montpellier");
 	        	}
 	        	else
 	        	{

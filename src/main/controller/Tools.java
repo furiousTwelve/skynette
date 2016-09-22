@@ -60,7 +60,35 @@ public class Tools
 		return direction;
 	}
 	
-	
+	public static String arrondirDate(String date) {
+		String hourToChange = date.substring(11, 13);;
+		String hourToKeep1 = date.substring(0, 11);
+		
+		String newDate = "";
+		
+		int  heures = Integer.parseInt(hourToChange);
+		if (heures < 3) {
+			hourToChange = "00:00:00";
+		} else if(heures < 6) {
+			hourToChange = "03:00:00";
+		} else if(heures < 9) {
+			hourToChange = "06:00:00";
+		} else if(heures < 12) {
+			hourToChange = "09:00:00";
+		} else if(heures < 15) {
+			hourToChange = "12:00:00";
+		} else if(heures < 18) {
+			hourToChange = "15:00:00";
+		} else if(heures < 21) {
+			hourToChange = "18:00:00";
+		} else  {
+			hourToChange = "21:00:00";
+		}
+		
+		newDate = hourToKeep1 + hourToChange;
+		
+		return newDate;
+	}
 	
 }
 
