@@ -62,12 +62,12 @@ public class dataTransfer {
 //		dataToReturn = methoderecupDonneesByALBAN(dataToSend); //retourne un dataTransfer remplit
 		
 		//Convert wind-degrees in wind-direction, using a static method from Tools
-		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
-			float degreeeees = sevenRecordsTab[i].getDeg();
-			String direct = sevenRecordsTab[i].getWindDirection();
-			direct = Tools.convertDegreesToDirection(degreeeees);
-			sevenRecordsTab[i].setWindDirection(direct);
-		}
+//		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
+//			float degreeeees = sevenRecordsTab[i].getDeg();
+//			String direct = sevenRecordsTab[i].getWindDirection();
+//			direct = Tools.convertDegreesToDirection(degreeeees);
+//			sevenRecordsTab[i].setWindDirection(direct);
+//		}
 		
 		return dataToReturn;
 	}

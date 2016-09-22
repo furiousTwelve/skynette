@@ -60,6 +60,11 @@ public class Tools
 		return direction;
 	}
 	
+	/**
+	 * 
+	 * @param date
+	 * @return
+	 */
 	public static String arrondirDate(String date) {
 		String hourToChange = date.substring(11, 13);;
 		String hourToKeep1 = date.substring(0, 11);
