@@ -16,9 +16,11 @@ public class City
 	private String country;
 	
 	
+
 	/**
 	 * Constructor
 	 */
 	public City() {}
+
 
 }

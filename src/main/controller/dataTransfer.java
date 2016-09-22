@@ -6,10 +6,17 @@ import java.text.DateFormat;
  * @author Mathieu
  *
  */
-public class dataTransfer 
-{
-	private City[] sevenCityTab;               //Array of 7 days (tab) for a city
-	private Records[] sevenRecordsTab;         //Array of 7 records (from a city)
+
+public class dataTransfer {
+
+	//===============
+	// ATTRIBUTES & CONSTRUCTOR(S)
+	//===============
+	private City[] sevenCityTab;
+	private Records[] sevenRecordsTab;
+	private String cityName = "";
+	private DateFormat date;
+
 	
 	/**
 	 * Constructor
@@ -20,41 +27,47 @@ public class dataTransfer
 		sevenRecordsTab = new Records[7];
 	}
 	
-	/**
-	 * Asking a data set from our MySQL database.
-	 * @author Mathieu
-	 * @param date date day 
-	 * @param nameCity city's name
-	 * @return dataTransfer get data
-	 */
-	public dataTransfer askDataFromMySQLBDD (DateFormat date, String nameCity) 
-	{
-		dataTransfer askData = new dataTransfer();
-		return askData;
+
+
+	public dataTransfer(DateFormat date, String name) {
+		sevenCityTab = new City[7];
+		sevenRecordsTab = new Records[7];
+		this.cityName = name;
+		this.date = date;
+
 	}
 	
-	/**
-	 * In order to update our SQLite BDD, asking data from our MySQL BDD and complete a dataTransfer Object with.
-	 * 
-	 * @author Mathieu
-	 * @param date date day
-	 * @param nameCity city's name
-	 * @return
-	 */
-	public dataTransfer updateSQLite(DateFormat date, String nameCity) 
-	{
-		dataTransfer dataFromMysql = new dataTransfer();	
-		dataFromMysql = this.askDataFromMySQLBDD(date, nameCity);
-		System.out.println("Test DateFormat : on est le " + date.format(new java.util.Date())); //FIXME for test only
-		return dataFromMysql;
-	}
+	
+	//===============
+	// METHODS
+	//===============
 
 	/**
-	 * Get the 7 days for a city
-	 * @return array of 7 days
+	 * In order to update our SQLite BDD, we ask data from our MySQL BDD.
+	 * 
+	 * @author Mathieu
+
+	 * @param date
+	 * @param nameCity
+	 * @return dataTransfer
 	 */
-	public City[] getSevenCityTab() 
-	{
+	public dataTransfer updateSQLite(DateFormat date, String nameCity) {
+		dataTransfer dataToSend = new dataTransfer();
+		dataTransfer dataToReturn = new dataTransfer();
+		
+		System.out.println("Test lancement updateSQLite : on est le " + date.format(new java.util.Date()));
+		dataToReturn = methoderecupDonneesByALBAN(date, nameCity, dataToSend); //retourne un dataTransfer remplit
+		
+		return dataToReturn;
+	}
+
+	
+	
+	//========================
+	// GETTERS AND SETTERS
+	//========================
+	public City[] getSevenCityTab() {
+
 		return sevenCityTab;
 	}
 	

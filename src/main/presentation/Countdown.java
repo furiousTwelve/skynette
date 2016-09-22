@@ -20,8 +20,7 @@ public class Countdown
 	public int secondeAff = 0;
 	String secondeAffS = "";
 	PanelIcon panicone = new PanelIcon();
-	Timer timer = new Timer();
-		
+	Timer timer = new Timer();	
 	/**
 	 * Constructor
 	 * @param secondPassed
@@ -31,42 +30,14 @@ public class Countdown
 		this.secondPassed = secondPassed;
 		this.secondTotal = secondPassed;
 	}
-		
-    
-	/**
-	 * Timer task 
-	 */
-    public TimerTask tache = new TimerTask() 
-    {     
-        @Override
-        public void run() 
-        {
-        	if(secondPassed <= 0)
-        	{
-        		secondPassed = secondTotal;
-        		panicone.setPreferredSize(new Dimension(200,200));
-        		dataTransfer dataTransfer = new dataTransfer();
-        		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT);
-        		dataTransfer.updateSQLite(shortDateFormat, "Montpellier");
-        	}
-        	else
-        	{
-        		secondPassed--;
-        		displayRemainingTime(secondPassed);
-        	}
-        }
-    };
-    
-    
-    
+
     /**
      * Method to start the timer countdown
      */
     public void start()
     {
     	timer.scheduleAtFixedRate(tache, 1000, 1000);
-    }
-	    
+    }    
     /**
      * Display timer task
      * @param sec
@@ -84,31 +55,37 @@ public class Countdown
 			System.out.println(minuteAff + ":" + secondeAffS);
 		}
 		return remainingTime;
-		
-		
-//	    Timer timer = new Timer();
-//	    public TimerTask tache = new TimerTask() 
-//	    {     
-//	        @Override
-//	        public void run() 
-//	        {
-//	        	if(secondPassed <= 0)
-//	        	{
-//
-//	        		secondPassed = secondTotal;
-//	        		panicone.setPreferredSize(new Dimension(200,200));
-//	        		dataTransfer dataTransfer = new dataTransfer();
-//	        		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT);
-//	        		dataTransfer.updateSQLite(shortDateFormat, "Montpellier");
-//
-//	        	}
-//	        	else
-//	        	{
-//	        		secondPassed--;
-//	        		affichage(secondPassed);
-//	        	}
-//	        }
-//	    };
-//	  
-        }
+    }
+    
+	    public TimerTask tache = new TimerTask() 
+	    {     
+	    	/**
+	    	 * Decrements the seconds left in our Countdown.
+	    	 * When countdown finished, some other methods are launched, as .updateSQLite.
+	    	 * @author Damien
+	    	 * @authotr Mathieu
+	    	 */
+	        @Override
+	        public void run() 
+	        {
+	        	if(secondPassed <= 0)
+	        	{
+	        		secondPassed = secondTotal;
+	        		panicone.setPreferredSize(new Dimension(200,200));
+	        		dataTransfer dataTransfer = new dataTransfer();
+	        		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT);
+	        		dataTransfer.updateSQLite(shortDateFormat, "Montpellier");
+	        	}
+	        	else
+	        	{
+	        		secondPassed--;
+	        		displayRemainingTime(secondPassed);
+	        	}
+	        }
+	    };
+	    
+	    
+	  
+	   
 }
+
