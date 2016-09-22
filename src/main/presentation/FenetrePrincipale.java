@@ -7,14 +7,10 @@ import javax.swing.JFrame;
 
 public class FenetrePrincipale extends JFrame {
 
-<<<<<<< HEAD
-
 	private panelIcone icone = new panelIcone();
 
 	private PanelDetails f= new PanelDetails();
-=======
-private PanelDetails f= new PanelDetails();
->>>>>>> origin/features/controller/anais-10
+
 	
 	public  FenetrePrincipale(){
 	    	this.setSize(1200,700);
