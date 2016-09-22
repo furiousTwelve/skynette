@@ -10,7 +10,7 @@ public class FenetrePrincipale extends JFrame {
 	private PanelDetails f= new PanelDetails();
 	
 	public  FenetrePrincipale(){
-	    	this.setSize(800, 200);
+	    	this.setSize(1200,700);
 	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        this.setLocationRelativeTo(null);
 	        this.getAccessibleContext ();
