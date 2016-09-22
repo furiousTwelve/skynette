@@ -41,8 +41,8 @@ public class UpdateWindows {
 
 		/*
 		 * 
-		 * SQLiteBDD sqlitebdd = new SQLiteBDD(); datas =
-		 * sqlite.methodeWitchFetcdata();
+		 * SQLiteBDD sqlitebdd = new SQLiteBDD(); 
+		 * datas = sqlite.methodeWitchFetcdata();
 		 */
 
 		return datas;
@@ -71,8 +71,8 @@ public class UpdateWindows {
 
 		/*
 		 * 
-		 * SQLiteBDD sqlitebdd = new SQLiteBDD(); datas =
-		 * sqlite.methodeWitchFetcdataForTheBigWindow();
+		 * SQLiteBDD sqlitebdd = new SQLiteBDD(); 
+		 * bigDatas = sqlite.methodeWitchFetcdataForTheBigWindow();
 		 */
 
 		return bigDatas;
