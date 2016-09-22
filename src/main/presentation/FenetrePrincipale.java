@@ -1,5 +1,6 @@
 package main.presentation;
 
+
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
@@ -9,6 +10,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+
 
 
 /**
@@ -27,13 +29,16 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	
 	
 	public  FenetrePrincipale(){
+
 			
 			this.setSize(new Dimension(150, 300));
 			int x = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
 			int y = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
 			this.setLocation(x-150, y-300);
 	    	this.setUndecorated(true);
+
 	        this.getAccessibleContext();
+
 
 	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
 	        this.setTitle("Skynette"); 
@@ -45,6 +50,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	        count.start();
 	}
 	 
+
 	public static void main(String[] args) {
 
 		FenetrePrincipale fenetre = new FenetrePrincipale();

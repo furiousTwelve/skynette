@@ -33,11 +33,13 @@ public class Countdown {
 	        {
 	        	if(secondPassed <= 0)
 	        	{
+
 	        		secondPassed = secondTotal;
 	        		panicone.setPreferredSize(new Dimension(200,200));
 	        		dataTransfer dataTransfer = new dataTransfer();
 	        		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT);
 	        		dataTransfer.updateSQLite(shortDateFormat, "Montpellier");
+
 	        	}
 	        	else
 	        	{
