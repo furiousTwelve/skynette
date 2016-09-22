@@ -34,7 +34,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	    	this.setUndecorated(true);
 	        this.getAccessibleContext();
 
-	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
+	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\planet-earth.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	        this.setTitle("Skynette"); 
 	        icon.addMouseListener(this);
 	        this.setContentPane(icon);
