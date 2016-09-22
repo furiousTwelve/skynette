@@ -3,23 +3,26 @@ package main.controller;
 import java.sql.Date;
 import java.time.LocalDateTime;
 
-public class GestionBDD {
+public class dataTransfer {
 
 	private City[] sevenCityTab;
 	private Records[] sevenRecordsTab;
 	
-	public GestionBDD() {
+	public dataTransfer() {
 		sevenCityTab = new City[7];
 		sevenRecordsTab = new Records[7];
 	}
 	
-	public GestionBDD askDataFromMySQLBDD (Date date, String nameCity) {
-		GestionBDD askData = new GestionBDD();
+	public dataTransfer askDataFromMySQLBDD (Date date, String nameCity) {
+		dataTransfer askData = new dataTransfer();
 		return askData;
 	}
 	
-	public void updateSQLite() {
-		
+	public dataTransfer updateSQLite(Date date, String nameCity) {
+		dataTransfer dataFromMysql = new dataTransfer();
+		dataFromMysql.sevenCityTab = this.askDataFromMySQLBDD(date, nameCity).getSevenCityTab();
+		dataFromMysql.sevenRecordsTab = this.askDataFromMySQLBDD(date, nameCity).getSevenRecordsTab();				
+		return dataFromMysql;
 	}
 
 	public City[] getSevenCityTab() {
