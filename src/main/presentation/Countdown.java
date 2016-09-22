@@ -1,22 +1,27 @@
 package main.presentation;
 
 import java.awt.Dimension;
+import java.text.DateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import main.controller.dataTransfer;
 
 public class Countdown {
 	// ATTRIBUTS DE LA CLASSE
 		public int secondPassed = 0;
+		public int secondTotal;
 		public int minuteAff = 0;
 		public int secondeAff = 0;
 		String secondeAffS = "";
-		panelIcone panicone = new panelIcone();
+		PanelIcon panicone = new PanelIcon();
 		
 		
 		//Constructeur pour mon héritage Stress
 		public Countdown(int secondPassed)
 		{
 			this.secondPassed = secondPassed;
+			this.secondTotal = secondPassed;
 		}
 		
 		
@@ -28,9 +33,11 @@ public class Countdown {
 	        {
 	        	if(secondPassed <= 0)
 	        	{
-	        		secondPassed = 10;
+	        		secondPassed = secondTotal;
 	        		panicone.setPreferredSize(new Dimension(200,200));
-	        		
+	        		dataTransfer dataTransfer = new dataTransfer();
+	        		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT);
+	        		dataTransfer.updateSQLite(shortDateFormat, "Montpellier");
 	        	}
 	        	else
 	        	{

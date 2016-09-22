@@ -10,6 +10,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+
+import java.awt.event.*;
+
+
 /**
  * 
  * @author khadidja
@@ -19,7 +32,11 @@ import javax.swing.JPanel;
  *         days, lets' go!
  *
  */
-public class PanelDetails extends JPanel {
+
+
+public class PanelDetails extends JPanel implements ActionListener,MouseListener{
+
+
 	protected JPanel panelGlobal = new JPanel(); // panelGlobal contains all the
 													// composents
 
@@ -47,35 +64,27 @@ public class PanelDetails extends JPanel {
 	protected JPanel chartPanel = new JPanel();
 
 	protected JLabel runingDaysIcone = new JLabel();
-<<<<<<< HEAD
+
 	ImageIcon iconRain = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\rain-1.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
-=======
-	ImageIcon iconRain = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\rain-1.png").getImage()
-			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
->>>>>>> origin/feautures/presentation/khadidja
+
+
 	protected JLabel countRuningDays = new JLabel("13 jours");
 
 	// protected JLabel empty = new JLabel();
 
 	protected JLabel sunnyDaysIcone = new JLabel();
-<<<<<<< HEAD
+
 	ImageIcon iconSun = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
-=======
-	ImageIcon iconSun = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
->>>>>>> origin/feautures/presentation/khadidja
 
 	protected JLabel countSunnygDays = new JLabel("275 jours ");
 
 	protected JLabel empty = new JLabel("       ", 10);
 
 	protected JLabel temperatureIcone1 = new JLabel();
-<<<<<<< HEAD
+
 	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
-=======
-	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
->>>>>>> origin/feautures/presentation/khadidja
+
+
 	protected JLabel temperatureIcone2 = new JLabel();
 	ImageIcon icontemp2 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
 			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
@@ -146,17 +155,56 @@ public class PanelDetails extends JPanel {
 		run();
 	}
 
+	public JPanel createChartPanel() {
+		String titre = "temperature / pressure disturbance for 7 days";
+		String titre_x = "Days";
+		String titre_y = "temperature";
+
+		XYDataset dataset = createDataset();
+		JFreeChart chart = ChartFactory.createXYLineChart(titre, titre_x, titre_y, dataset);
+		return new ChartPanel(chart);
+	}
+
+	protected XYDataset createDataset() {
+		XYSeriesCollection dataset = new XYSeriesCollection();
+		XYSeries day1 = new XYSeries("Day-3");
+		XYSeries day2 = new XYSeries("Day-2");
+		XYSeries day3 = new XYSeries("Day-1");
+		XYSeries day4 = new XYSeries("Today");
+		XYSeries day5 = new XYSeries("Today+1");
+		XYSeries day6 = new XYSeries("Today+2");
+		XYSeries day7 = new XYSeries("Today+3");
+
+		day1.add(1, 25);
+		day2.add(2, 27);
+		day3.add(3, 17);
+		day4.add(4, 21);
+		day5.add(5, 24);
+		day6.add(6, 28);
+		day7.add(7, 39);
+
+		dataset.addSeries(day1);
+		dataset.addSeries(day2);
+		dataset.addSeries(day3);
+		dataset.addSeries(day4);
+		dataset.addSeries(day5);
+		dataset.addSeries(day6);
+		dataset.addSeries(day7);
+
+		// dataset.addSeries(candidat5);
+		return dataset;
+	}
+
 	public void run() {
-		 temperatureIcone1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 temperatureIcone7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		 
-		 
-		 
+		chartPanel = createChartPanel();
+		temperatureIcone1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		temperatureIcone7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
 		temperature1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperature2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperature3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -165,11 +213,11 @@ public class PanelDetails extends JPanel {
 		temperature6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperature7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-	//otestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-//coldestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		// otestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		// coldestDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-//maxTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-//minTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		// maxTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		// minTemperatureAverage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
 		windDirection1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		windDirection2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -241,7 +289,7 @@ public class PanelDetails extends JPanel {
 		// panelCenter's Construction
 
 		// panel 3 days ago
-		 panelDay_3.setBackground(Color.lightGray);
+		panelDay_3.setBackground(Color.lightGray);
 		temperatureIcone1.setIcon(icontemp1);
 		panelDay_3.add(temperatureIcone1);
 		panelDay_3.add(temperature1);
@@ -366,469 +414,40 @@ public class PanelDetails extends JPanel {
 		this.add(chartPanel);
 	}
 
-	public JPanel getPanelGlobal() {
-		return panelGlobal;
-	}
-
-	public void setPanelGlobal(JPanel panelGlobal) {
-		this.panelGlobal = panelGlobal;
-	}
-
-	public JPanel getPanelNorth() {
-		return panelNorth;
-	}
-
-	public void setPanelNorth(JPanel panelNorth) {
-		this.panelNorth = panelNorth;
-	}
-
-	public JPanel getPanelCenter() {
-		return panelCenter;
-	}
-
-	public void setPanelCenter(JPanel panelCenter) {
-		this.panelCenter = panelCenter;
-	}
-
-	public JPanel getPanelSouth() {
-		return panelSouth;
-	}
-
-	public void setPanelSouth(JPanel panelSouth) {
-		this.panelSouth = panelSouth;
-	}
-
-	public JPanel getPanelDay_3() {
-		return panelDay_3;
-	}
-
-	public void setPanelDay_3(JPanel panelDay_3) {
-		this.panelDay_3 = panelDay_3;
-	}
-
-	public JPanel getPanelDay_2() {
-		return panelDay_2;
-	}
-
-	public void setPanelDay_2(JPanel panelDay_2) {
-		this.panelDay_2 = panelDay_2;
-	}
-
-	public JPanel getPanelDay_1() {
-		return panelDay_1;
-	}
-
-	public void setPanelDay_1(JPanel panelDay_1) {
-		this.panelDay_1 = panelDay_1;
-	}
-
-	public JPanel getPanelDay() {
-		return panelDay;
-	}
-
-	public void setPanelDay(JPanel panelDay) {
-		this.panelDay = panelDay;
-	}
-
-	public JPanel getPanelNextDay1() {
-		return panelNextDay1;
-	}
-
-	public void setPanelNextDay1(JPanel panelNextDay1) {
-		this.panelNextDay1 = panelNextDay1;
-	}
-
-	public JPanel getPanelNextDay2() {
-		return panelNextDay2;
-	}
-
-	public void setPanelNextDay2(JPanel panelNextDay2) {
-		this.panelNextDay2 = panelNextDay2;
-	}
-
-	public JPanel getPanelNextDay3() {
-		return panelNextDay3;
-	}
-
-	public void setPanelNextDay3(JPanel panelNextDay3) {
-		this.panelNextDay3 = panelNextDay3;
-	}
-
-	public JPanel getChartPanel() {
-		return chartPanel;
-	}
-
-	public void setChartPanel(JPanel chartPanel) {
-		this.chartPanel = chartPanel;
-	}
-
-	public JLabel getRuningDaysIcone() {
-		return runingDaysIcone;
-	}
-
-	public void setRuningDaysIcone(JLabel runingDaysIcone) {
-		this.runingDaysIcone = runingDaysIcone;
-	}
-
-	public ImageIcon getIconRain() {
-		return iconRain;
-	}
-
-	public void setIconRain(ImageIcon iconRain) {
-		this.iconRain = iconRain;
-	}
-
-	public JLabel getCountRuningDays() {
-		return countRuningDays;
-	}
-
-	public void setCountRuningDays(JLabel countRuningDays) {
-		this.countRuningDays = countRuningDays;
-	}
-
-	public JLabel getSunnyDaysIcone() {
-		return sunnyDaysIcone;
-	}
-
-	public void setSunnyDaysIcone(JLabel sunnyDaysIcone) {
-		this.sunnyDaysIcone = sunnyDaysIcone;
-	}
-
-	public ImageIcon getIconSun() {
-		return iconSun;
-	}
-
-	public void setIconSun(ImageIcon iconSun) {
-		this.iconSun = iconSun;
-	}
-
-	public JLabel getCountSunnygDays() {
-		return countSunnygDays;
-	}
-
-	public void setCountSunnygDays(JLabel countSunnygDays) {
-		this.countSunnygDays = countSunnygDays;
-	}
-
-	public JLabel getEmpty() {
-		return empty;
-	}
-
-	public void setEmpty(JLabel empty) {
-		this.empty = empty;
-	}
-
-	public JLabel getTemperatureIcone1() {
-		return temperatureIcone1;
-	}
-
-	public void setTemperatureIcone1(JLabel temperatureIcone1) {
-		this.temperatureIcone1 = temperatureIcone1;
-	}
-
-	public ImageIcon getIcontemp1() {
-		return icontemp1;
-	}
-
-	public void setIcontemp1(ImageIcon icontemp1) {
-		this.icontemp1 = icontemp1;
-	}
-
-	public JLabel getTemperatureIcone2() {
-		return temperatureIcone2;
-	}
-
-	public void setTemperatureIcone2(JLabel temperatureIcone2) {
-		this.temperatureIcone2 = temperatureIcone2;
-	}
-
-	public JLabel getTemperatureIcone3() {
-		return temperatureIcone3;
-	}
-
-	public void setTemperatureIcone3(JLabel temperatureIcone3) {
-		this.temperatureIcone3 = temperatureIcone3;
-	}
-
-	public JLabel getTemperatureIcone4() {
-		return temperatureIcone4;
-	}
-
-	public void setTemperatureIcone4(JLabel temperatureIcone4) {
-		this.temperatureIcone4 = temperatureIcone4;
-	}
-
-	public JLabel getTemperatureIcone5() {
-		return temperatureIcone5;
-	}
-
-	public void setTemperatureIcone5(JLabel temperatureIcone5) {
-		this.temperatureIcone5 = temperatureIcone5;
-	}
-
-	public JLabel getTemperatureIcone6() {
-		return temperatureIcone6;
-	}
-
-	public void setTemperatureIcone6(JLabel temperatureIcone6) {
-		this.temperatureIcone6 = temperatureIcone6;
-	}
-
-	public JLabel getTemperatureIcone7() {
-		return temperatureIcone7;
-	}
-
-	public void setTemperatureIcone7(JLabel temperatureIcone7) {
-		this.temperatureIcone7 = temperatureIcone7;
-	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 
-	public JLabel getTemperature1() {
-		return temperature1;
 	}
 
-	public void setTemperature1(JLabel temperature1) {
-		this.temperature1 = temperature1;
-	}
-
-	public JLabel getTemperature2() {
-		return temperature2;
-	}
-
-	public void setTemperature2(JLabel temperature2) {
-		this.temperature2 = temperature2;
-	}
-
-	public JLabel getTemperature3() {
-		return temperature3;
-	}
-
-	public void setTemperature3(JLabel temperature3) {
-		this.temperature3 = temperature3;
-	}
-
-	public JLabel getTemperature4() {
-		return temperature4;
-	}
-
-	public void setTemperature4(JLabel temperature4) {
-		this.temperature4 = temperature4;
-	}
-
-	public JLabel getTemperature5() {
-		return temperature5;
-	}
-
-	public void setTemperature5(JLabel temperature5) {
-		this.temperature5 = temperature5;
-	}
-
-	public JLabel getTemperature6() {
-		return temperature6;
-	}
-
-	public void setTemperature6(JLabel temperature6) {
-		this.temperature6 = temperature6;
-	}
-
-	public JLabel getTemperature7() {
-		return temperature7;
-	}
-
-	public void setTemperature7(JLabel temperature7) {
-		this.temperature7 = temperature7;
-	}
-
-	public JLabel getHotestDay() {
-		return HotestDay;
-	}
-
-	public void setHotestDay(JLabel hotestDay) {
-		HotestDay = hotestDay;
-	}
-
-	public JLabel getColdestDay() {
-		return coldestDay;
-	}
-
-	public void setColdestDay(JLabel coldestDay) {
-		this.coldestDay = coldestDay;
-	}
-
-	public JLabel getWindDirection1() {
-		return windDirection1;
-	}
-
-	public void setWindDirection1(JLabel windDirection1) {
-		this.windDirection1 = windDirection1;
-	}
-
-	public JLabel getWindSpeed1() {
-		return windSpeed1;
-	}
-
-	public void setWindSpeed1(JLabel windSpeed1) {
-		this.windSpeed1 = windSpeed1;
-	}
-
-	public JLabel getWindDirection2() {
-		return windDirection2;
-	}
-
-	public void setWindDirection2(JLabel windDirection2) {
-		this.windDirection2 = windDirection2;
-	}
-
-	public JLabel getWindSpeed2() {
-		return windSpeed2;
-	}
-
-	public void setWindSpeed2(JLabel windSpeed2) {
-		this.windSpeed2 = windSpeed2;
-	}
-
-	public JLabel getWindDirection3() {
-		return windDirection3;
-	}
-
-	public void setWindDirection3(JLabel windDirection3) {
-		this.windDirection3 = windDirection3;
-	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
 
-	public JLabel getWindSpeed3() {
-		return windSpeed3;
 	}
 
-	public void setWindSpeed3(JLabel windSpeed3) {
-		this.windSpeed3 = windSpeed3;
-	}
-
-	public JLabel getWindDirection4() {
-		return windDirection4;
-	}
-
-	public void setWindDirection4(JLabel windDirection4) {
-		this.windDirection4 = windDirection4;
-	}
-
-	public JLabel getWindSpeed4() {
-		return windSpeed4;
-	}
-
-	public void setWindSpeed4(JLabel windSpeed4) {
-		this.windSpeed4 = windSpeed4;
-	}
-
-	public JLabel getWindDirection5() {
-		return windDirection5;
-	}
-
-	public void setWindDirection5(JLabel windDirection5) {
-		this.windDirection5 = windDirection5;
-	}
-
-	public JLabel getWindSpeed5() {
-		return windSpeed5;
-	}
-
-	public void setWindSpeed5(JLabel windSpeed5) {
-		this.windSpeed5 = windSpeed5;
-	}
-
-	public JLabel getWindDirection6() {
-		return windDirection6;
-	}
-
-	public void setWindDirection6(JLabel windDirection6) {
-		this.windDirection6 = windDirection6;
-	}
-
-	public JLabel getWindSpeed6() {
-		return windSpeed6;
-	}
-
-	public void setWindSpeed6(JLabel windSpeed6) {
-		this.windSpeed6 = windSpeed6;
-	}
-
-	public JLabel getWindDirection7() {
-		return windDirection7;
-	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
 
-	public void setWindDirection7(JLabel windDirection7) {
-		this.windDirection7 = windDirection7;
 	}
 
-	public JLabel getWindSpeed7() {
-		return windSpeed7;
-	}
-
-	public void setWindSpeed7(JLabel windSpeed7) {
-		this.windSpeed7 = windSpeed7;
-	}
-
-	public JLabel getWindIcone() {
-		return windIcone;
-	}
-
-	public void setWindIcone(JLabel windIcone) {
-		this.windIcone = windIcone;
-	}
-
-	public JLabel getMaxTemperatureAverage() {
-		return maxTemperatureAverage;
-	}
-
-	public void setMaxTemperatureAverage(JLabel maxTemperatureAverage) {
-		this.maxTemperatureAverage = maxTemperatureAverage;
-	}
-
-	public JLabel getMinTemperatureAverage() {
-		return minTemperatureAverage;
-	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
 
-	public void setMinTemperatureAverage(JLabel minTemperatureAverage) {
-		this.minTemperatureAverage = minTemperatureAverage;
 	}
 
-	public GridLayout getG() {
-		return g;
-	}
-
-	public void setG(GridLayout g) {
-		this.g = g;
-	}
-
-	public GridLayout getG1() {
-		return g1;
-	}
-
-	public void setG1(GridLayout g1) {
-		this.g1 = g1;
-	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
 
-	public GridLayout getG2() {
-		return g2;
 	}
 
-	public void setG2(GridLayout g2) {
-		this.g2 = g2;
-	}
-
-	public GridLayout getG3() {
-		return g3;
-	}
-
-	public void setG3(GridLayout g3) {
-		this.g3 = g3;
-	}
-
-	public BorderLayout getB() {
-		return b;
-	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 
-	public void setB(BorderLayout b) {
-		this.b = b;
 	}
 
-	
 }
