@@ -23,11 +23,20 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 			this.setLocation(x-150, y-300);
 	    	this.setUndecorated(true);
 	        this.getAccessibleContext();
+<<<<<<< HEAD
 	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
 	        this.setTitle("Skynette"); 
 	        icone.addMouseListener(this);
 	        this.setContentPane(icone);
 	        this.setVisible(true);
+=======
+	        this.setVisible(true);
+	        this.setContentPane(f);
+	        this.setTitle("Skynette");
+	   
+	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\planet-earth.png").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+
+>>>>>>> origin/feautures/presentation/khadidja
 	}
 	 
 	
