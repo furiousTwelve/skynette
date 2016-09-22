@@ -3,6 +3,7 @@ package main.presentation;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -57,7 +58,9 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 		if(e.getSource() == this.icon){
 			f = new PanelDetails();
 			this.getContentPane().removeAll();
-			this.setSize(new Dimension(2000, 1000));
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			//this.setSize(new Dimension(2000, 1000));
+			this.setSize(screenSize);
 			this.setLocationRelativeTo(null);
 			f.addMouseListener(this);
 			this.setContentPane(f);
