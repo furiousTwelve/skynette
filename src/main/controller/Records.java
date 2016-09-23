@@ -18,7 +18,7 @@ public class Records {
 	private int clouds; //cloudiness %
 	private int snow; //snow volume for the least 3 hour
 	private String weatherDescription; // Weather condition
-	private String windDirection = "";	
+	private String windDirection = "";
 	
 
 	/**

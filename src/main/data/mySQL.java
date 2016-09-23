@@ -9,6 +9,7 @@ import java.sql.Statement;
 import com.mysql.jdbc.CallableStatement;
 
 import main.controller.Records;
+import main.controller.dataTransfer;
 
 public class mySQL {
 	
@@ -42,10 +43,14 @@ public class mySQL {
 		 
 	}
 	
-	public Records[] RecordsGenerate(/* paramètres à définir */)
+	public dataTransfer RecordsGenerate(dataTransfer dataToSend)
 	{
-		Records[] rec = new Records[7];
 		ResultSet rs = null;
+		Records rec = null;
+		int j = 0;
+		
+		String dateToExtract = dataToSend.getDate();
+		String hour = dateToExtract.substring(11,13);
 		
 		try {
 			statement = (Statement) connection.createStatement();
@@ -55,25 +60,58 @@ public class mySQL {
 		}
 		
 		// Fill the 7 rows needed with the search request
-		String sql = "SELECT * FROM;";
+		String sql = "SELECT * FROM WeatherData "
+				   + "INNER JOIN ImgTable ON ImgTable.idImg = WeatherData.idImg "
+				   + "INNER JOIN City ON City.idCity = WeatherData.idCity "
+				   + "WHERE dateTime between date_sub(now(), interval 3 day) AND date_add(now(), interval 3 day) "
+				   + "AND dateTime LIKE concat('%','" + hour + "','%') "
+				   + "AND City.cityName = 'Montpellier' "
+				   + "ORDER BY dateTime;";
 		try 
 		{
-			rs = ((Statement) connection).executeQuery(sql);
-			
-			int i = 0;
+			rs = statement.executeQuery(sql);
 			while(rs.next())
 			{
-				rec[i] = (Records) rs;
-				i++;
+				rec = new Records();
+				rec.setClouds(rs.getInt("clouds"));
+				rec.setDeg(rs.getFloat("windDirection"));
+				rec.setHumidity(rs.getInt("humidity"));
+				rec.setPressure(rs.getFloat("pressure"));
+				rec.setRain(rs.getFloat("rainfall"));
+				rec.setSnow(rs.getInt("snow"));
+				rec.setSpeed(rs.getFloat("windSpeed"));
+				rec.setTemp(rs.getFloat("temperature"));
+				rec.setWeatherDescription(rs.getString("forecast"));
+				
+				dataToSend.sevenRecordsTab[j] = rec;
+				System.out.println("1 row assigned to SQLite returns");
+				j++;
 			}
 		}
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
 		}
+	
 		
-		
-		return rec;
+		for(int i = 0; i <= j ; i++)
+		{
+			rec = new Records();
+			dataToSend.getSevenRecordsTab()[i] = new Records();
+			rec.setClouds(0);
+			rec.setDeg(0);
+			rec.setHumidity(0);
+			rec.setPressure(0);
+			rec.setRain(0);
+			rec.setSnow(0);
+			rec.setSpeed(0);
+			rec.setTemp(0);
+			rec.setWeatherDescription("");
+			
+			dataToSend.getSevenRecordsTab()[i] = rec;
+		}
+
+		return dataToSend;
 	}
 
 }

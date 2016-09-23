@@ -1,6 +1,16 @@
 package main.controller;
 
+
 import main.data.SQLite;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+
+import main.controller.Tools;
+import main.data.mySQL;
+
 
 
 /**
@@ -13,7 +23,7 @@ public class dataTransfer {
 	// ATTRIBUTES & CONSTRUCTOR(S)
 	//===============
 
-	private Records[] sevenRecordsTab;
+	public Records[] sevenRecordsTab;
 	private String cityName = "";
 	private String date;
 
@@ -49,6 +59,7 @@ public class dataTransfer {
 	public dataTransfer(String date, String name) {
 		sevenRecordsTab = new Records[7];
 
+
 		
 		//just for testing with false values but doesn't seems to work !
 		sevenRecordsTab[0].setTemp(30);
@@ -75,6 +86,7 @@ public class dataTransfer {
 		SQLite BDDSQLite = new SQLite();
 		BDDSQLite.insertDataFromMySQL(cityName, sevenRecordsTab);
 	}
+
 	
 	
 	//===============
@@ -83,16 +95,10 @@ public class dataTransfer {
 
 	/**
 	 * In order to update our SQLite BDD, we ask data from our MySQL BDD.
-<<<<<<< HEAD
+	 * Giving two String, a date and a name of a city, this methods gives us a dataTransfert-Object who's got all the temperature and pression data 
 	 * @author Mathieu
 	 * @param date
 	 * @param nameCity
-=======
-	 * Giving two String, a date and a name of a city, this methods gives us a dataTransfert-Object who's got all the temperature and pression data 
-	 * @author Mathieu
-	 * @param String
-	 * @param String
->>>>>>> e7800a44998dee580b2cded105653773675fe2a0
 	 * @return dataTransfer
 	 */
 	public dataTransfer updateSQLite(String date, String nameCity) {
@@ -101,15 +107,18 @@ public class dataTransfer {
 		
 		System.out.println("Test lancement updateSQLite : on est le " + date);
 
-//		dataToReturn = recordsGenerate(dataToSend); //retourne un dataTransfer remplit
-//		
-////		Convert wind-degrees in wind-direction, using a static method from Tools
-//		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
-//			float degreeeees = sevenRecordsTab[i].getDeg();
-//			String direct = sevenRecordsTab[i].getWindDirection();
-//			direct = Tools.convertDegreesToDirection(degreeeees);
-//			sevenRecordsTab[i].setWindDirection(direct);
-//		}
+		mySQL BigDatabase = new mySQL();
+		BigDatabase.Connexion();
+		dataToReturn = BigDatabase.RecordsGenerate(dataToSend); //retourne un dataTransfer remplit
+		
+//		Convert wind-degrees in wind-direction, using a static method from Tools
+		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
+			float degreeeees = sevenRecordsTab[i].getDeg();
+			String direct = sevenRecordsTab[i].getWindDirection();
+			direct = Tools.convertDegreesToDirection(degreeeees);
+			sevenRecordsTab[i].setWindDirection(direct);
+		}
+
 		
 		return dataToReturn;
 	}
@@ -136,6 +145,14 @@ public class dataTransfer {
 	public void setSevenRecordsTab(Records[] sevenRecordsTab) 
 	{
 		this.sevenRecordsTab = sevenRecordsTab;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public String getCityName() {
