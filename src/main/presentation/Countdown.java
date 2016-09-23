@@ -24,13 +24,14 @@ public class Countdown
 	public int secondeAff = 0;
 	String secondeAffS = "";
 	PanelIcon panicone = new PanelIcon();
-	Timer timer = new Timer();	
+	Timer timer;
 	/**
 	 * Constructor
 	 * @param secondPassed
 	 */
 	public Countdown(int secondPassed)
 	{
+		timer = new Timer();
 		this.secondPassed = secondPassed;
 		this.secondTotal = secondPassed;
 	}
@@ -39,7 +40,7 @@ public class Countdown
      * Method to start the timer countdown
      */
     public void start()
-    {
+    {  		
     	timer.scheduleAtFixedRate(tache, 1000, 1000);
     }    
     /**

@@ -118,7 +118,7 @@ public class SQLite{
   		int snow=records[0].getSnow();
   		String description = records[0].getWeatherDescription();
   		String sql = "INSERT INTO WeatherData ( temperature, windspeed, windDirection, rainfall, pressure, snow, clouds, humidity, idWD, dateTime, gustMax, idCity, idImg) VALUES ("+
-  		temp+" , "+speed+" , "+deg+" , "+rain+" , "+pressure+" , "+snow+" , "+cloud+" , "+humidity+" , "+2+" , '2016-09-23 09:00:00', "+3+" , '34000' , "+123+");";	
+  		temp+" , "+speed+" , "+deg+" , "+rain+" , "+pressure+" , "+snow+" , "+cloud+" , "+humidity+" , "+3+" , '2016-09-23 09:00:00', "+3+" , '34000' , "+123+");";	
   		
 		try {
 			int i = stmt.executeUpdate(sql);
