@@ -9,7 +9,7 @@ package main.controller;
 public class Records {
 
 
-	private float temp; //temperature, Kelvin
+	public float temp; //temperature, Kelvin
 	private float pressure; //atmospheric pressure at sea level, hPa
 	private int humidity; //humidity, %
 	private float speed; //wind speed, m/s
