@@ -1,6 +1,16 @@
 package main.controller;
 
+
 import main.data.SQLite;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+
+import main.controller.Tools;
+import main.data.mySQL;
+
 
 
 /**
@@ -13,7 +23,7 @@ public class dataTransfer {
 	// ATTRIBUTES & CONSTRUCTOR(S)
 	//===============
 
-	private Records[] sevenRecordsTab;
+	public Records[] sevenRecordsTab;
 	private String cityName = "";
 	private String date;
 
@@ -49,6 +59,7 @@ public class dataTransfer {
 	public dataTransfer(String date, String name) {
 		sevenRecordsTab = new Records[7];
 
+
 		
 		//just for testing with false values but doesn't seems to work !
 		sevenRecordsTab[0].setTemp(30);
@@ -70,13 +81,6 @@ public class dataTransfer {
 		//laBDDlegere.insertDataFromMySQL(sevenCityTab, sevenRecordsTab);
 	}
 	
-	public void dataTransfer(){
-		SQLite BDDSQLite = new SQLite();
-		BDDSQLite.insertDataFromMySQL(cityName, sevenRecordsTab);
-
-		
-
-	}
 	
 	
 	//===============
@@ -97,15 +101,18 @@ public class dataTransfer {
 		
 		System.out.println("Test lancement updateSQLite : on est le " + date);
 
-//		dataToReturn = recordsGenerate(dataToSend); //retourne un dataTransfer remplit
-//		
-////		Convert wind-degrees in wind-direction, using a static method from Tools
-//		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
-//			float degreeeees = sevenRecordsTab[i].getDeg();
-//			String direct = sevenRecordsTab[i].getWindDirection();
-//			direct = Tools.convertDegreesToDirection(degreeeees);
-//			sevenRecordsTab[i].setWindDirection(direct);
-//		}
+		mySQL BigDatabase = new mySQL();
+		BigDatabase.Connexion();
+		dataToReturn = BigDatabase.RecordsGenerate(dataToSend); //retourne un dataTransfer remplit
+		
+//		Convert wind-degrees in wind-direction, using a static method from Tools
+		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
+			float degreeeees = sevenRecordsTab[i].getDeg();
+			String direct = sevenRecordsTab[i].getWindDirection();
+			direct = Tools.convertDegreesToDirection(degreeeees);
+			sevenRecordsTab[i].setWindDirection(direct);
+		}
+
 		
 		return dataToReturn;
 	}
@@ -132,6 +139,14 @@ public class dataTransfer {
 	public void setSevenRecordsTab(Records[] sevenRecordsTab) 
 	{
 		this.sevenRecordsTab = sevenRecordsTab;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public String getCityName() {
