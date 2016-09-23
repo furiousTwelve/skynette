@@ -18,6 +18,8 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * This window must describe the weather for montpellier city for seven days, lets' go!
@@ -120,6 +122,7 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	
 	//new colour
 	Color background = new Color(0f, 0.3f, 1f, 0.5f);
+	
 	
 	/**
 	 * Constructor which call the run methods
@@ -269,10 +272,15 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		
 		// panelCenter's Construction
 
+		SimpleDateFormat formater = null;
+		Date today = new Date();
+		formater = new SimpleDateFormat("EEEE, d MMM yyyy");
+		
 		// panel 3 days ago
-
 		panelDay_3.setBackground(Color.lightGray);
-
+		long threeDaysAgo = today.getTime()-(3*1000*60*60*24);
+		JLabel date6 = new JLabel(formater.format(threeDaysAgo));
+		panelDay_3.add(date6);
 		temperatureIcone1.setIcon(icontemp1);
 		panelDay_3.add(temperatureIcone1);
 		panelDay_3.add(temperature1);
@@ -281,6 +289,9 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelDay_3.add(windDirection1);
 
 		// panel 2 days ago
+		long twoDaysAgo = today.getTime()-(2*1000*60*60*24);
+		JLabel date5 = new JLabel(formater.format(twoDaysAgo));
+		panelDay_2.add(date5);
 		temperatureIcone2.setIcon(icontemp2);
 		panelDay_2.add(temperatureIcone2);
 		panelDay_2.add(temperature2);
@@ -290,6 +301,9 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelDay_2.add(windDirection2);
 
 		// panel 1 day ago
+		long oneDayAgo = today.getTime()-(1000*60*60*24);
+		JLabel date4 = new JLabel(formater.format(oneDayAgo));
+		panelDay_1.add(date4);
 		temperatureIcone3.setIcon(icontemp3);
 		panelDay_1.add(temperatureIcone3);
 		panelDay_1.add(temperature3);
@@ -299,6 +313,8 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelDay_1.add(windDirection3);
 
 		// panel of the day
+		JLabel date = new JLabel(formater.format(today));
+		panelDay.add(date);
 		temperatureIcone4.setIcon(icontemp4);
 		panelDay.add(temperatureIcone4);
 		panelDay.add(temperature4);
@@ -308,6 +324,9 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelDay.add(windDirection4);
 
 		// panel of the next day
+		long nextDay = today.getTime()+(1000*60*60*24);
+		JLabel date1 = new JLabel(formater.format(nextDay));
+		panelNextDay1.add(date1);
 		temperatureIcone5.setIcon(icontemp5);
 		panelNextDay1.add(temperatureIcone5);
 		panelNextDay1.add(temperature5);
@@ -317,6 +336,9 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelNextDay1.add(windDirection5);
 
 		// panel 2 days after
+		long twoDaysAfter = today.getTime()+(2*1000*60*60*24);
+		JLabel date2 = new JLabel(formater.format(twoDaysAfter));
+		panelNextDay2.add(date2);
 		temperatureIcone6.setIcon(icontemp6);
 		panelNextDay2.add(temperatureIcone6);
 		panelNextDay2.add(temperature6);
@@ -326,6 +348,9 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelNextDay2.add(windDirection1);
 
 		// panel 3 days after
+		long threeDaysAfter = today.getTime()+(3*1000*60*60*24);
+		JLabel date3 = new JLabel(formater.format(threeDaysAfter));
+		panelNextDay3.add(date3);
 		temperatureIcone7.setIcon(icontemp7);
 		panelNextDay3.add(temperatureIcone7);
 		panelNextDay3.add(temperature7);
@@ -333,6 +358,14 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelNextDay3.add(windIcone);
 		panelNextDay3.add(windSpeed7);
 		panelNextDay3.add(windDirection7);
+		
+		date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
 		panelCenter.add(panelDay_3);
 		panelCenter.add(panelDay_2);
