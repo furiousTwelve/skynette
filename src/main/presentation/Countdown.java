@@ -80,13 +80,15 @@ public class Countdown
 	        		dataTransfer dataTransfer = new dataTransfer();
 	        		
 	        		//Création de la date et de l'heure du moment
-	        		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	        		Date today = Calendar.getInstance().getTime();       
-	        		String reportDate = df.format(today);
-	        		System.out.println("Report Date: " + reportDate);
+//	        		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//	        		Date today = Calendar.getInstance().getTime();       
+//	        		String reportDate = df.format(today);
+//	        		System.out.println("Report Date: " + reportDate);
+	        		Date date = new Date();
+	        		String reportDate ="";
 	        		
 	        		//On la convertit en heure arrondie pour la BDD
-	        		reportDate = Tools.arrondirDate(reportDate);
+	        		reportDate = Tools.arrondirDate(date);
 	        		System.out.println("Report new Date :" + reportDate);
 	        		
 	        		dataTransfer.updateSQLite(reportDate, "Montpellier");
