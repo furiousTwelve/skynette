@@ -65,9 +65,9 @@ public class Tools
 	}
 	
 	/**
-	 * Rounding date to the lower step needing for the MySQL Database
+	 * Rounding date to the format who's needed for search into the MySQL_BDD
 	 * @author Mathieu
-	 * @param date
+	 * @param Date
 	 * @return String
 	 */
 	public static String arrondirDate(Date dateEtHeure) {
