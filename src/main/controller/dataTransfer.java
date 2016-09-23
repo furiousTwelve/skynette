@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 
 import main.controller.Tools;
+import main.data.mySQL;
 
 
 /**
@@ -20,7 +21,7 @@ public class dataTransfer {
 	// ATTRIBUTES & CONSTRUCTOR(S)
 	//===============
 
-	private Records[] sevenRecordsTab;
+	public Records[] sevenRecordsTab;
 	private String cityName = "";
 	private String date;
 
@@ -35,8 +36,8 @@ public class dataTransfer {
 	
 	public dataTransfer(String date, String name) {
 		sevenRecordsTab = new Records[7];
-		this.cityName = name;
-		this.date = date;
+		this.setCityName(name);
+		this.setDate(date);
 	}
 	
 	
@@ -59,15 +60,17 @@ public class dataTransfer {
 		
 		System.out.println("Test lancement updateSQLite : on est le " + date);
 
-		dataToReturn = recordsGenerate(dataToSend); //retourne un dataTransfer remplit
+		mySQL BigDatabase = new mySQL();
+		BigDatabase.Connexion();
+		dataToReturn = BigDatabase.RecordsGenerate(dataToSend); //retourne un dataTransfer remplit
 		
 //		Convert wind-degrees in wind-direction, using a static method from Tools
-		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
-			float degreeeees = sevenRecordsTab[i].getDeg();
-			String direct = sevenRecordsTab[i].getWindDirection();
-			direct = Tools.convertDegreesToDirection(degreeeees);
-			sevenRecordsTab[i].setWindDirection(direct);
-		}
+		//for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
+			//float degreeeees = sevenRecordsTab[i].getDeg();
+			//String direct = sevenRecordsTab[i].getWindDirection();
+			//direct = Tools.convertDegreesToDirection(degreeeees);
+			//sevenRecordsTab[i].setWindDirection(direct);
+		//}
 		
 		return dataToReturn;
 	}
@@ -94,6 +97,22 @@ public class dataTransfer {
 	public void setSevenRecordsTab(Records[] sevenRecordsTab) 
 	{
 		this.sevenRecordsTab = sevenRecordsTab;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getCityName() {
+		return cityName;
+	}
+
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
 	}
 		
 }
