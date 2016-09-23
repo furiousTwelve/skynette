@@ -16,6 +16,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -24,6 +27,9 @@ import javax.swing.JFrame;
 import com.mysql.jdbc.Blob;
 
 import main.controller.DatasForIcon;
+import main.controller.Tools;
+import main.controller.UpdateWindows;
+import main.controller.dataTransfer;
 import main.data.mySQL;
 
 
@@ -44,7 +50,15 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	private Countdown count = new Countdown(8);
 	DatasForIcon datas = new DatasForIcon();
 	Color backcolor = new Color(1f, 0f, 0f, 0f);
-
+	UpdateWindows updatewindows;
+	// Pour le 2e timer (actualisation icone)
+	public int secondPassed=6;
+	public int secondTotal=secondPassed;
+	
+	// A effacer
+	public int minuteAff = 0;
+	public int secondeAff = 0;
+	String secondeAffS = "";
 	
 	/**
 	 *  constructor which defines size elements and start countdown
@@ -69,6 +83,9 @@ public class FenetrePrincipale extends JFrame implements MouseListener
         this.setBackground(backcolor);
         
         count.start();
+     // Timer actualisation icone
+     	Timer timerIcon = new Timer();
+     	timerIcon.scheduleAtFixedRate(tache, 1000, 1000);
 	}
 	 
 	/**
@@ -84,6 +101,9 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 		// Pour test Cyril
 		mySQL BigDatabase = new mySQL();
 		BigDatabase.Connexion();
+		
+		
+		
 
 	}
 
@@ -146,7 +166,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 			this.validate();
 		}
 		
-		// the state is : I a big window and I want to be small to display only an icon
+		// the state is : I aM big window and I want to be small to display only an icon
 		if(e.getSource() == this.fenetre)
 		{
 			icon = new PanelIcon();
@@ -186,5 +206,48 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 		// TODO Auto-generated method stub
 	}
 	
+	 public TimerTask tache = new TimerTask() 
+	    {     
+	    	/**
+	    	 * Decrements the seconds left in second Countdown for icon update.
+	    	 * When countdown finished,icons will be update
+	    	 * @author Anais & Cyril
+	    	 */
+	        @Override
+	        public void run() 
+	        {
+	        	if(secondPassed <= 0)
+	        	{
+	        		secondPassed = secondTotal;
+	        		updatewindows = new UpdateWindows();
+	        		try {
+						updatewindows.updateIcon();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 
+	        	}
+	        	else
+	        	{
+	        		secondPassed--;
+	        		displayRemainingTime(secondPassed);
+	        	}
+	        }
+	    };
+	    
+	    
+	    // A effacer
+	    public String displayRemainingTime(int sec)
+	    {
+			String remainingTime = "";
+	    	secondeAff = (sec%60);
+			minuteAff = (sec - secondeAff)/60;
+			if(secondeAff < 10)
+			{
+				secondeAffS = "0" + secondeAff;
+				remainingTime = minuteAff + ":" + secondeAffS;
+				System.out.println("Timer icon"+ minuteAff + ":" + secondeAffS);
+			}
+			return remainingTime;
+	    }
 }
