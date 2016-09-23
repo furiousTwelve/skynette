@@ -97,6 +97,8 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	ImageIcon iconWind = new ImageIcon(new ImageIcon("./icon_weather/wind.png").getImage()
 			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+	ImageIcon iconWindDir = new ImageIcon(new ImageIcon("./icon_weather/Wind Direction.png").getImage()
+			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
 
 	protected JLabel temperatureIcone2 = new JLabel();
 	ImageIcon icontemp2 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
@@ -156,11 +158,20 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	protected JLabel windIcone5 = new JLabel(iconWind);
 	protected JLabel windIcone6 = new JLabel(iconWind);
 	protected JLabel windIcone7 = new JLabel(iconWind);
+	
+	protected JLabel windDirIcone1 = new JLabel(iconWindDir);
+	protected JLabel windDirIcone2 = new JLabel(iconWindDir);
+	protected JLabel windDirIcone3 = new JLabel(iconWindDir);
+	protected JLabel windDirIcone4 = new JLabel(iconWindDir);
+	protected JLabel windDirIcone5 = new JLabel(iconWindDir);
+	protected JLabel windDirIcone6 = new JLabel(iconWindDir);
+	protected JLabel windDirIcone7 = new JLabel(iconWindDir);
 
 	protected JLabel maxTemperatureAverage = new JLabel("25°");
 	protected JLabel minTemperatureAverage = new JLabel("15°");
 
 	protected Font font;
+	protected Font font2;
 
 	protected JLabel hotestDayLabel = new JLabel("Hotest day of the year");
 	protected JLabel coldestDayLabel = new JLabel("Coldest day of the year");
@@ -173,7 +184,7 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	// Layout to be used
 	GridLayout g = new GridLayout(1, 7);
 	GridLayout g1 = new GridLayout(2, 7);
-	GridLayout g2 = new GridLayout(6, 1);
+	GridLayout g2 = new GridLayout(7, 1);
 	GridLayout g3 = new GridLayout(3, 7);
 	GridLayout g4 = new GridLayout(1, 4);
 	GridLayout g5 = new GridLayout(2, 1);
@@ -204,7 +215,7 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	
 	public JPanel createChartPanel() {
 		String titre = "";
-		String titre_x = "Days";
+		String titre_x = "Hours/24h";
 		String titre_y = "temperature/ pressure";
 
 		XYDataset dataset = createDataset();
@@ -241,6 +252,7 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	public void run() {
 
 		font = new Font("Arial", Font.BOLD, 36);
+		font2 = new Font("Arial", Font.BOLD, 15);
 		ville.setFont(font);
 
 		entete.add(ville);
@@ -250,7 +262,7 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		img=Toolkit.getDefaultToolkit().createImage("./icon_weather/sky.jpg");
 
 		chartPanel = createChartPanel();
-		chartPanel.setPreferredSize(new java.awt.Dimension(900, 200));
+		chartPanel.setPreferredSize(new java.awt.Dimension(1000, 300));
 		
 		temperatureIcone1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperatureIcone2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -296,35 +308,35 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		
 		chartPanel.setBackground(Color.WHITE);
 		panelGlobal.setLayout(b);
-		panelGlobal.add(panelNorth, BorderLayout.NORTH);
+		//panelGlobal.add(panelNorth, BorderLayout.NORTH);
 		panelGlobal.add(panelCenter, BorderLayout.CENTER);
 		panelGlobal.add(panelSouth, BorderLayout.SOUTH);
 
 		// PanelNorth's Construction
-		panelNorth.setLayout(g1);
-		rainingDayIcon.setIcon(iconRain);
-		sunnyDaysIcone.setIcon(iconSun);
-		panelNorth.add(rainingDayIcon);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(sunnyDaysIcone);
-
-		panelNorth.add(countRainingDays);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(empty);
-		panelNorth.add(countSunnygDays);
-		g1.setHgap(2000);
+//		panelNorth.setLayout(g1);
+//		rainingDayIcon.setIcon(iconRain);
+//		sunnyDaysIcone.setIcon(iconSun);
+//		panelNorth.add(rainingDayIcon);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(sunnyDaysIcone);
+//
+//		panelNorth.add(countRainingDays);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(empty);
+//		panelNorth.add(countSunnygDays);
+//		g1.setHgap(2000);
 
 		// setLayout for panelCenter's panels
 		panelCenter.setLayout(g);
@@ -358,97 +370,106 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelDay_3.add(temperature1);
 		panelDay_3.add(windIcone1);
 		panelDay_3.add(windSpeed1);
+		panelDay_3.add(windDirIcone1);
 		panelDay_3.add(windDirection1);
 
 		// panel 2 days ago
 
+		panelDay_2.setBackground(Color.lightGray);
+		
 		long twoDaysAgo = today.getTime()-(2*1000*60*60*24);
 		JLabel date5 = new JLabel(formater.format(twoDaysAgo));
 		panelDay_2.add(date5);
 
 		temperatureIcone2.setIcon(icontemp2);
-		panelDay_2.add(new JLabel(" "));
 		panelDay_2.add(temperatureIcone2);
 		panelDay_2.add(temperature2);
 
 		panelDay_2.add(windIcone2);
 		panelDay_2.add(windSpeed2);
+		panelDay_2.add(windDirIcone2);
 		panelDay_2.add(windDirection2);
 
 		// panel 1 day ago
 
+		panelDay_1.setBackground(Color.lightGray);
+		
 		long oneDayAgo = today.getTime()-(1000*60*60*24);
 		JLabel date4 = new JLabel(formater.format(oneDayAgo));
 		panelDay_1.add(date4);
 
 		temperatureIcone3.setIcon(icontemp3);
-		panelDay_1.add(new JLabel("   LA DATE"));
 		panelDay_1.add(temperatureIcone3);
 		panelDay_1.add(temperature3);
 
 		panelDay_1.add(windIcone3);
 		panelDay_1.add(windSpeed3);
+		panelDay_1.add(windDirIcone3);
 		panelDay_1.add(windDirection3);
 
 		// panel of the day
-
+		
 		JLabel date = new JLabel(formater.format(today));
 		panelDay.add(date);
 
-		//panelDay.setBackground(Color.lightGray);
-
 		temperatureIcone4.setIcon(icontemp4);
-		panelDay.add(new JLabel(" "));
 		panelDay.add(temperatureIcone4);
 		panelDay.add(temperature4);
 
 		panelDay.add(windIcone4);
 		panelDay.add(windSpeed4);
+		panelDay.add(windDirIcone4);
 		panelDay.add(windDirection4);
 
 		// panel of the next day
 
+		panelNextDay1.setBackground(Color.lightGray);
+		
 		long nextDay = today.getTime()+(1000*60*60*24);
 		JLabel date1 = new JLabel(formater.format(nextDay));
 		panelNextDay1.add(date1);
 
 		temperatureIcone5.setIcon(icontemp5);
-		panelNextDay1.add(new JLabel("  "));
 		panelNextDay1.add(temperatureIcone5);
 		panelNextDay1.add(temperature5);
 
 		panelNextDay1.add(windIcone5);
 		panelNextDay1.add(windSpeed5);
+		panelNextDay1.add(windDirIcone5);
 		panelNextDay1.add(windDirection5);
 
 		// panel 2 days after
 
+		panelNextDay2.setBackground(Color.lightGray);
+		
 		long twoDaysAfter = today.getTime()+(2*1000*60*60*24);
 		JLabel date2 = new JLabel(formater.format(twoDaysAfter));
 		panelNextDay2.add(date2);
 
 		temperatureIcone6.setIcon(icontemp6);
-		panelNextDay2.add(new JLabel("  "));
 		panelNextDay2.add(temperatureIcone6);
 		panelNextDay2.add(temperature6);
 
 		panelNextDay2.add(windIcone6);
 		panelNextDay2.add(windSpeed6);
-		panelNextDay2.add(windDirection1);
+		panelNextDay2.add(windDirIcone6);
+		panelNextDay2.add(windDirection6);
 
 		// panel 3 days after
 
+		panelNextDay3.setBackground(Color.lightGray);
+		
 		long threeDaysAfter = today.getTime()+(3*1000*60*60*24);
 		JLabel date3 = new JLabel(formater.format(threeDaysAfter));
 		panelNextDay3.add(date3);
 
 		temperatureIcone7.setIcon(icontemp7);
-		panelNextDay3.add(new JLabel("  "));
 		panelNextDay3.add(temperatureIcone7);
 		panelNextDay3.add(temperature7);
 
 		panelNextDay3.add(windIcone7);
 		panelNextDay3.add(windSpeed7);
+		panelNextDay3.add(windDirIcone7);
 		panelNextDay3.add(windDirection7);
 		
 		date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -458,6 +479,34 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		date4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		date5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		date6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date.setFont(font2);
+		date1.setFont(font2);
+		date2.setFont(font2);
+		date3.setFont(font2);
+		date4.setFont(font2);
+		date5.setFont(font2);
+		date6.setFont(font2);
+		temperature1.setFont(font2);
+		temperature2.setFont(font2);
+		temperature3.setFont(font2);
+		temperature4.setFont(font2);
+		temperature5.setFont(font2);
+		temperature6.setFont(font2);
+		temperature7.setFont(font2);
+		windSpeed1.setFont(font2);
+		windSpeed2.setFont(font2);
+		windSpeed3.setFont(font2);
+		windSpeed4.setFont(font2);
+		windSpeed5.setFont(font2);
+		windSpeed6.setFont(font2);
+		windSpeed7.setFont(font2);
+		windDirection1.setFont(font2);
+		windDirection2.setFont(font2);
+		windDirection3.setFont(font2);
+		windDirection4.setFont(font2);
+		windDirection5.setFont(font2);
+		windDirection6.setFont(font2);
+		windDirection7.setFont(font2);
 
 		panelCenter.add(panelDay_3);
 		panelCenter.add(panelDay_2);
@@ -476,16 +525,22 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelSouth.setLayout(g4);
 		g4.setHgap(50);
 		panelSouth1.setLayout(g5);
-		panelSouth1.add(new JLabel("Hotest day of the year"));
+		panelSouth1.add(hotestDayLabel);
+		hotestDayLabel.setFont(font2);
 		panelSouth1.add(HotestDay);
+		HotestDay.setForeground(Color.RED);
 		panelSouth2.setLayout(g5);
-		panelSouth2.add(new JLabel("Coldest day of the year"));
+		panelSouth2.add(coldestDayLabel);
+		coldestDayLabel.setFont(font2);
 		panelSouth2.add(coldestDay);
+		coldestDay.setForeground(Color.BLUE);
 		panelSouth3.setLayout(g5);
-		panelSouth3.add(new JLabel("Max temperatures' average"));
+		panelSouth3.add(maxAvgTempLabel);
+		maxAvgTempLabel.setFont(font2);
 		panelSouth3.add(maxTemperatureAverage);
 		panelSouth4.setLayout(g5);
-		panelSouth4.add(new JLabel("Min temperatures' average"));
+		panelSouth4.add(minAvgTempLabel);
+		minAvgTempLabel.setFont(font2);
 		panelSouth4.add(minTemperatureAverage);
 
 		panelSouth.add(panelSouth1);
