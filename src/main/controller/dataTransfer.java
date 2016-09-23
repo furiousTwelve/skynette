@@ -51,12 +51,10 @@ public class dataTransfer {
 		//laBDDlegere.insertDataFromMySQL(sevenCityTab, sevenRecordsTab);
 	}
 	
-	public void dataTransfer(){
+	public void dataTransfer()
+	{
 		SQLite BDDSQLite = new SQLite();
 		BDDSQLite.insertDataFromMySQL(cityName, sevenRecordsTab);
-
-		
-
 	}
 	
 	
@@ -66,9 +64,7 @@ public class dataTransfer {
 
 	/**
 	 * In order to update our SQLite BDD, we ask data from our MySQL BDD.
-	 * 
 	 * @author Mathieu
-
 	 * @param date
 	 * @param nameCity
 	 * @return dataTransfer
