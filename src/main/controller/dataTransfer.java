@@ -62,7 +62,7 @@ public class dataTransfer {
 		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
 			float degreeeees = sevenRecordsTab[i].getDeg();
 			String direct = sevenRecordsTab[i].getWindDirection();
-			direct = this.convertDegreesToDirection(degreeeees);
+			direct = Tools.convertDegreesToDirection(degreeeees);
 			sevenRecordsTab[i].setWindDirection(direct);
 		}
 		
