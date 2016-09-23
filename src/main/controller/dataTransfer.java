@@ -6,7 +6,6 @@ import main.data.SQLite;
 /**
  * Allows us to make some transfer between the MySQL DBB and the SQLite's one
  * @author Mathieu
- *
  */
 public class dataTransfer {
 
@@ -24,9 +23,29 @@ public class dataTransfer {
 	 */
 	public dataTransfer() 
 	{
+		//Appel à la méthode de la couche données qui permet de transmettre toutes les données de la table weatherData (pour une date donnée) + city.cityName
 		sevenRecordsTab = new Records[7];
+		Records records = new Records();
+		records.setTemp(30);
+		records.setPressure(20);
+		records.setHumidity(20);
+		records.setSpeed(20);
+		records.setDeg(40);
+		records.setRain(50);
+		records.setClouds(60);
+		records.setSnow(40);
+		records.setWeatherDescription("fort");
+		
+		this.cityName = "Montpellier";
+		
+		sevenRecordsTab[0] = records;
 	}
 	
+	/**
+	 * Constructor with two parameters
+	 * @param date
+	 * @param name
+	 */
 	public dataTransfer(String date, String name) {
 		sevenRecordsTab = new Records[7];
 
@@ -64,9 +83,16 @@ public class dataTransfer {
 
 	/**
 	 * In order to update our SQLite BDD, we ask data from our MySQL BDD.
+<<<<<<< HEAD
 	 * @author Mathieu
 	 * @param date
 	 * @param nameCity
+=======
+	 * Giving two String, a date and a name of a city, this methods gives us a dataTransfert-Object who's got all the temperature and pression data 
+	 * @author Mathieu
+	 * @param String
+	 * @param String
+>>>>>>> e7800a44998dee580b2cded105653773675fe2a0
 	 * @return dataTransfer
 	 */
 	public dataTransfer updateSQLite(String date, String nameCity) {
@@ -75,15 +101,15 @@ public class dataTransfer {
 		
 		System.out.println("Test lancement updateSQLite : on est le " + date);
 
-		dataToReturn = recordsGenerate(dataToSend); //retourne un dataTransfer remplit
-		
-//		Convert wind-degrees in wind-direction, using a static method from Tools
-		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
-			float degreeeees = sevenRecordsTab[i].getDeg();
-			String direct = sevenRecordsTab[i].getWindDirection();
-			direct = Tools.convertDegreesToDirection(degreeeees);
-			sevenRecordsTab[i].setWindDirection(direct);
-		}
+//		dataToReturn = recordsGenerate(dataToSend); //retourne un dataTransfer remplit
+//		
+////		Convert wind-degrees in wind-direction, using a static method from Tools
+//		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
+//			float degreeeees = sevenRecordsTab[i].getDeg();
+//			String direct = sevenRecordsTab[i].getWindDirection();
+//			direct = Tools.convertDegreesToDirection(degreeeees);
+//			sevenRecordsTab[i].setWindDirection(direct);
+//		}
 		
 		return dataToReturn;
 	}

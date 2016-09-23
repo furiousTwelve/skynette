@@ -4,10 +4,8 @@ package main.presentation;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
-
 import java.awt.Image;
 import java.awt.Toolkit;
-import main.data.SQLite;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -16,7 +14,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -27,9 +24,9 @@ import javax.swing.JFrame;
 import com.mysql.jdbc.Blob;
 
 import main.controller.DatasForIcon;
-import main.controller.Tools;
+import main.controller.DatasForWindow;
 import main.controller.UpdateWindows;
-import main.controller.dataTransfer;
+import main.data.SQLite;
 import main.data.mySQL;
 
 
@@ -47,7 +44,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	/* *************************** VARIABLES ********************** */
 	private PanelIcon icon = new PanelIcon();
 	private PanelDetails fenetre = new PanelDetails();
-	private Countdown count = new Countdown(8);
+	private Countdown count = new Countdown(2);
 	DatasForIcon datas = new DatasForIcon();
 	Color backcolor = new Color(1f, 0f, 0f, 0f);
 	UpdateWindows updatewindows;
@@ -63,7 +60,6 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	/**
 	 *  constructor which defines size elements and start countdown
 	 */
-
 	
 	public  FenetrePrincipale()
 	{
@@ -162,6 +158,53 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 			this.setSize(screenSize);
 			this.setLocationRelativeTo(null);
 			fenetre.addMouseListener(this);
+			
+			
+			// Mise à jour des paramètres de la fenêtre déatil *******************************************************************************
+			DatasForWindow data = new DatasForWindow();
+//			data = .AppelSQLite();
+			
+			this.fenetre.temperature1.setText(Float.toString(data.getTemperature1()));
+			this.fenetre.temperature2.setText(Float.toString(data.getTemperature2()));
+			this.fenetre.temperature3.setText(Float.toString(data.getTemperature3()));
+			this.fenetre.temperature4.setText(Float.toString(data.getTemperature4()));
+			this.fenetre.temperature5.setText(Float.toString(data.getTemperature5()));
+			this.fenetre.temperature6.setText(Float.toString(data.getTemperature6()));
+			this.fenetre.temperature7.setText(Float.toString(data.getTemperature7()));
+			
+			this.fenetre.windSpeed1.setText(Float.toString(data.getWindSpeed1()));
+			this.fenetre.windSpeed2.setText(Float.toString(data.getWindSpeed2()));
+			this.fenetre.windSpeed3.setText(Float.toString(data.getWindSpeed3()));
+			this.fenetre.windSpeed4.setText(Float.toString(data.getWindSpeed4()));
+			this.fenetre.windSpeed5.setText(Float.toString(data.getWindSpeed5()));
+			this.fenetre.windSpeed6.setText(Float.toString(data.getWindSpeed6()));
+			this.fenetre.windSpeed7.setText(Float.toString(data.getWindSpeed7()));
+			
+			this.fenetre.windDirection1.setText(data.getWindDirection1());
+			this.fenetre.windDirection2.setText(data.getWindDirection2());
+			this.fenetre.windDirection3.setText(data.getWindDirection3());
+			this.fenetre.windDirection4.setText(data.getWindDirection4());
+			this.fenetre.windDirection5.setText(data.getWindDirection5());
+			this.fenetre.windDirection6.setText(data.getWindDirection6());
+			this.fenetre.windDirection7.setText(data.getWindDirection7());
+			
+// A enlever dès que SQLite est opérationnelle			
+//			this.fenetre.icontemp1.setImage(data.getTemperatureIcone1().getImage());
+//			this.fenetre.icontemp2.setImage(data.getTemperatureIcone2().getImage());
+//			this.fenetre.icontemp3.setImage(data.getTemperatureIcone3().getImage());
+//			this.fenetre.icontemp4.setImage(data.getTemperatureIcone4().getImage());
+//			this.fenetre.icontemp5.setImage(data.getTemperatureIcone5().getImage());
+//			this.fenetre.icontemp6.setImage(data.getTemperatureIcone6().getImage());
+//			this.fenetre.icontemp7.setImage(data.getTemperatureIcone7().getImage());
+			
+			this.fenetre.windIcone1.setIcon(data.getWindIcone1());
+			this.fenetre.windIcone2.setIcon(data.getWindIcone2());
+			this.fenetre.windIcone3.setIcon(data.getWindIcone3());
+			this.fenetre.windIcone4.setIcon(data.getWindIcone4());
+			this.fenetre.windIcone5.setIcon(data.getWindIcone5());
+			this.fenetre.windIcone6.setIcon(data.getWindIcone6());
+			this.fenetre.windIcone7.setIcon(data.getWindIcone7());
+			
 			this.setContentPane(fenetre);
 			this.validate();
 		}

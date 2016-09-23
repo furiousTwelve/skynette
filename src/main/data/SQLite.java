@@ -117,11 +117,12 @@ public class SQLite{
   		int cloud=records[0].getClouds();
   		int snow=records[0].getSnow();
   		String description = records[0].getWeatherDescription();
-  		String sql = "INSERT INTO WeatherData ( temperature, windspeed, windDirection, rainfall, presssure, snow, clouds, humidity ) VALUES ("+
-  		temp+" , "+speed+" , "+deg+" , "+rain+" , "+pressure+" , "+snow+" , "+cloud+" , "+humidity+");";	
+  		String sql = "INSERT INTO WeatherData ( temperature, windspeed, windDirection, rainfall, pressure, snow, clouds, humidity, idWD, dateTime, gustMax, idCity, idImg) VALUES ("+
+  		temp+" , "+speed+" , "+deg+" , "+rain+" , "+pressure+" , "+snow+" , "+cloud+" , "+humidity+" , "+3+" , '2016-09-23 09:00:00', "+3+" , '34000' , "+123+");";	
   		
 		try {
 			int i = stmt.executeUpdate(sql);
+			System.out.println(i);
 			//int j = stmt.executeUpdate("INSERT INTO WeatherData VALUES (idWD, dateTime, temperature, windspeed, windDirection, gustMax, rainfall, presssure, snow, clouds, humidity, idCity, idImg )");
 		} 
 		catch (SQLException e) 
