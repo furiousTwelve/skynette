@@ -8,7 +8,8 @@ package main.controller;
 
 public class Records {
 
-	private float temp; //temperature, Kelvin
+
+	public float temp; //temperature, Kelvin
 	private float pressure; //atmospheric pressure at sea level, hPa
 	private int humidity; //humidity, %
 	private float speed; //wind speed, m/s
@@ -17,7 +18,7 @@ public class Records {
 	private int clouds; //cloudiness %
 	private int snow; //snow volume for the least 3 hour
 	private String weatherDescription; // Weather condition
-	private String windDirection = "";	
+	private String windDirection = "";
 	
 
 	/**
@@ -26,12 +27,11 @@ public class Records {
 	public Records() {
 		
 	}
+
 	
 	//========================
 	//GETTERS AND SETTERS
 	//========================
-	
-
 
 	public float getTemp() {
 		return temp;
