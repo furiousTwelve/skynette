@@ -40,7 +40,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	/* *************************** VARIABLES ********************** */
 	private PanelIcon icon = new PanelIcon();
 	private PanelDetails fenetre = new PanelDetails();
-	private Countdown count = new Countdown(8);
+	private Countdown count = new Countdown(2);
 	DatasForIcon datas = new DatasForIcon();
 
 	

@@ -3,9 +3,14 @@ package main.presentation;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+
 import java.awt.Font;
+
+import java.awt.Graphics;
+
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -76,7 +81,7 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 
 	protected JLabel sunnyDaysIcone = new JLabel();
 
-	ImageIcon iconSun = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+	ImageIcon iconSun = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
 			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
 
 	protected JLabel countSunnygDays = new JLabel("275 jours ");
@@ -85,28 +90,28 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 
 	protected JLabel temperatureIcone1 = new JLabel();
 
-	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
 			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
-	ImageIcon iconWind = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\wind.png").getImage()
+	ImageIcon iconWind = new ImageIcon(new ImageIcon("./icon_weather/wind.png").getImage()
 			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
 
 	protected JLabel temperatureIcone2 = new JLabel();
-	ImageIcon icontemp2 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+	ImageIcon icontemp2 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
 			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone3 = new JLabel();
-	ImageIcon icontemp3 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+	ImageIcon icontemp3 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
 			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone4 = new JLabel();
-	ImageIcon icontemp4 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+	ImageIcon icontemp4 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
 			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone5 = new JLabel();
-	ImageIcon icontemp5 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+	ImageIcon icontemp5 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
 			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone6 = new JLabel();
-	ImageIcon icontemp6 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+	ImageIcon icontemp6 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
 			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone7 = new JLabel();
-	ImageIcon icontemp7 = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+	ImageIcon icontemp7 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
 			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 
 	protected JLabel temperature1 = new JLabel("27°");
@@ -151,7 +156,16 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 
 	protected JLabel maxTemperatureAverage = new JLabel("25°");
 	protected JLabel minTemperatureAverage = new JLabel("15°");
+
 	protected Font font;
+
+	protected JLabel hotestDayLabel = new JLabel("Hotest day of the year");
+	protected JLabel coldestDayLabel = new JLabel("Coldest day of the year");
+	protected JLabel maxAvgTempLabel = new JLabel("Max temperatures' average");
+	protected JLabel minAvgTempLabel = new JLabel("Min temperatures' average");
+	
+	protected Image img;
+
 
 	// Layout to be used
 	GridLayout g = new GridLayout(1, 7);
@@ -167,6 +181,14 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		run();
 	}
 
+	//Work in progress for the backgroundPanel
+//	public void paint(Graphics g)
+//	    {
+//	        // Draws the img to the BackgroundPanel.
+//	        g.drawImage(img, 0, 0, null);
+//	    }
+	
+	
 	public JPanel createChartPanel() {
 		String titre = "";
 		String titre_x = "Days";
@@ -204,11 +226,16 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	}
 
 	public void run() {
+
 		font = new Font("Arial", Font.BOLD, 36);
 		ville.setFont(font);
 
 		entete.add(ville);
 		entete.setBackground(Color.WHITE);
+
+		//work in progress for the background of the panel
+		img=Toolkit.getDefaultToolkit().createImage("./icon_weather/sky.jpg");
+
 		chartPanel = createChartPanel();
 		chartPanel.setPreferredSize(new java.awt.Dimension(900, 200));
 		
@@ -253,6 +280,7 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelSouth.setBackground(Color.WHITE);
 		this.setBackground(Color.WHITE);
 
+		
 		chartPanel.setBackground(Color.WHITE);
 		panelGlobal.setLayout(b);
 		panelGlobal.add(panelNorth, BorderLayout.NORTH);
@@ -415,6 +443,7 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		this.add(entete);
 		this.add(panelGlobal);
 		this.add(chartPanel);
+		
 	}
 
 	@Override
@@ -451,6 +480,12 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g){
+		super.paintComponent(g);
+        g.drawImage(img, 0, 0, null);
 	}
 
 }
