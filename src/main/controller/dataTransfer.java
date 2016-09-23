@@ -1,21 +1,28 @@
 package main.controller;
 
+import java.sql.Date;
 import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+
+import main.controller.Tools;
+
+
 /**
  * Allows us to make some transfer between the MySQL DBB and the SQLite's one
  * @author Mathieu
  *
  */
-
 public class dataTransfer {
 
 	//===============
 	// ATTRIBUTES & CONSTRUCTOR(S)
 	//===============
-	private City[] sevenCityTab;
+
 	private Records[] sevenRecordsTab;
 	private String cityName = "";
-	private DateFormat date;
+	private String date;
 
 	
 	/**
@@ -23,18 +30,13 @@ public class dataTransfer {
 	 */
 	public dataTransfer() 
 	{
-		sevenCityTab = new City[7];
 		sevenRecordsTab = new Records[7];
 	}
 	
-
-
-	public dataTransfer(DateFormat date, String name) {
-		sevenCityTab = new City[7];
+	public dataTransfer(String date, String name) {
 		sevenRecordsTab = new Records[7];
 		this.cityName = name;
 		this.date = date;
-
 	}
 	
 	
@@ -51,14 +53,15 @@ public class dataTransfer {
 	 * @param nameCity
 	 * @return dataTransfer
 	 */
-	public dataTransfer updateSQLite(DateFormat date, String nameCity) {
-		dataTransfer dataToSend = new dataTransfer();
+	public dataTransfer updateSQLite(String date, String nameCity) {
+		dataTransfer dataToSend = new dataTransfer(date, nameCity);
 		dataTransfer dataToReturn = new dataTransfer();
 		
-		System.out.println("Test lancement updateSQLite : on est le " + date.format(new java.util.Date()));
-		dataToReturn = methoderecupDonneesByALBAN(date, nameCity); //retourne un dataTransfer remplit
+		System.out.println("Test lancement updateSQLite : on est le " + date);
+
+		dataToReturn = recordsGenerate(dataToSend); //retourne un dataTransfer remplit
 		
-		//Convert wind-degrees in wind-direction
+//		Convert wind-degrees in wind-direction, using a static method from Tools
 		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
 			float degreeeees = sevenRecordsTab[i].getDeg();
 			String direct = sevenRecordsTab[i].getWindDirection();
@@ -74,20 +77,6 @@ public class dataTransfer {
 	//========================
 	// GETTERS AND SETTERS
 	//========================
-	public City[] getSevenCityTab() {
-
-		return sevenCityTab;
-	}
-	
-	/**
-	 * Set the 7 days of a city
-	 * @param sevenCityTab array of 7 days
-	 */
-
-	public void setSevenCityTab(City[] sevenCityTab) 
-	{
-		this.sevenCityTab = sevenCityTab;
-	}
 	
 	/**
 	 * Get the 7 records for each 7 days

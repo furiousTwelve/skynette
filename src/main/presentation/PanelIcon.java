@@ -36,7 +36,6 @@ public class PanelIcon extends JPanel
 		font = new Font("Arial",Font.BOLD,20);
 		
 		//forming the panel with the picture
-
 		ImageIcon meteo = new ImageIcon("cloudy.png");
 		Image img = meteo.getImage();
 		Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
