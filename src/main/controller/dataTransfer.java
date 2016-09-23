@@ -12,7 +12,6 @@ import main.controller.Tools;
 /**
  * Allows us to make some transfer between the MySQL DBB and the SQLite's one
  * @author Mathieu
- *
  */
 public class dataTransfer {
 
@@ -33,6 +32,11 @@ public class dataTransfer {
 		sevenRecordsTab = new Records[7];
 	}
 	
+	/**
+	 * Constructor with two parameters
+	 * @param date
+	 * @param name
+	 */
 	public dataTransfer(String date, String name) {
 		sevenRecordsTab = new Records[7];
 		this.cityName = name;
@@ -46,11 +50,10 @@ public class dataTransfer {
 
 	/**
 	 * In order to update our SQLite BDD, we ask data from our MySQL BDD.
-	 * 
+	 * Giving two String, a date and a name of a city, this methods gives us a dataTransfert-Object who's got all the temperature and pression data 
 	 * @author Mathieu
-
-	 * @param date
-	 * @param nameCity
+	 * @param String
+	 * @param String
 	 * @return dataTransfer
 	 */
 	public dataTransfer updateSQLite(String date, String nameCity) {
