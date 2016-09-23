@@ -1,6 +1,7 @@
 package main.presentation;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 
@@ -40,37 +41,34 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	/* *************************** VARIABLES ********************** */
 	private PanelIcon icon = new PanelIcon();
 	private PanelDetails fenetre = new PanelDetails();
-<<<<<<< HEAD
 	private Countdown count = new Countdown(8);
 	DatasForIcon datas = new DatasForIcon();
-=======
-	private Countdown count = new Countdown(2);
-	
->>>>>>> origin/features/controller/date
+	Color backcolor = new Color(1f, 0f, 0f, 0f);
+
 	
 	/**
 	 *  constructor which defines size elements and start countdown
 	 */
-	
-	public  FenetrePrincipale() throws SQLException, IOException{
-			
-		
-			this.setSize(new Dimension(150, 300));
-			int x = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
-			int y = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
-			this.setLocation(x-150, y-300);
-	    	this.setUndecorated(true);
-	        this.getAccessibleContext();
 
-//	        this.setIconImage(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-	        this.setIconImage(imageConvert(datas.logoWeather).getImage());
-	        this.setTitle("Skynette"); 
-	        icon.addMouseListener(this);
-	        this.setContentPane(icon);
-	        this.setVisible(true);
-	        setOpacity(0.95f);
-	        
-	        count.start();
+	
+	public  FenetrePrincipale()
+	{
+		this.setSize(new Dimension(150, 300));
+		int x = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
+		int y = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
+		this.setLocation(x-150, y-300);
+    	this.setUndecorated(true);
+        this.getAccessibleContext();
+
+        this.setIconImage(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
+        this.setTitle("Skynette"); 
+        icon.addMouseListener(this);
+        this.setContentPane(icon);
+        this.setVisible(true);
+        setOpacity(0.95f);
+        this.setBackground(backcolor);
+        
+        count.start();
 	}
 	 
 	/**
