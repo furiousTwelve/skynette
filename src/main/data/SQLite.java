@@ -32,7 +32,7 @@ public class SQLite{
 			System.out.println("Insertion en cours...");
 			Connexion();
 			dataTransfer data = new dataTransfer();
-			insertDataFromMySQL(data.getSevenCityTab(), data.getSevenRecordsTab());
+			insertDataFromMySQL(data.getCityName(), data.getSevenRecordsTab());
 		}
 		else
 		{
@@ -106,7 +106,7 @@ public class SQLite{
 	 * @version 1.0
 	 */	
 	//Insert data to our several Tabs
-  	public void insertDataFromMySQL(City[] cities, Records[] records)
+  	public void insertDataFromMySQL(String name, Records[] records)
   	{
   		float temp = records[0].getTemp();
   		float pressure=records[0].getPressure();

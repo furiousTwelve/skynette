@@ -18,9 +18,8 @@ import javax.swing.JPanel;
  *
  */
 
-public class PanelIcon extends JPanel {
-
-	
+public class PanelIcon extends JPanel 
+{
 	private JLabel descriptionPicture;
 	private JLabel temp;
 	private JLabel windDirection;
@@ -28,13 +27,15 @@ public class PanelIcon extends JPanel {
 	private Font font;
 	private PanelDetails panDetail; 
 	
-
-	public PanelIcon(){
+	/**
+	 * Constructor which implements panels and icons
+	 */
+	public PanelIcon()
+	{
 		
 		font = new Font("Arial",Font.BOLD,20);
 		
 		//forming the panel with the picture
-
 		ImageIcon meteo = new ImageIcon("cloudy.png");
 		Image img = meteo.getImage();
 		Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
