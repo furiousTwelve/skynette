@@ -1,5 +1,10 @@
 package main.controller;
 
+<<<<<<< HEAD
+=======
+import java.sql.Date;
+
+>>>>>>> origin/features/data/sqli4
 import com.mysql.jdbc.Blob;
 
 /**
@@ -11,7 +16,7 @@ import com.mysql.jdbc.Blob;
 
 public class Records {
 
-
+	private Date dateDay;
 	public float temp; //temperature, Kelvin
 	private float pressure; //atmospheric pressure at sea level, hPa
 	private int humidity; //humidity, %
@@ -21,8 +26,13 @@ public class Records {
 	private int clouds; //cloudiness %
 	private int snow; //snow volume for the least 3 hour
 	private String weatherDescription; // Weather condition
+<<<<<<< HEAD
 	private String windDirection = ""; // Direction of wind (where it comes from. N, S, E, W, NNE, ...)
 	private Blob blob; // the binary content of the weather description image
+=======
+	private String windDirection = "";
+	private Blob blob; // File who's contains the binary content of the weather description image
+>>>>>>> origin/features/data/sqli4
 	private String date = "";
 
 	/**
@@ -157,6 +167,34 @@ public class Records {
 		this.date = date;
 	}
 
-	
+
+	public Blob getBlob() {
+		return blob;
+	}
+
+
+	public void setBlob(Blob blob) {
+		this.blob = blob;
+	}
+
+
+	public String getDate() {
+		return date;
+	}
+
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public Date getDateDay() {
+		return dateDay;
+	}
+
+
+	public void setDateDay(Date dateDay) {
+		this.dateDay = dateDay;
+	}
+
 
 }

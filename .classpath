@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="lib/servlet.jar"/>
 	<classpathentry kind="lib" path="lib/swtgraphics2d.jar"/>
 	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.8.11.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/34011-82-08/Desktop/skynette.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

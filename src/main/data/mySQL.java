@@ -6,11 +6,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.mysql.jdbc.Blob;
 import com.mysql.jdbc.CallableStatement;
 
 import main.controller.Records;
 import main.controller.dataTransfer;
-
+/**
+ * 
+ * @author Lionel Chialvo et Martinez Alban
+ * @version 1.0
+ * @date 26/09/2016 
+ *
+ */
 public class mySQL {
 	
 	private Connection connection;
@@ -19,43 +26,77 @@ public class mySQL {
 	private String login = "cdi";
 	private String passwd = "cdi";
 	
+	/**
+	 * Method using driver for database connexion
+	 * @author Lionel Chialvo
+	 * @author Alban Martinez
+	 * @date : 26/09/2016
+	 */
 	public void Connexion()
 	{
 		try 
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(url, login,  passwd);
-		} catch (Exception e) 
+			System.out.println("Connexion mysql ok");
+		} 
+		catch (Exception e) 
 		{
 			System.out.println("erreur de connexion à MySQL");
 			e.printStackTrace();			
 		}
 		
-		
 		try 
 		{
 			statement = connection.createStatement();
-		} catch (SQLException e) 
+		} 
+		catch (SQLException e) 
 		{
 			System.out.println("erreur de statement à MySQL");	
-			
 		}
 		 
 	}
-	
+	/**
+	 * Method to generate records
+	 * @param dataToSend
+	 * @return dataToSend
+	 * @author Lionel Chialvo
+	 * @author Alban Martinez
+	 */
 	public dataTransfer RecordsGenerate(dataTransfer dataToSend)
 	{
 		ResultSet rs = null;
 		Records rec = null;
 		int j = 0;
+		System.out.println("We generate here hahaha");
 		
 		String dateToExtract = dataToSend.getDate();
 		String hour = dateToExtract.substring(11,13);
 		
-		try {
+		for(int i = 0; i < 7 ; i++)
+		{
+			rec = new Records();
+			dataToSend.getSevenRecordsTab()[i] = new Records();
+			rec.setDateDay(null);
+			rec.setClouds(0);
+			rec.setDeg(0);
+			rec.setHumidity(0);
+			rec.setPressure(0);
+			rec.setRain(0);
+			rec.setSnow(0);
+			rec.setSpeed(0);
+			rec.setTemp(0);
+			rec.setBlob(null);
+			
+			dataToSend.getSevenRecordsTab()[i] = rec;
+		}
+		
+		try 
+		{
 			statement = (Statement) connection.createStatement();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) 
+		{
 			e1.printStackTrace();
 		}
 		
@@ -72,7 +113,9 @@ public class mySQL {
 			rs = statement.executeQuery(sql);
 			while(rs.next())
 			{
+				// here we fill records 
 				rec = new Records();
+				rec.setDateDay(rs.getDate("dateTime"));
 				rec.setClouds(rs.getInt("clouds"));
 				rec.setDeg(rs.getFloat("windDirection"));
 				rec.setHumidity(rs.getInt("humidity"));
@@ -81,7 +124,7 @@ public class mySQL {
 				rec.setSnow(rs.getInt("snow"));
 				rec.setSpeed(rs.getFloat("windSpeed"));
 				rec.setTemp(rs.getFloat("temperature"));
-				rec.setWeatherDescription(rs.getString("forecast"));
+				rec.setBlob((Blob) rs.getBlob("forecastImg"));
 				
 				dataToSend.sevenRecordsTab[j] = rec;
 				System.out.println("1 row assigned to SQLite returns");
@@ -92,25 +135,6 @@ public class mySQL {
 		{
 			e.printStackTrace();
 		}
-	
-		
-		for(int i = 0; i <= j ; i++)
-		{
-			rec = new Records();
-			dataToSend.getSevenRecordsTab()[i] = new Records();
-			rec.setClouds(0);
-			rec.setDeg(0);
-			rec.setHumidity(0);
-			rec.setPressure(0);
-			rec.setRain(0);
-			rec.setSnow(0);
-			rec.setSpeed(0);
-			rec.setTemp(0);
-			rec.setWeatherDescription("");
-			
-			dataToSend.getSevenRecordsTab()[i] = rec;
-		}
-
 		return dataToSend;
 	}
 

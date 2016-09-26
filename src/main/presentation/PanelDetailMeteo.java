@@ -80,13 +80,13 @@ public class PanelDetailMeteo extends JPanel {
 
 	protected JLabel rainingDayIcon = new JLabel();
 
-	ImageIcon iconRain = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\rain-1.png").getImage()
+	ImageIcon iconRain = new ImageIcon(new ImageIcon("./icon_weather/rain-1.png").getImage()
 			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
 	protected JLabel countRainingDays = new JLabel("43 Days");
 
 	// protected JLabel empty = new JLabel();
 	protected JLabel sunnyDaysIcone = new JLabel();
-	ImageIcon iconSun = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
+	ImageIcon iconSun = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
 			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
 	protected JLabel countSunnygDays = new JLabel(" 322 Days ");
 	protected JLabel empty = new JLabel();
@@ -94,7 +94,7 @@ public class PanelDetailMeteo extends JPanel {
 	// ImageIcon icontemp1 = new ImageIcon(new
 	// ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(90,
 	// 90, Image.SCALE_DEFAULT));
-	ImageIcon iconWind = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\wind.png").getImage()
+	ImageIcon iconWind = new ImageIcon(new ImageIcon("./icon_weather/wind.png").getImage()
 			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
 			// protected JLabel temperatureIcone2 = new JLabel();
 			// ImageIcon icontemp2 = new ImageIcon(new

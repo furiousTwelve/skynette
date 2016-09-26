@@ -66,7 +66,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	 *  constructor which defines size elements and start countdown
 	 */
 	
-	public  FenetrePrincipale()
+	public FenetrePrincipale()
 	{
 		this.setSize(new Dimension(150, 300));
 		int x = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
@@ -94,19 +94,14 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	 * Main part
 	 * @param args
 	 */
-	public static void main(String[] args) throws SQLException, IOException {
-
-
+	public static void main(String[] args) throws SQLException, IOException 
+	{
 		FenetrePrincipale fenetre = new FenetrePrincipale();
-		SQLite database = new SQLite();
-		database.verifyDB();
+		//SQLite database = new SQLite();
+		//database.verifyDB();
 		// Pour test Cyril
 		mySQL BigDatabase = new mySQL();
 		BigDatabase.Connexion();
-		
-		
-		
-
 	}
 
 
@@ -241,7 +236,6 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-
 	        	}
 	        	else
 	        	{
