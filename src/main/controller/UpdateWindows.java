@@ -24,6 +24,7 @@ public class UpdateWindows {
 	// ******* VARIABLES ******* //
 
 	DatasForIcon datas = new DatasForIcon();
+	
 
 	// ******* METHOD ******* //
 
