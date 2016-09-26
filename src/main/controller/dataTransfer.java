@@ -23,7 +23,7 @@ public class dataTransfer {
 	// ATTRIBUTES & CONSTRUCTOR(S)
 	//===============
 
-	public Records[] sevenRecordsTab;
+	private Records[] sevenRecordsTab;
 	private String cityName = "";
 	private String date;
 
@@ -33,9 +33,7 @@ public class dataTransfer {
 	 */
 	public dataTransfer() 
 	{
-
 		this.sevenRecordsTab = new Records[7];
-
 	}
 	
 	/**
@@ -44,25 +42,22 @@ public class dataTransfer {
 	 * @param name
 	 */
 	public dataTransfer(String date, String name) {
-		sevenRecordsTab = new Records[7];
+		this.sevenRecordsTab = new Records[7];
 
-
-		
-		//just for testing with false values but doesn't seems to work !
-		sevenRecordsTab[0].setTemp(30);
-		sevenRecordsTab[0].setPressure(20);
-		sevenRecordsTab[0].setSpeed(20);
-		sevenRecordsTab[0].setDeg(40);
-		sevenRecordsTab[0].setRain(50);
-		sevenRecordsTab[0].setClouds(60);
-		sevenRecordsTab[0].setSnow(40);
-		sevenRecordsTab[0].setWeatherDescription("fort");
+//		//just for testing with false values but doesn't seems to work !
+//		sevenRecordsTab[0].setTemp(30);
+//		sevenRecordsTab[0].setPressure(20);
+//		sevenRecordsTab[0].setSpeed(20);
+//		sevenRecordsTab[0].setDeg(40);
+//		sevenRecordsTab[0].setRain(50);
+//		sevenRecordsTab[0].setClouds(60);
+//		sevenRecordsTab[0].setSnow(40);
+//		sevenRecordsTab[0].setWeatherDescription("fort");
 		
 		this.cityName = name;
 		this.date = date;
 		
-		SQLite BDDSQLite = new SQLite();
-		BDDSQLite.insertDataFromMySQL(this.cityName, sevenRecordsTab);
+		
 		//SQLite laBDDlegere = new SQLite();
 		//laBDDlegere.insertDataFromMySQL(sevenCityTab, sevenRecordsTab);
 	}
@@ -99,12 +94,13 @@ public class dataTransfer {
 		
 //		Convert wind-degrees in wind-direction, using a static method from Tools
 		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
-			float degreeeees = sevenRecordsTab[i].getDeg();
-			String direct = sevenRecordsTab[i].getWindDirection();
-			direct = Tools.convertDegreesToDirection(degreeeees);
-			sevenRecordsTab[i].setWindDirection(direct);
+			System.out.println("Test" + i);
+			float degreeeees = dataToReturn.getSevenRecordsTab()[i].getDeg();
+			dataToReturn.getSevenRecordsTab()[i].setWindDirection(Tools.convertDegreesToDirection(degreeeees));
 		}
-
+		
+		System.out.println(dataToReturn.getSevenRecordsTab()[1].getWindDirection());
+		System.out.println("Test updateSQLite : Fin");
 		
 		return dataToReturn;
 	}
@@ -118,8 +114,9 @@ public class dataTransfer {
 	public dataTransfer dataFromSQLite() {
 		dataTransfer dataFromSQLite = new dataTransfer();
 		
-//		dataFromSQLite = ********.methoderemplissageDepuisSQLite();
-		
+		SQLite SQLiteObject = new SQLite();
+		dataFromSQLite.setSevenRecordsTab(SQLiteObject.DataForWindow());
+				
 		return dataFromSQLite;
 	}
 	

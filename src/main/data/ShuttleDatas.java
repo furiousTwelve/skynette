@@ -43,7 +43,7 @@ public class ShuttleDatas {
 		SQLite lighterBDD = new SQLite();
 		lighterBDD.Connexion();
 
-		String sql = "SELECT iconeTemps, temperature, windDirection, windSpeed FROM Preview;";
+		String sql = "SELECT iconeTemps, temperature, windDirection, windSpeed FROM Preview";
 
 		ResultSet res = lighterBDD.stmt.executeQuery(sql);
 

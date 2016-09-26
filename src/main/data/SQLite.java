@@ -153,16 +153,18 @@ public class SQLite{
   		try {
 			ResultSet res = stmt.executeQuery(sql);
 			while(res.next()){
-				sevenRecords[i].setDateDay(res.getDate("dateDay"));
-				sevenRecords[i].setTemp(res.getFloat("temperature"));
-				sevenRecords[i].setPressure(res.getFloat("pressure"));
-				sevenRecords[i].setSpeed(res.getFloat("windSpeed"));
-				sevenRecords[i].setWindDirection(res.getString("windDirection"));
-				sevenRecords[i].setRain(res.getFloat("rain"));
-				sevenRecords[i].setClouds(res.getInt("clouds"));
-				sevenRecords[i].setSnow(res.getInt("snow"));
-				sevenRecords[i].setLogoWeather(res.getBlob("idImg"));
-				sevenRecords[i].setLogoWind(res.getBlob("imgWind"));
+				Records rec = new Records();
+				rec.setDateDay(res.getDate("dateDay"));
+				rec.setTemp(res.getFloat("temperature"));
+				rec.setPressure(res.getFloat("pressure"));
+				rec.setSpeed(res.getFloat("windSpeed"));
+				rec.setWindDirection(res.getString("windDirection"));
+				rec.setRain(res.getFloat("rain"));
+				rec.setClouds(res.getInt("clouds"));
+				rec.setSnow(res.getInt("snow"));
+				rec.setLogoWeather(res.getBlob("idImg"));
+				rec.setLogoWind(res.getBlob("imgWind"));
+				sevenRecords[i] = rec;
 			}
 		} 
 		catch (SQLException e) 

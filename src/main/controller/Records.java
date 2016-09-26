@@ -1,25 +1,20 @@
 package main.controller;
 
-
 import java.sql.Blob;
 import java.sql.Date;
-
 
 /**
  * This is the class which's got the main weather-records: - temperature -
  * pressure ...
  * 
-=======
-import java.sql.Blob;
-import java.sql.Date;
-
-
-
-/**
- * This is the class which's got the main weather-records:
- * <br>	- temperature
- * <br>	- pressure ...
->>>>>>> origin/features/data/benjamin3
+ * ======= import java.sql.Blob; import java.sql.Date;
+ * 
+ * 
+ * 
+ * /** This is the class which's got the main weather-records: <br>
+ * - temperature <br>
+ * - pressure ... >>>>>>> origin/features/data/benjamin3
+ * 
  * @author Mathieu
  */
 
@@ -27,9 +22,9 @@ public class Records {
 
 	private Date dateDay;
 
-	private float temp; //temperature, Kelvin
-	private float pressure; //atmospheric pressure at sea level, hPa
-	private float speed; //wind speed, m/s
+	private float temp; // temperature, Kelvin
+	private float pressure; // atmospheric pressure at sea level, hPa
+	private float speed; // wind speed, m/s
 	private float deg; // wind direction, degrees
 	private float rain; // rain volume for the least 3 hours
 	private int clouds; // cloudiness %
@@ -39,7 +34,6 @@ public class Records {
 	private String windDirection = "";
 	private Blob logoWeather;
 	private Blob logoWind = null;
-
 
 	/**
 	 * Constructor
@@ -67,7 +61,6 @@ public class Records {
 	public void setPressure(float pressure) {
 		this.pressure = pressure;
 	}
-
 
 	public float getSpeed() {
 		return speed;
@@ -129,31 +122,24 @@ public class Records {
 		return logoWeather;
 	}
 
-
 	public void setLogoWeather(Blob logoWeather) {
 		this.logoWeather = logoWeather;
 	}
-
-
 
 	public Date getDateDay() {
 		return dateDay;
 	}
 
-
 	public void setDateDay(Date dateDay) {
 		this.dateDay = dateDay;
 	}
-
 
 	public Blob getLogoWind() {
 		return logoWind;
 	}
 
-
 	public void setLogoWind(Blob logoWind) {
 		this.logoWind = logoWind;
 	}
-
 
 }

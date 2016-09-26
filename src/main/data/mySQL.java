@@ -73,23 +73,6 @@ public class mySQL {
 		String dateToExtract = dataToSend.getDate();
 		String hour = dateToExtract.substring(11,13);
 		
-		for(int i = 0; i < 7 ; i++)
-		{
-			rec = new Records();
-			dataToSend.getSevenRecordsTab()[i] = new Records();
-			rec.setDateDay(null);
-			rec.setClouds(0);
-			rec.setDeg(0);
-			rec.setPressure(0);
-			rec.setRain(0);
-			rec.setSnow(0);
-			rec.setSpeed(0);
-			rec.setTemp(0);
-			rec.setLogoWeather(null);
-			
-			dataToSend.getSevenRecordsTab()[i] = rec;
-		}
-		
 		try 
 		{
 			statement = (Statement) connection.createStatement();
@@ -109,9 +92,11 @@ public class mySQL {
 				   + "ORDER BY dateTime;";
 		try 
 		{
+			System.out.println("youhou");
 			rs = statement.executeQuery(sql);
 			while(rs.next())
 			{
+				System.out.println("youhou_2");
 				// here we fill records 
 				rec = new Records();
 				rec.setDateDay(rs.getDate("dateTime"));
@@ -124,7 +109,7 @@ public class mySQL {
 				rec.setTemp(rs.getFloat("temperature"));
 				rec.setLogoWeather( rs.getBlob("forecastImg"));
 				
-				dataToSend.sevenRecordsTab[j] = rec;
+				dataToSend.getSevenRecordsTab()[j] = rec;
 				System.out.println("1 row assigned to SQLite returns");
 				j++;
 			}
