@@ -1,4 +1,7 @@
 package main.controller;
+
+import com.mysql.jdbc.Blob;
+
 /**
  * This is the class which's got the main weather-records:
  * 	- temperature
@@ -18,8 +21,9 @@ public class Records {
 	private int clouds; //cloudiness %
 	private int snow; //snow volume for the least 3 hour
 	private String weatherDescription; // Weather condition
-	private String windDirection = "";
-	
+	private String windDirection = ""; // Direction of wind (where it comes from. N, S, E, W, NNE, ...)
+	private Blob blob; // the binary content of the weather description image
+	private String date = "";
 
 	/**
 	 * Constructor
@@ -130,6 +134,27 @@ public class Records {
 
 	public void setWindDirection(String windDirection) {
 		this.windDirection = windDirection;
+	}
+	
+
+
+	public Blob getBlob() {
+		return blob;
+	}
+
+
+	public void setBlob(Blob blob) {
+		this.blob = blob;
+	}
+
+
+	public String getDate() {
+		return date;
+	}
+
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	

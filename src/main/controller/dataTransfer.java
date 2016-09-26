@@ -33,22 +33,7 @@ public class dataTransfer {
 	 */
 	public dataTransfer() 
 	{
-		//Appel à la méthode de la couche données qui permet de transmettre toutes les données de la table weatherData (pour une date donnée) + city.cityName
-		sevenRecordsTab = new Records[7];
-		Records records = new Records();
-		records.setTemp(30);
-		records.setPressure(20);
-		records.setHumidity(20);
-		records.setSpeed(20);
-		records.setDeg(40);
-		records.setRain(50);
-		records.setClouds(60);
-		records.setSnow(40);
-		records.setWeatherDescription("fort");
-		
-		this.cityName = "Montpellier";
-		
-		sevenRecordsTab[0] = records;
+		this.sevenRecordsTab = new Records[7];
 	}
 	
 	/**
@@ -123,7 +108,13 @@ public class dataTransfer {
 		return dataToReturn;
 	}
 
-	
+	public dataTransfer dataFromSQLite() {
+		dataTransfer dataFromSQLite = new dataTransfer();
+		
+//		dataFromSQLite = ********.methoderemplissageDepuisSQLite();
+		
+		return dataFromSQLite;
+	}
 	
 	//========================
 	// GETTERS AND SETTERS
