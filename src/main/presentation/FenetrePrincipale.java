@@ -82,7 +82,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 		icon.addMouseListener(this);
 		this.setContentPane(icon);
 		this.setVisible(true);
-		setOpacity(0.95f);
+		setOpacity(0.98f);
 		this.setBackground(backcolor);
 
 //		count.start();
@@ -112,12 +112,12 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 /*	public static ImageIcon imageConvert(Blob imageDb) throws SQLException, IOException
 	{
-=======
+
 
 	}
 
 	public static ImageIcon imageConvert(Blob imageDb) throws SQLException, IOException {
->>>>>>> origin/features/presentation/panelMeteo-V2
+
 		System.out.println(imageDb);
 		ImageIcon iconeImage = null;
 		File fichierTemp = new File("c:/imgtemp.png");
@@ -149,7 +149,6 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 		System.out.println(effacer);
 		return iconeImage;
 
-<<<<<<< HEAD
 
 	}*/
 

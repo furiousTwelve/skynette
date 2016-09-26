@@ -167,7 +167,7 @@ public class PanelDetailMeteo extends JPanel {
 	GridLayout g4 = new GridLayout(1, 4);
 	GridLayout g5 = new GridLayout(2, 1);
 
-	BorderLayout b = new BorderLayout();
+	BorderLayout b = new BorderLayout(30,30);
 
 	public PanelDetailMeteo() {
 		run();
@@ -294,13 +294,13 @@ public class PanelDetailMeteo extends JPanel {
 
 		this.setBackground(Color.WHITE);
 
-		panelNorth.setOpaque(false);
 		// this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
-		panelNorth.setBackground(Color.WHITE);
-		panelSouth.setBackground(new Color(1f, 1f, 1f, 0.7f));
-
-		chartPanel.setBackground(Color.WHITE);
+		panelNorth.setBackground(new Color(1f, 1f, 1f, 0.7f));
+		panelSouth.setOpaque(false);
+		panelGlobal.setOpaque(false);
+		panelCenter.setOpaque(false);
+		chartPanel.setBackground(new Color(1f, 1f, 1f, 0.7f));
 		panelGlobal.setLayout(b);
 
 		// PanelNorth's Construction

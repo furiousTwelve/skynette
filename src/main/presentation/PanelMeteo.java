@@ -44,7 +44,7 @@ public class PanelMeteo extends JPanel implements  MouseListener{
 		this.add(windSpeed);
 		this.add(windSpeed);
 		this.setPreferredSize(new java.awt.Dimension(200, 500));
-		this.setBackground(Color.lightGray);
+		this.setBackground(new Color(1f, 1f, 1f, 0.7f));
 
 		date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		weatherDaysIcone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
