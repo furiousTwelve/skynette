@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import com.mysql.jdbc.Blob;
 
@@ -337,12 +338,21 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 		 * 
 		 * @author Anais & Cyril
 		 */
+		PanelIcon panIcon;
 		@Override
 		public void run() {
+			updatewindows = new UpdateWindows();
 			if (secondPassed <= 0) {
 				secondPassed = secondTotal;
-				updatewindows = new UpdateWindows();
+				
 				try {
+					updatewindows.updateIcon();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					panIcon.setImageDescription((JLabel) updatewindows.updateIcon().logoWeather);
 					updatewindows.updateIcon();
 				} catch (SQLException e) {
 					e.printStackTrace();

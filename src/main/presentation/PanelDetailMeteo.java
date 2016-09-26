@@ -190,7 +190,7 @@ public class PanelDetailMeteo extends JPanel {
 	public void showDate() {
 		SimpleDateFormat formater = null;
 		Date today = new Date();
-		formater = new SimpleDateFormat("EEEE, d MMM yyyy");
+		formater = new SimpleDateFormat("yyyy mm dd");
 
 		int j = -3;
 		int i = 0;
