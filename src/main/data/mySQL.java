@@ -5,10 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import com.mysql.jdbc.Blob;
-import com.mysql.jdbc.CallableStatement;
-
 import main.controller.Records;
 import main.controller.dataTransfer;
 
