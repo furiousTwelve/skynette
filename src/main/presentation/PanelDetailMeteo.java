@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -72,6 +74,9 @@ public class PanelDetailMeteo extends JPanel {
 	protected JLabel coldestLabel = new JLabel("Coldest day of the year");
 	protected JLabel maxAvgLabel = new JLabel("Max temperatures' average");
 	protected JLabel minAvgLabel = new JLabel("Min temperatures' average");
+	
+	//DOOOM
+	protected Image img;
 	
 	
 
@@ -240,6 +245,11 @@ public class PanelDetailMeteo extends JPanel {
 		listPanel.add(panelNextDay2);
 		listPanel.add(panelNextDay3);
 		
+		
+		//BAckground
+		
+		img = Toolkit.getDefaultToolkit().createImage("./icon_weather/sky.jpg");
+		
 		// center the label in the rows of the gridlayout
 		
 		rainingDayIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -274,6 +284,8 @@ public class PanelDetailMeteo extends JPanel {
 		panelNorth.setBackground(Color.WHITE);
 		panelSouth.setBackground(Color.WHITE);
 		this.setBackground(Color.WHITE);
+		
+		panelNorth.setOpaque(false);
 //        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         
 		chartPanel.setBackground(Color.WHITE);
@@ -432,6 +444,11 @@ public class PanelDetailMeteo extends JPanel {
 		//this.add(entete);
 		this.add(panelGlobal);
 		this.add(chartPanel);
+	}
+	@Override
+	protected void paintComponent(Graphics g){
+		super.paintComponent(g);
+        g.drawImage(img, 0, 0, null);
 	}
 
 }
