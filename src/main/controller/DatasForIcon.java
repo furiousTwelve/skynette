@@ -3,13 +3,15 @@ package main.controller;
 import java.sql.Blob;
 
 /**
+ * Creation of a class to create a structure of data needed to save those
+ * fetched from the database and to pass them into the PanelIcone via
+ * UpdateIcon() method.
+ * 
  * @author AnaisGueyte
  * @date 22/09/2016
  * @version skynette 0.1
  * 
- *          Creation of a class to create a structure of data needed to save
- *          those fetched from the database and to pass them into the PanelIcone
- *          via UpdateIcon() method.
+ * 
  */
 public class DatasForIcon {
 
@@ -23,9 +25,7 @@ public class DatasForIcon {
 	}
 
 	public DatasForIcon(Blob logoWeather, float temperature, String windDirection, float windSpeed) {
-		this.logoWeather = logoWeather;// methode imageConvert
-										// convertit un blob
-										// en ImageIcon
+		this.logoWeather = logoWeather;
 		this.temperature = temperature;
 		this.windDirection = windDirection;
 		this.windSpeed = windSpeed;

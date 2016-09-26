@@ -1,6 +1,5 @@
 package main.data;
 
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import main.controller.DatasForIcon;
@@ -46,13 +45,7 @@ public class ShuttleDatas {
 
 		String sql = "SELECT iconeTemps, temperature, windDirection, windSpeed FROM Preview";
 
-
 		ResultSet res = lighterBDD.stmt.executeQuery(sql);
-
-
-		// Not sure about the "WHERE datetime < NOW()" method to pick up the
-		// latest insert of weather data.
-
 
 		while (res.next()) {
 			datas.logoWeather = res.getBlob(1);
