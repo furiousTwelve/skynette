@@ -30,27 +30,27 @@ public class SQLite{
 	
 	public void verifyDB()
 	{
-		File laBase = new File("./meteoSkynette.db");
-		if(laBase.exists())
-		{
-			// Run the insertion
-			System.out.println("Insertion en cours...");
-			Connexion();
-			dataTransfer data = new dataTransfer();
-			insertDataFromMySQL(data.getCityName(), data.getSevenRecordsTab());
-		}
-		else
-		{
-			try 
-			{
-				Connexion();
-				creationDB();
-			} 
-			catch (SQLException e) 
-			{				
-				e.printStackTrace();
-			}
-		}
+//		File laBase = new File("./meteoSkynette.db");
+//		if(laBase.exists())
+//		{
+//			// Run the insertion
+//			System.out.println("Insertion en cours...");
+//			Connexion();
+//			dataTransfer data = new dataTransfer();
+//			insertDataFromMySQL(data.getCityName(), data.getSevenRecordsTab());
+//		}
+//		else
+//		{
+//			try 
+//			{
+//				Connexion();
+//				creationDB();
+//			} 
+//			catch (SQLException e) 
+//			{				
+//				e.printStackTrace();
+//			}
+//		}
 	}
 	
 	/**
@@ -86,7 +86,7 @@ public class SQLite{
  
     String chaine="";
     // to move to the git repertory later
-	String fichier ="./script_creationBDDSQL_Final_1.2ben";
+	String fichier ="./script_creationBDDSQL_Final_1.2ben.sql";
 	
 	//Read the file	
 	try{

@@ -70,6 +70,25 @@ public class mySQL {
 		
 		System.out.println("We generate here hahaha");
 		
+		for(int i = 0; i < 7; i++)
+		{
+			// here we fill records 
+			dataToSend.getSevenRecordsTab()[j] = new Records();
+			rec = new Records();
+			rec.setDateDay(null);
+			rec.setClouds(0);
+			rec.setDeg(0);
+			rec.setPressure(0);
+			rec.setRain(0);
+			rec.setSnow(0);
+			rec.setSpeed(0);
+			rec.setTemp(0);
+			rec.setHumidity(0);
+			rec.setLogoWeather(null);
+			
+			dataToSend.getSevenRecordsTab()[j] = rec;
+		}
+		
 		String dateToExtract = dataToSend.getDate();
 		String hour = dateToExtract.substring(11,13);
 		
@@ -140,6 +159,7 @@ public class mySQL {
 				
 				dataToSend.sevenRecordsTab[j] = rec;
 				System.out.println("1 row assigned to SQLite returns");
+				System.out.println(rec.getDeg());
 				j++;
 			}
 		}
