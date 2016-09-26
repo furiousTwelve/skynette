@@ -1,16 +1,26 @@
 package main.controller;
 
-public class Tools {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
+/**
+ * Add tools to convert units, etc
+ * @author Mathieu
+ *
+ */
+public class Tools 
+{
 	/**
 	 * Convert a degree (where the wind come from, ...) in a direction (N,S, E, W, NNW ...)
+	 * Can be called without object instantiation
 	 * @author Mathieu
-	 * @param degree
-	 * @return
+	 * @param degree wind degree
+	 * @return wind direction in string format
 	 */
-	public String convertDegreesToDirection(float degree) {
+	public static String convertDegreesToDirection(float degree) 
+	{
         String direction = "";
-
         // degree should be between 0 and 360
         if ((degree < 0.0f) || (degree > 360.0f)) {
 
@@ -52,6 +62,72 @@ public class Tools {
         }
         
 		return direction;
+	}
+	
+	/**
+	 * Rounding date to the format who's needed for search into the MySQL_BDD
+	 * @author Mathieu
+	 * @param Date
+	 * @return String
+	 */
+	public static String arrondirDate(Date dateEtHeure) {
+		
+		// Format de date souhaité :
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
+		
+		// Passage de notre paramètre Date en String
+		String date = sdf.format(dateEtHeure);
+		
+		// Manip de notre String afin d'extraire la partie à modifier, et la partie à garder intacte
+		String hoursToConvert = date.substring(11, 13);
+		String minToConvert = date.substring(14, 16);
+		String dateToKeep = date.substring(0, 11);
+		String dateToAdd = "";
+		
+		// On transforme HH:mm en quantité d'heures (décimal) 
+		float hours = (float) Integer.parseInt(hoursToConvert);
+		float min = (float) Integer.parseInt(minToConvert);
+		float minIntoPartofHour =  min/60;
+		float newHour = hours + minIntoPartofHour;
+		
+		long dateEtHeure2 = 0;
+		System.out.println("Contrôle Date avant transfo. : " + date);
+		
+		// Traitement de l'arrondi désiré
+		if(newHour < 1.5) {
+			dateToAdd = "00:00:00";
+		} else if(newHour < 4.5) {
+			dateToAdd = "03:00:00";
+		} else if(newHour < 7.5) {
+			dateToAdd = "06:00:00";
+		} else if(newHour < 10.5) {
+			dateToAdd = "09:00:00";
+		} else if(newHour < 13.5) {
+			dateToAdd = "12:00:00";
+		} else if(newHour < 16.5) {
+			dateToAdd = "15:00:00";
+		} else if(newHour < 19.5) {
+			dateToAdd = "18:00:00";
+		} else if(newHour < 22.5) {
+			dateToAdd = "21:00:00";
+		} else {
+			dateEtHeure2 = dateEtHeure.getTime() + (1000*60*60*24);
+			dateToAdd = "00:00:00";
+		}
+		
+		//Assemblage de la nouvelle date
+		if(dateEtHeure2 != 0) {
+			Date newDateEtHeure = new Date(dateEtHeure2);
+			String newDate =  sdf.format(newDateEtHeure);
+			dateToKeep = newDate.substring(0, 11);
+		}
+		
+		date = dateToKeep + dateToAdd;
+		System.out.println("Contrôle Date après transfo. : " + date);				
+		
+		return date;
+	
 	}
 	
 	
