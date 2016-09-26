@@ -3,30 +3,39 @@ package main.presentation;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+/**
+ * 
+ *  
+ * @author khadidja
+ * @author Damien
+ * @author audric
+ *
+ */
+public class PanelMeteo extends JPanel implements  MouseListener{
 
-public class PanelMeteo extends JPanel {
-
-	// protected JPanel panelDay = new JPanel();
-
-	ImageIcon iconWind = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\wind.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
-
-	ImageIcon icontemp = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-			.getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-	// protected JLabel temperatureIcone = new JLabel();
+	protected JPanel panelDay = new JPanel();
+	protected JLabel sunnyDaysIcon = new JLabel();
+	protected JLabel temperatureIcone1 = new JLabel();
+	ImageIcon iconWind = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\wind.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
 	protected JLabel weatherDaysIcone = new JLabel(icontemp);
 	protected JLabel temperature = new JLabel("27°");
 	protected JLabel windDirection = new JLabel(" NNO ");
 	protected JLabel windSpeed = new JLabel("13km/h");
 	protected JLabel windIcone = new JLabel(iconWind);
-	protected JLabel date = new JLabel("date");
+	protected JLabel date = new JLabel(" ");
 	GridLayout g2 = new GridLayout(6, 1);
-
+    
 	public PanelMeteo() {
+
 		this.setLayout(g2);
 		this.add(date);
 		this.add(weatherDaysIcone);
@@ -116,6 +125,36 @@ public class PanelMeteo extends JPanel {
 
 	public void setG2(GridLayout g2) {
 		this.g2 = g2;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
