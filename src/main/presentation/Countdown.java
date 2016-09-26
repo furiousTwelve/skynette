@@ -95,10 +95,6 @@ public class Countdown
 	        		displayRemainingTime(secondPassed);
 	        	}
 	        }
-	    };
-	    
-	    
-	  
-	   
+	    };  
 }
 
