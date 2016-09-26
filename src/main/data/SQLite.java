@@ -180,8 +180,8 @@ public class SQLite{
   	 * @param windDirection
   	 * @param windSpeed
   	 */
-  	public void updatePreview(Blob iconeTemps, float temperature, String windDirection, Float windSpeed){
-  		String sql = "INSERT INTO Preview ( iconeTemps, temperature, windDirection, windSpeed) VALUES ("+iconeTemps+" , "+temperature+" , '"+windDirection+"' , "+windSpeed+");";
+  	public void insertPreview(Blob iconeTemps, float temperature, String windDirection, Float windSpeed, String idCity){
+  		String sql = "INSERT INTO Preview ( idCity, iconeTemps, temperature, windDirection, windSpeed) VALUES ("+idCity+","+iconeTemps+" , "+temperature+" , '"+windDirection+"' , "+windSpeed+");";
   		try {
 				int j = stmt.executeUpdate(sql);
 			} 
@@ -189,6 +189,17 @@ public class SQLite{
 			{
 				e.printStackTrace();
 			}
+  	}
+  	
+  	public void updatePreview(Blob iconeTemps, float temperature, String windDirection, Float windSpeed, String idCity){
+  		String sql = "UPDATE Preview SET iconeTemps = "+iconeTemps+", temperature = "+temperature+", windDirection = '"+windDirection+"', windSpeed = "+windSpeed+" WHERE idCity = '"+idCity+"';";
+  		try {
+			int j = stmt.executeUpdate(sql);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
   	}
   	
   	/**
