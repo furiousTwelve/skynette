@@ -1,6 +1,5 @@
 package main.presentation;
 
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;

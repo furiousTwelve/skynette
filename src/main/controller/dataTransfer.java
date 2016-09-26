@@ -2,12 +2,14 @@ package main.controller;
 
 
 import main.data.SQLite;
+
+import java.awt.List;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
-
+import java.util.ArrayList;
 import main.controller.Tools;
 import main.data.mySQL;
 
@@ -24,6 +26,7 @@ public class dataTransfer {
 	//===============
 
 	private Records[] sevenRecordsTab;
+	private ArrayList<Records> listRecords = new ArrayList<Records>();
 	private String cityName = "";
 	private String date;
 
@@ -86,10 +89,11 @@ public class dataTransfer {
 		dataToReturn = BigDatabase.RecordsGenerate(dataToSend); //retourne un dataTransfer remplit
 		
 //		Convert wind-degrees in wind-direction, using a static method from Tools
-		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
+		for (int i = 0; i < dataToReturn.listRecords.size(); i++) {
 			System.out.println("Test " + i);
-			float degreeeees = dataToReturn.getSevenRecordsTab()[i].getDeg();
-			dataToReturn.getSevenRecordsTab()[i].setWindDirection(Tools.convertDegreesToDirection(degreeeees));
+			float degreeeees = dataToReturn.getListRecords().get(i).getDeg();
+//			dataToReturn.getSevenRecordsTab()[i].setWindDirection(Tools.convertDegreesToDirection(degreeeees));
+			dataToReturn.getListRecords().get(i).setWindDirection(Tools.convertDegreesToDirection(degreeeees));
 			System.out.println("Conversion degreeeeees en Direction : " + degreeeees + " -----> " + dataToReturn.getSevenRecordsTab()[i].getWindDirection() );
 		}
 		
@@ -97,6 +101,7 @@ public class dataTransfer {
 		
 		return dataToReturn;
 	}
+
 
 	/**
 	 * That's the method who's ask SQLite DBB for data, in order to dispatch them, after, in the presentation layer
@@ -108,7 +113,8 @@ public class dataTransfer {
 		dataTransfer dataFromSQLite = new dataTransfer();
 		
 		SQLite SQLiteObject = new SQLite();
-		dataFromSQLite.setSevenRecordsTab(SQLiteObject.DataForWindow());
+//		dataFromSQLite.setSevenRecordsTab(SQLiteObject.DataForWindow());
+		dataFromSQLite.setListRecords(SQLiteObject.DataForWindow());
 				
 		return dataFromSQLite;
 	}
@@ -146,7 +152,15 @@ public class dataTransfer {
 	public String getCityName() {
 		return cityName;
 	}
+	
+	public ArrayList<Records> getListRecords() {
+		return listRecords;
+	}
 
+	public void setListRecords(ArrayList<Records> listRecords) {
+		this.listRecords = listRecords;
+	}
+	
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
 	}

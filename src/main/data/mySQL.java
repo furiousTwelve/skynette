@@ -120,6 +120,7 @@ public class mySQL {
 			{
 				// here we fill records 
 				rec = new Records();
+				
 				rec.setDateDay(rs.getDate("dateTime"));
 				rec.setClouds(rs.getInt("clouds"));
 				rec.setDeg(rs.getFloat("windDirection"));
@@ -132,6 +133,7 @@ public class mySQL {
 				rec.setLogoWeather( rs.getBlob("forecastImg"));
 				
 				dataToSend.getSevenRecordsTab()[j] = rec;
+				dataToSend.getListRecords().add(rec);
 				System.out.println("1 row assigned to SQLite returns");
 				System.out.println(rec.getDeg());
 				j++;

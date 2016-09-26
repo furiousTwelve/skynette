@@ -40,7 +40,15 @@ public class Records {
 	 * Constructor
 	 */
 	public Records() {
-
+		this.temp = 0;
+		this.pressure = 0;
+		this.speed = 0;
+		this.deg = 0;
+		this.rain = 0;
+		this.clouds = 0;
+		this.snow = 0;
+		this.weatherDescription = "";
+		this.humidity = 0;
 	}
 
 	// ========================
