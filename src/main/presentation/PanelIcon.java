@@ -25,7 +25,7 @@ public class PanelIcon extends JPanel
 	private JLabel windDirection;
 	private JLabel windSpeed;
 	private Font font;
-	private PanelDetails panDetail; 
+	private PanelDetailMeteo panDetail; 
 	
 	/**
 	 * Constructor which implements panels and icons
@@ -129,11 +129,11 @@ public class PanelIcon extends JPanel
 		this.font = font;
 	}
 
-	public PanelDetails getPanDetail() {
+	public PanelDetailMeteo getPanDetail() {
 		return panDetail;
 	}
 
-	public void setPanDetail(PanelDetails panDetail) {
+	public void setPanDetail(PanelDetailMeteo panDetail) {
 		this.panDetail = panDetail;
 	}
 	

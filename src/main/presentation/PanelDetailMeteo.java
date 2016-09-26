@@ -88,71 +88,15 @@ public class PanelDetailMeteo extends JPanel {
 
 	ImageIcon iconSun = new ImageIcon(
 			new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
-	protected JLabel countSunnygDays = new JLabel(" 322 Days ");
+	protected JLabel countSunnyDays = new JLabel(" 322 Days ");
 	protected JLabel empty = new JLabel();
-	// protected JLabel temperatureIcone1 = new JLabel();
-	// ImageIcon icontemp1 = new ImageIcon(new
-	// ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(90,
-	// 90, Image.SCALE_DEFAULT));
+	
 	ImageIcon iconWind = new ImageIcon(
 			new ImageIcon("./icon_weather/wind.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
-			// protected JLabel temperatureIcone2 = new JLabel();
-			// ImageIcon icontemp2 = new ImageIcon(new
-			// ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(90,
-			// 90, Image.SCALE_DEFAULT));
-			// protected JLabel temperatureIcone3 = new JLabel();
-			// ImageIcon icontemp3 = new ImageIcon(new
-			// ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(90,
-			// 90, Image.SCALE_DEFAULT));
-
-	// protected JLabel temperatureIcone4 = new JLabel();
-	// ImageIcon icontemp4 = new ImageIcon(new
-	// ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-	// .getScaledInstance(90, 90, Image.SCALE_DEFAULT));
-	// protected JLabel temperatureIcone5 = new JLabel();
-	// ImageIcon icontemp5 = new ImageIcon(new
-	// ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-	// .getScaledInstance(90, 90, Image.SCALE_DEFAULT));
-	// protected JLabel temperatureIcone6 = new JLabel();
-	// ImageIcon icontemp6 = new ImageIcon(new
-	// ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-	// .getScaledInstance(90, 90, Image.SCALE_DEFAULT));
-	// protected JLabel temperatureIcone7 = new JLabel();
-	// ImageIcon icontemp7 = new ImageIcon(new
-	// ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage()
-	// .getScaledInstance(90, 90, Image.SCALE_DEFAULT));
-
-	// protected JLabel temperature1 = new JLabel("27°");
-	// protected JLabel temperature2 = new JLabel("25°");
-	// protected JLabel temperature3 = new JLabel("22°");
-	// protected JLabel temperature4 = new JLabel("29°");
-	// protected JLabel temperature5 = new JLabel("25°");
-	// protected JLabel temperature6 = new JLabel("15°");
-	// protected JLabel temperature7 = new JLabel("23°");
-
+			
 	protected JLabel HotestDay = new JLabel(" 39°");
 	protected JLabel coldestDay = new JLabel(" 2°");
 
-	// protected JLabel windDirection1 = new JLabel(" NNO ");
-	// protected JLabel windSpeed1 = new JLabel("13km/h");
-	//
-	// protected JLabel windDirection2 = new JLabel(" NNO ");
-	// protected JLabel windSpeed2 = new JLabel("19km/h");
-	//
-	// protected JLabel windDirection3 = new JLabel(" NNO ");
-	// protected JLabel windSpeed3 = new JLabel("22km/h");
-	//
-	// protected JLabel windDirection4 = new JLabel(" NNO ");
-	// protected JLabel windSpeed4 = new JLabel("15km/h");
-	//
-	// protected JLabel windDirection5 = new JLabel(" NNO ");
-	// protected JLabel windSpeed5 = new JLabel("10km/h");
-	//
-	// protected JLabel windDirection6 = new JLabel(" NNO ");
-	// protected JLabel windSpeed6 = new JLabel("25km/h");
-	//
-	// protected JLabel windDirection7 = new JLabel("NNO ");
-	// protected JLabel windSpeed7 = new JLabel("60km/h");
 
 	protected JLabel maxTemperatureAverage = new JLabel("25°");
 	protected JLabel minTemperatureAverage = new JLabel("15°");
@@ -280,7 +224,7 @@ public class PanelDetailMeteo extends JPanel {
 		ville.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		sunnyDaysIcone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		countRainingDays.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		countSunnygDays.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		countSunnyDays.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
 		font = new Font("Arial", Font.BOLD, 36);
 		ville.setFont(font);
@@ -310,9 +254,11 @@ public class PanelDetailMeteo extends JPanel {
 		panelNorth.add(rainingDayIcon);
 		panelNorth.add(ville);
 		panelNorth.add(sunnyDaysIcone);
+		countRainingDays.setFont(new Font("Arial", Font.BOLD, 20));
 		panelNorth.add(countRainingDays);
 		panelNorth.add(empty);
-		panelNorth.add(countSunnygDays);
+		countSunnyDays.setFont(new Font("Arial", Font.BOLD, 20));
+		panelNorth.add(countSunnyDays);
 		g.setHgap(1200);
 
 		// setLayout for panelCenter's panels
@@ -365,7 +311,43 @@ public class PanelDetailMeteo extends JPanel {
 		this.add(panelGlobal);
 		this.add(chartPanel);
 		this.setBackground(Color.WHITE);
-	}
+
+
+    	countRainingDays.addMouseListener(new MouseAdapter(){
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			super.mouseEntered(e);
+			countRainingDays.setText(" Total number of rainy days in the year" );
+			
+			countRainingDays.setForeground(Color.BLUE);
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			super.mouseExited(e);
+	 
+			countRainingDays.setText(" 43 Days" );
+			countRainingDays.setFont(new Font("Arial", Font.BOLD, 20));
+			countRainingDays.setForeground(Color.BLACK);
+}
+	});
+	countSunnyDays.addMouseListener(new MouseAdapter(){
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			super.mouseEntered(e);
+			countSunnyDays.setText(" Total number of sunny days in the year" );
+			countSunnyDays.setForeground(Color.RED);
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			super.mouseExited(e);
+	 
+			countSunnyDays.setText(" 322 Days" );
+			countSunnyDays.setFont(new Font("Arial", Font.BOLD, 20));
+			countSunnyDays.setForeground(Color.BLACK);
+}
+	});
+}
+	
 
 	@Override
 	protected void paintComponent(Graphics g) {
