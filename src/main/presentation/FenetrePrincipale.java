@@ -18,6 +18,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -25,6 +26,7 @@ import com.mysql.jdbc.Blob;
 
 import main.controller.DatasForIcon;
 import main.controller.DatasForWindow;
+import main.controller.Tools;
 import main.controller.UpdateWindows;
 import main.controller.dataTransfer;
 import main.data.SQLite;
@@ -148,7 +150,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource() == this.icon){
-			f = new PanelDetailMeteo ();
+			fenetre = new PanelDetailMeteo ();
 
 			this.getContentPane().removeAll();
 			//Define size window based on user's screen size
@@ -161,12 +163,26 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 			// Mise à jour des paramètres de la fenêtre détail *******************************************************************************
 			dataTransfer data = new dataTransfer();
 			data = data.dataFromSQLite();
-// en attente de la modif panelDetails PRESENTATION			
-//			for (int i = 0; i < array.length; i++) {
-//				this.fenetre. = data.getSevenRecordsTab()[i].getTemp();
-//				this.fenetre. = data.getSevenRecordsTab()[i].getSpeed();
-//				this.fenetre. = data.getSevenRecordsTab()[i].getWindDirection();
-//			}
+
+			for (int i = 0; i < data.getSevenRecordsTab().length; i++) {
+				
+				// setting the new weather icon
+				ImageIcon imageIconWeather = new ImageIcon(); 
+				imageIconWeather = Tools.imageConvert(data.getSevenRecordsTab()[i].getBlob());
+				this.fenetre.listPanel.get(i).weatherDaysIcone.setIcon(imagIconWeather);
+				
+				// setting the new temperature
+				this.fenetre.listPanel.get(i).temperature.setText(String.valueOf(data.getSevenRecordsTab()[i].getTemp()));
+				
+				// setting the new wind direction
+				this.fenetre.listPanel.get(i).windDirection.setText(data.getSevenRecordsTab()[i].getWindDirection());
+				
+				// setting the new wind-speed
+				this.fenetre.listPanel.get(i).windSpeed.setText(String.valueOf(data.getSevenRecordsTab()[i].getSpeed()));
+				
+				// setting the new date for the whole data of the panel
+				this.fenetre.listPanel.get(i).date.setText(data.getSevenRecordsTab()[i].getDate());
+			}
 			
 			
 			this.setContentPane(fenetre);
