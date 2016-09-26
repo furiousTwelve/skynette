@@ -168,8 +168,16 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 				
 				// setting the new weather icon
 				ImageIcon imageIconWeather = new ImageIcon(); 
-				imageIconWeather = Tools.imageConvert(data.getSevenRecordsTab()[i].getBlob());
-				this.fenetre.listPanel.get(i).weatherDaysIcone.setIcon(imagIconWeather);
+				try {
+					imageIconWeather = Tools.imageConvert(data.getSevenRecordsTab()[i].getBlob());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				this.fenetre.listPanel.get(i).weatherDaysIcone.setIcon(imageIconWeather);
 				
 				// setting the new temperature
 				this.fenetre.listPanel.get(i).temperature.setText(String.valueOf(data.getSevenRecordsTab()[i].getTemp()));
