@@ -30,6 +30,7 @@ public class Records {
 	private int clouds; // cloudiness %
 	private int snow; // snow volume for the least 3 hour
 	private String weatherDescription; // Weather condition
+	private int humidity;
 
 	private String windDirection = "";
 	private Blob logoWeather;
@@ -140,6 +141,14 @@ public class Records {
 
 	public void setLogoWind(Blob logoWind) {
 		this.logoWind = logoWind;
+	}
+
+	public int getHumidity() {
+		return humidity;
+	}
+
+	public void setHumidity(int humidity) {
+		this.humidity = humidity;
 	}
 
 }

@@ -1,4 +1,4 @@
-
+CREATE DATABASE meteoSkynette;
 CREATE TABLE City(
         idCity    Varchar (10) NOT NULL ,
         cityName  Varchar (50) NOT NULL ,

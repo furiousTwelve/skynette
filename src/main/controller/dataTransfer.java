@@ -34,24 +34,8 @@ public class dataTransfer {
 	public dataTransfer() 
 	{
 
-		//this.sevenRecordsTab = new Records[7];
-
-		//Appel à la méthode de la couche données qui permet de transmettre toutes les données de la table weatherData (pour une date donnée) + city.cityName
-		//sevenRecordsTab = new Records[7];
-//		Records records = new Records();
-//		records.setTemp(30);
-//		records.setPressure(20);
-//		records.setHumidity(20);
-//		records.setSpeed(20);
-//		records.setDeg(40);
-//		records.setRain(50);
-//		records.setClouds(60);
-//		records.setSnow(40);
-//		records.setWeatherDescription("fort");
-//		
+		this.sevenRecordsTab = new Records[7];
 		this.cityName = "Montpellier";
-//		
-//		sevenRecordsTab[0] = records;
 
 	}
 	
@@ -62,27 +46,7 @@ public class dataTransfer {
 	 */
 	public dataTransfer(String date, String name) {
 
-		//this.sevenRecordsTab = new Records[7];
-
-//		//just for testing with false values but doesn't seems to work !
-//		sevenRecordsTab[0].setTemp(30);
-//		sevenRecordsTab[0].setPressure(20);
-
-		//sevenRecordsTab = new Records[7];
-
-
-		
-		//just for testing with false values but doesn't seems to work !
-//		sevenRecordsTab[0].setTemp(30);
-//		sevenRecordsTab[0].setPressure(20);
-//		sevenRecordsTab[0].setHumidity(20);
-//		sevenRecordsTab[0].setSpeed(20);
-//		sevenRecordsTab[0].setDeg(40);
-//		sevenRecordsTab[0].setRain(50);
-//		sevenRecordsTab[0].setClouds(60);
-//		sevenRecordsTab[0].setSnow(40);
-//		sevenRecordsTab[0].setWeatherDescription("fort");
-		
+		this.sevenRecordsTab = new Records[7];
 		this.cityName = name;
 		this.date = date;
 		
@@ -123,12 +87,12 @@ public class dataTransfer {
 		
 //		Convert wind-degrees in wind-direction, using a static method from Tools
 		for (int i = 0; i < dataToReturn.sevenRecordsTab.length; i++) {
-			System.out.println("Test" + i);
+			System.out.println("Test " + i);
 			float degreeeees = dataToReturn.getSevenRecordsTab()[i].getDeg();
 			dataToReturn.getSevenRecordsTab()[i].setWindDirection(Tools.convertDegreesToDirection(degreeeees));
+			System.out.println("Conversion degreeeeees en Direction : " + degreeeees + " -----> " + dataToReturn.getSevenRecordsTab()[i].getWindDirection() );
 		}
 		
-		System.out.println(dataToReturn.getSevenRecordsTab()[1].getWindDirection());
 		System.out.println("Test updateSQLite : Fin");
 		
 		return dataToReturn;
