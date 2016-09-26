@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class City 
 {
-	private int id;
+	private String id;
 	private String name;
 	private float lon;
 	private float lat;
@@ -21,6 +21,71 @@ public class City
 	 * Constructor
 	 */
 	public City() {}
+	
+	
+	
+	
+	public String getId() {
+		return id;
+	}
+
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public float getLon() {
+		return lon;
+	}
+
+
+
+	public void setLon(float lon) {
+		this.lon = lon;
+	}
+
+
+
+	public float getLat() {
+		return lat;
+	}
+
+
+
+	public void setLat(float lat) {
+		this.lat = lat;
+	}
+
+
+
+	public String getCountry() {
+		return country;
+	}
+
+
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+
+
+
 
 
 }

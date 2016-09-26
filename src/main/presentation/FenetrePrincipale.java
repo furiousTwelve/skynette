@@ -169,7 +169,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 				// setting the new weather icon
 				ImageIcon imageIconWeather = new ImageIcon(); 
 				try {
-					imageIconWeather = Tools.imageConvert(data.getSevenRecordsTab()[i].getBlob());
+					imageIconWeather = Tools.imageConvert(data.getSevenRecordsTab()[i].getLogoWeather());
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -189,7 +189,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 				this.fenetre.listPanel.get(i).windSpeed.setText(String.valueOf(data.getSevenRecordsTab()[i].getSpeed()));
 				
 				// setting the new date for the whole data of the panel
-				this.fenetre.listPanel.get(i).date.setText(data.getSevenRecordsTab()[i].getDate());
+				this.fenetre.listPanel.get(i).date.setText(data.getSevenRecordsTab()[i].getDateDay().toString());
 			}
 			
 			

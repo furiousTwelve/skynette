@@ -33,7 +33,9 @@ public class dataTransfer {
 	 */
 	public dataTransfer() 
 	{
+
 		this.sevenRecordsTab = new Records[7];
+
 	}
 	
 	/**
@@ -49,7 +51,6 @@ public class dataTransfer {
 		//just for testing with false values but doesn't seems to work !
 		sevenRecordsTab[0].setTemp(30);
 		sevenRecordsTab[0].setPressure(20);
-		sevenRecordsTab[0].setHumidity(20);
 		sevenRecordsTab[0].setSpeed(20);
 		sevenRecordsTab[0].setDeg(40);
 		sevenRecordsTab[0].setRain(50);

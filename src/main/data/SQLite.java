@@ -9,10 +9,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.Blob;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+
 
 import main.controller.City;
 import main.controller.Records;
@@ -108,26 +113,209 @@ public class SQLite{
 	//Insert data to our several Tabs
   	public void insertDataFromMySQL(String name, Records[] records)
   	{
-  		float temp = records[0].getTemp();
-  		float pressure=records[0].getPressure();
-  		int humidity=records[0].getHumidity();
-  		float speed=records[0].getSpeed();
-  		float deg=records[0].getDeg();
-  		float rain=records[0].getRain();
-  		int cloud=records[0].getClouds();
-  		int snow=records[0].getSnow();
-  		String description = records[0].getWeatherDescription();
-  		String sql = "INSERT INTO WeatherData ( temperature, windspeed, windDirection, rainfall, pressure, snow, clouds, humidity, idWD, dateTime, gustMax, idCity, idImg) VALUES ("+
-  		temp+" , "+speed+" , "+deg+" , "+rain+" , "+pressure+" , "+snow+" , "+cloud+" , "+humidity+" , "+4+" , '2016-09-23 09:00:00', "+null+" , '34000' , "+123+");";	
+
+  		for (int i = 0; i < records.length; i++) {
+  			Date dateDay = records[i].getDateDay();
+  			float temp = records[i].getTemp();
+  	  		float pressure=records[i].getPressure();
+  	  		float speed=records[i].getSpeed();
+  	  		String direction = records[i].getWindDirection();
+  	  		float rain=records[i].getRain();
+  	  		int cloud=records[i].getClouds();
+  	  		int snow=records[i].getSnow();
+  	  		Blob logo = records[i].getLogoWeather();
+  	  		String sql = "INSERT INTO WeatherData ( dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow, idImg) VALUES ("+
+  	  		dateDay+" , "+temp+" , "+pressure+" , "+speed+" , "+direction+" , "+rain+" , "+cloud+" , "+snow+" , "+logo+");";	
+  	  		
+  			try {
+  				int j = stmt.executeUpdate(sql);
+  				//int j = stmt.executeUpdate("INSERT INTO WeatherData VALUES (idWD, dateTime, temperature, windspeed, windDirection, gustMax, rainfall, presssure, snow, clouds, humidity, idCity, idImg )");
+  			} 
+  			catch (SQLException e) 
+  			{
+  				e.printStackTrace();
+  			}
+		}
+
   		
-		try {
-			int i = stmt.executeUpdate(sql);
-			System.out.println(i);
-			//int j = stmt.executeUpdate("INSERT INTO WeatherData VALUES (idWD, dateTime, temperature, windspeed, windDirection, gustMax, rainfall, presssure, snow, clouds, humidity, idCity, idImg )");
+  	}
+  	
+  	/**
+  	 * This method allows to fetch datas for the main window
+  	 * @author Benjamin Champetier
+  	 * @author Florent Valadier
+  	 * @return sevenRecords Records[7]
+  	 */
+  	public Records[] DataForWindow(){
+  		Records[] sevenRecords = new Records[7];
+  		String sql = "SELECT dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow, idImg, imgWind FROM WeatherData ORDER BY dateDay;";
+  		int i = 0;
+  		try {
+			ResultSet res = stmt.executeQuery(sql);
+			while(res.next()){
+				sevenRecords[i].setDateDay(res.getDate("dateDay"));
+				sevenRecords[i].setTemp(res.getFloat("temperature"));
+				sevenRecords[i].setPressure(res.getFloat("pressure"));
+				sevenRecords[i].setSpeed(res.getFloat("windSpeed"));
+				sevenRecords[i].setWindDirection(res.getString("windDirection"));
+				sevenRecords[i].setRain(res.getFloat("rain"));
+				sevenRecords[i].setClouds(res.getInt("clouds"));
+				sevenRecords[i].setSnow(res.getInt("snow"));
+				sevenRecords[i].setLogoWeather(res.getBlob("idImg"));
+				sevenRecords[i].setLogoWind(res.getBlob("imgWind"));
+			}
 		} 
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
+		}
+  		
+		return sevenRecords;
+  	}
+  	
+  	/**
+  	 * This method allows to update the table Preview with datas for the preview window
+  	 * @author Benjamin Champetier
+  	 * @author Florent Valadier
+  	 * @param iconeTemps
+  	 * @param temperature
+  	 * @param windDirection
+  	 * @param windSpeed
+  	 */
+  	public void insertPreview(Blob iconeTemps, float temperature, String windDirection, Float windSpeed, String idCity){
+  		String sql = "INSERT INTO Preview ( idCity, iconeTemps, temperature, windDirection, windSpeed) VALUES ("+idCity+","+iconeTemps+" , "+temperature+" , '"+windDirection+"' , "+windSpeed+");";
+  		try {
+				int j = stmt.executeUpdate(sql);
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+  	}
+  	
+  	public void updatePreview(Blob iconeTemps, float temperature, String windDirection, Float windSpeed, String idCity){
+  		String sql = "UPDATE Preview SET iconeTemps = "+iconeTemps+", temperature = "+temperature+", windDirection = '"+windDirection+"', windSpeed = "+windSpeed+" WHERE idCity = '"+idCity+"';";
+  		try {
+			int j = stmt.executeUpdate(sql);
 		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+  	}
+  	
+  	/**
+  	 * This method allows to select datas from Preview table to update the preview window
+  	 * @author Benjamin Champetier
+  	 * @author Florent Valadier
+  	 * @param iconeTemps
+  	 * @param temperature
+  	 * @param windDirection
+  	 * @param windSpeed
+  	 */
+  	public void DataForPreview(Blob iconeTemps, float temperature, String windDirection, Float windSpeed){
+  		String sql = "SELECT iconeTemps, temperature, windDirection, windSpeed FROM Preview;";
+  		try {
+			ResultSet res = stmt.executeQuery(sql);
+			while(res.next()){
+				iconeTemps = res.getBlob("iconeTemps");
+				temperature = res.getFloat("temperature");
+				windDirection = res.getString("windIrection");
+				windSpeed = res.getFloat("windSpeed");
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+  	}
+  	
+  	/**
+  	 * This method insert a city into the table City if it doesn't exist
+  	 * @author Benjamin Champetier
+  	 * @author Florent Valadier
+  	 * @param city
+  	 * @param rainDay
+  	 * @param sunDay
+  	 * @param hottestDay
+  	 * @param coldestDay
+  	 * @param amplitudeMax
+  	 * @param amplitudeMin
+  	 */
+  	public void insertCity(City city, int rainDay, int sunDay, float hottestDay, float coldestDay, float amplitudeMax, float amplitudeMin){
+  		String sql = "INSERT INTO City (idCity, cityName, longitude, latitude, rainDay, sunDay, coldestDay, hottestDay, amplitudeMax, amplitudeMin, countryName) VALUES ('"+city.getId()+"', '"+city.getName()+"', "+
+  				city.getLon()+", "+city.getLat()+", "+rainDay+", "+sunDay+", "+coldestDay+", "+hottestDay+", "+amplitudeMax+", "+amplitudeMin+", '"+city.getCountry()+"');";
+  		try {
+			int j = stmt.executeUpdate(sql);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+  	}
+  	
+  	/**
+  	 * This method update 
+  	 * @author Benjamin Champetier
+  	 * @author Florent Valadier
+  	 * @param city
+  	 * @param rainDay
+  	 * @param sunDay
+  	 * @param hottestDay
+  	 * @param coldestDay
+  	 * @param amplitudeMax
+  	 * @param amplitudeMin
+  	 */
+  	public void updateCity(City city, int rainDay, int sunDay, float hottestDay, float coldestDay, float amplitudeMax, float amplitudeMin ){
+  		String sql = "UPDATE City SET cityName = '"+city.getName()+"' , longitude = "+city.getLon()+", latitude = "+city.getLat()+", rainDay = "+rainDay+", sunDay = "+sunDay+", coldestDay = "+coldestDay
+  				+", hottestDay = "+hottestDay+", amplitudeMax = "+amplitudeMax+", amplitudeMin = "+amplitudeMin+", countryName = "+city.getCountry()+"WHERE idCity = '"+city.getId()+"';";
+  		try {
+			int j = stmt.executeUpdate(sql);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+  	}
+  	
+  	/**
+  	 * this method modify the values of the parameters to update datas for city on main windows
+  	 * @author Benjamin Champetier
+  	 * @author Florent Valadier
+  	 * @param city
+  	 * @param rainDay
+  	 * @param sunDay
+  	 * @param hottestDay
+  	 * @param coldestDay
+  	 * @param amplitudeMax
+  	 * @param amplitudeMin
+  	 * @param imgRain
+  	 * @param imgSun
+  	 * @param imgWind
+  	 */
+  	public void selectDataCity(City city, int rainDay, int sunDay, float hottestDay, float coldestDay, float amplitudeMax, float amplitudeMin, Blob imgRain, Blob imgSun ){
+  		String sql = "SELECT * FROM City;";
+  		try {
+			ResultSet res = stmt.executeQuery(sql);
+			while(res.next()){
+				city.setCountry(res.getString("countryName"));
+				city.setId(res.getString("idCity"));
+				city.setName(res.getString("cityName"));
+				city.setLon(res.getFloat("longitude"));
+				city.setLat(res.getFloat("latitude"));
+				rainDay = res.getInt("rainDay");
+				sunDay = res.getInt("sunDay");
+				hottestDay = res.getFloat("hottestDay");
+				coldestDay = res.getFloat("coldestDay");
+				amplitudeMax = res.getFloat("amplitudeMax");
+				amplitudeMin = res.getFloat("amplitudeMin");
+				imgRain = res.getBlob("imgRain");
+				imgSun = res.getBlob("imgSun");
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
   	}
 }

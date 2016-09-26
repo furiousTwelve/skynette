@@ -1,31 +1,45 @@
 package main.controller;
 
+
+import java.sql.Blob;
 import java.sql.Date;
-import com.mysql.jdbc.Blob;
+
 
 /**
  * This is the class which's got the main weather-records: - temperature -
  * pressure ...
  * 
+=======
+import java.sql.Blob;
+import java.sql.Date;
+
+
+
+/**
+ * This is the class which's got the main weather-records:
+ * <br>	- temperature
+ * <br>	- pressure ...
+>>>>>>> origin/features/data/benjamin3
  * @author Mathieu
  */
 
 public class Records {
 
 	private Date dateDay;
-	public float temp; // temperature, Kelvin
-	private float pressure; // atmospheric pressure at sea level, hPa
-	private int humidity; // humidity, %
-	private float speed; // wind speed, m/s
+
+	private float temp; //temperature, Kelvin
+	private float pressure; //atmospheric pressure at sea level, hPa
+	private float speed; //wind speed, m/s
 	private float deg; // wind direction, degrees
 	private float rain; // rain volume for the least 3 hours
 	private int clouds; // cloudiness %
 	private int snow; // snow volume for the least 3 hour
 	private String weatherDescription; // Weather condition
-	private String windDirection = ""; // Direction of wind (where it comes
-										// from. N, S, E, W, NNE, ...)
-	private Blob blob; // the binary content of the weather description image
-	private String date = "";
+
+	private String windDirection = "";
+	private Blob logoWeather;
+	private Blob logoWind = null;
+
 
 	/**
 	 * Constructor
@@ -54,13 +68,6 @@ public class Records {
 		this.pressure = pressure;
 	}
 
-	public int getHumidity() {
-		return humidity;
-	}
-
-	public void setHumidity(int humidity) {
-		this.humidity = humidity;
-	}
 
 	public float getSpeed() {
 		return speed;
@@ -118,28 +125,35 @@ public class Records {
 		this.windDirection = windDirection;
 	}
 
-	public Blob getBlob() {
-		return blob;
+	public Blob getLogoWeather() {
+		return logoWeather;
 	}
 
-	public void setBlob(Blob blob) {
-		this.blob = blob;
+
+	public void setLogoWeather(Blob logoWeather) {
+		this.logoWeather = logoWeather;
 	}
 
-	public String getDate() {
-		return date;
-	}
 
-	public void setDate(String date) {
-		this.date = date;
-	}
 
 	public Date getDateDay() {
 		return dateDay;
 	}
 
+
 	public void setDateDay(Date dateDay) {
 		this.dateDay = dateDay;
 	}
+
+
+	public Blob getLogoWind() {
+		return logoWind;
+	}
+
+
+	public void setLogoWind(Blob logoWind) {
+		this.logoWind = logoWind;
+	}
+
 
 }

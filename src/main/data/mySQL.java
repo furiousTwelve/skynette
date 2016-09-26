@@ -80,13 +80,12 @@ public class mySQL {
 			rec.setDateDay(null);
 			rec.setClouds(0);
 			rec.setDeg(0);
-			rec.setHumidity(0);
 			rec.setPressure(0);
 			rec.setRain(0);
 			rec.setSnow(0);
 			rec.setSpeed(0);
 			rec.setTemp(0);
-			rec.setBlob(null);
+			rec.setLogoWeather(null);
 			
 			dataToSend.getSevenRecordsTab()[i] = rec;
 		}
@@ -118,13 +117,12 @@ public class mySQL {
 				rec.setDateDay(rs.getDate("dateTime"));
 				rec.setClouds(rs.getInt("clouds"));
 				rec.setDeg(rs.getFloat("windDirection"));
-				rec.setHumidity(rs.getInt("humidity"));
 				rec.setPressure(rs.getFloat("pressure"));
 				rec.setRain(rs.getFloat("rainfall"));
 				rec.setSnow(rs.getInt("snow"));
 				rec.setSpeed(rs.getFloat("windSpeed"));
 				rec.setTemp(rs.getFloat("temperature"));
-				rec.setBlob((Blob) rs.getBlob("forecastImg"));
+				rec.setLogoWeather( rs.getBlob("forecastImg"));
 				
 				dataToSend.sevenRecordsTab[j] = rec;
 				System.out.println("1 row assigned to SQLite returns");

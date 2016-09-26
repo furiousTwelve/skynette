@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,7 +14,7 @@ import java.util.TimeZone;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import com.mysql.jdbc.Blob;
+
 
 /**
  * Add tools to convert units, etc
