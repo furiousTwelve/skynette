@@ -33,7 +33,26 @@ public class dataTransfer {
 	 */
 	public dataTransfer() 
 	{
-		this.sevenRecordsTab = new Records[7];
+
+		//this.sevenRecordsTab = new Records[7];
+
+		//Appel à la méthode de la couche données qui permet de transmettre toutes les données de la table weatherData (pour une date donnée) + city.cityName
+		//sevenRecordsTab = new Records[7];
+//		Records records = new Records();
+//		records.setTemp(30);
+//		records.setPressure(20);
+//		records.setHumidity(20);
+//		records.setSpeed(20);
+//		records.setDeg(40);
+//		records.setRain(50);
+//		records.setClouds(60);
+//		records.setSnow(40);
+//		records.setWeatherDescription("fort");
+//		
+		this.cityName = "Montpellier";
+//		
+//		sevenRecordsTab[0] = records;
+
 	}
 	
 	/**
@@ -42,11 +61,21 @@ public class dataTransfer {
 	 * @param name
 	 */
 	public dataTransfer(String date, String name) {
-		this.sevenRecordsTab = new Records[7];
+
+		//this.sevenRecordsTab = new Records[7];
 
 //		//just for testing with false values but doesn't seems to work !
 //		sevenRecordsTab[0].setTemp(30);
 //		sevenRecordsTab[0].setPressure(20);
+
+		//sevenRecordsTab = new Records[7];
+
+
+		
+		//just for testing with false values but doesn't seems to work !
+//		sevenRecordsTab[0].setTemp(30);
+//		sevenRecordsTab[0].setPressure(20);
+//		sevenRecordsTab[0].setHumidity(20);
 //		sevenRecordsTab[0].setSpeed(20);
 //		sevenRecordsTab[0].setDeg(40);
 //		sevenRecordsTab[0].setRain(50);
@@ -57,7 +86,7 @@ public class dataTransfer {
 		this.cityName = name;
 		this.date = date;
 		
-		
+
 		//SQLite laBDDlegere = new SQLite();
 		//laBDDlegere.insertDataFromMySQL(sevenCityTab, sevenRecordsTab);
 	}
