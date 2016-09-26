@@ -39,7 +39,6 @@ import main.data.mySQL;
  * Sets the main window of the application that will manage the interaction of the panels
  * @author Khadidja
  * @author Audric
-
  */
 
 public class FenetrePrincipale extends JFrame implements MouseListener 
@@ -56,12 +55,14 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	public int secondPassed=6;
 	public int secondTotal=secondPassed;
 	private PanelDetailMeteo  f = new PanelDetailMeteo ();
-	private Countdown count = new Countdown(8);
+	private Countdown count = new Countdown(2);
 
 	
 
 	/**
-	 *  constructor which defines size elements and start countdown
+	 * Constructor which defines size elements and start countdown
+	 * @author Khadidja
+	 * @author Audric
 	 */
 	
 	public FenetrePrincipale()
@@ -91,12 +92,15 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	/**
 	 * Main part
 	 * @param args
+	 * @author Khadidja
+	 * @author Audric
 	 */
 	public static void main(String[] args) throws SQLException, IOException 
 	{
 		FenetrePrincipale fenetre = new FenetrePrincipale();
-		//SQLite database = new SQLite();
-		//database.verifyDB();
+		SQLite database = new SQLite();
+		database.verifyDB();
+		
 		// Pour test Cyril
 		mySQL BigDatabase = new mySQL();
 		BigDatabase.Connexion();
@@ -141,13 +145,11 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	}*/
 
 	@Override
-
-	/**
-	 * Event which detects mouse clicked and launch the big window OR come back to icon window
-	 * 
-	 */
-
-
+/**
+ * Event which detects mouse clicked and launch the big window OR come back to icon window
+ * @author Khadidja
+ * @author Audric
+ */
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource() == this.icon){
 			fenetre = new PanelDetailMeteo ();
@@ -191,8 +193,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 				// setting the new date for the whole data of the panel
 				this.fenetre.listPanel.get(i).date.setText(data.getSevenRecordsTab()[i].getDateDay().toString());
 			}
-			
-			
+						
 			this.setContentPane(fenetre);
 			this.validate();
 		}
@@ -211,7 +212,6 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 			this.validate();
 		}
 	}
-
 
 	@Override
 	public void mouseEntered(MouseEvent e) {

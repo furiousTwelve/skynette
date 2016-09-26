@@ -4,22 +4,8 @@ package main.controller;
 import java.sql.Blob;
 import java.sql.Date;
 
-
-/**
- * This is the class which's got the main weather-records: - temperature -
- * pressure ...
- * 
-=======
-import java.sql.Blob;
-import java.sql.Date;
-
-
-
 /**
  * This is the class which's got the main weather-records:
- * <br>	- temperature
- * <br>	- pressure ...
->>>>>>> origin/features/data/benjamin3
  * @author Mathieu
  */
 
@@ -43,6 +29,7 @@ public class Records {
 
 	/**
 	 * Constructor
+	 * @author Mathieu
 	 */
 	public Records() {
 

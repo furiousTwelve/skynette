@@ -40,6 +40,7 @@ public class dataTransfer {
 	
 	/**
 	 * Constructor with two parameters
+	 * @author Mathieu
 	 * @param date
 	 * @param name
 	 */
@@ -129,6 +130,7 @@ public class dataTransfer {
 	
 	/**
 	 * Get the 7 records for each 7 days
+	 * @author Mathieu
 	 * @return array of records
 	 */
 	public Records[] getSevenRecordsTab() 
@@ -138,6 +140,7 @@ public class dataTransfer {
 	
 	/**
 	 * Set the 7 records
+	 * @author Mathieu
 	 * @param sevenRecordsTab
 	 */
 	public void setSevenRecordsTab(Records[] sevenRecordsTab) 

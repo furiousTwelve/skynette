@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+import org.sqlite.*;
 
 import main.controller.City;
 import main.controller.Records;
@@ -43,6 +43,7 @@ public class SQLite{
 		{
 			try 
 			{
+				System.out.println("je me cree");
 				Connexion();
 				creationDB();
 			} 
@@ -83,10 +84,26 @@ public class SQLite{
 	 */
 	public void creationDB() throws SQLException
 	{
- 
-    String chaine="";
+ System.out.println("ici creation");
+ String chaine="";
+    String fichier="script_SQLite.sql";
     // to move to the git repertory later
-	String fichier ="./script_creationBDDSQL_Final_1.2ben";
+//	String fichier ="CREATE TABLE WeatherData" 
+//					+"(IdWD INT PRIMARY KEY NOT NULL, "
+//					+ "dateTime      Datetime NOT NULL , " 
+//			        + "temperature   Float , "
+//			        + "windSpeed     Float unsigned NOT NULL, "
+//			        + "windDirection Float , "
+//			        + "gustMax       Int unsigned NOT NULL , "
+//			        + "rainfall      Float unsigned NOT NULL , "
+//			        + "pressure      Float unsigned NOT NULL , "
+//			        + "snow          int , "
+//			        + "clouds        int , "
+//			        + "humidity      Int , "
+//			        + "idCity        Varchar (10) NOT NULL , "
+//			        + "idImg         Int NOT NULL ) ";
+	
+//	stmt.executeUpdate(fichier);
 	
 	//Read the file	
 	try{
@@ -95,7 +112,7 @@ public class SQLite{
 		BufferedReader br=new BufferedReader(ipsr);
 		String ligne;
 		while ((ligne=br.readLine())!=null){
-			//System.out.println(ligne);
+			System.out.println(ligne);
 			chaine+=ligne+"\n";
 		}
 		br.close(); 
@@ -124,7 +141,7 @@ public class SQLite{
   	  		int cloud=records[i].getClouds();
   	  		int snow=records[i].getSnow();
   	  		Blob logo = records[i].getLogoWeather();
-  	  		String sql = "INSERT INTO WeatherData ( dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow, idImg) VALUES ("+
+  	  		String sql = "INSERT INTO Preview ( dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow, idImg) VALUES ("+
   	  		dateDay+" , "+temp+" , "+pressure+" , "+speed+" , "+direction+" , "+rain+" , "+cloud+" , "+snow+" , "+logo+");";	
   	  		
   			try {
@@ -190,11 +207,12 @@ public class SQLite{
 			catch (SQLException e) 
 			{
 				e.printStackTrace();
+				System.out.println("erreur !!!");
 			}
   	}
   	
   	public void updatePreview(Blob iconeTemps, float temperature, String windDirection, Float windSpeed, String idCity){
-  		String sql = "UPDATE Preview SET iconeTemps = "+iconeTemps+", temperature = "+temperature+", windDirection = '"+windDirection+"', windSpeed = "+windSpeed+" WHERE idCity = '"+idCity+"';";
+  		String sql = "UPDATE WeatherData SET iconeTemps = "+iconeTemps+", temperature = "+temperature+", windDirection = '"+windDirection+"', windSpeed = "+windSpeed+" WHERE idCity = '"+idCity+"';";
   		try {
 			int j = stmt.executeUpdate(sql);
 		} 
