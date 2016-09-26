@@ -52,9 +52,7 @@ public class UpdateWindows {
 		 * sqlite.methodeWitchFetcdata();
 		 */
 	public DatasForIcon updateIcon() throws SQLException {
-
-	 
-		 ShuttleDatas shuttledatas = new ShuttleDatas(); 
+          ShuttleDatas shuttledatas = new ShuttleDatas(); 
 		  datas = shuttledatas.fetchFreshData();
 
 		return datas;
