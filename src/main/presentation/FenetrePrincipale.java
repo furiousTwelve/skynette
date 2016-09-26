@@ -36,7 +36,10 @@ import main.data.mySQL;
  * 
  * @author Khadidja
  * @author Audric
+<<<<<<< HEAD
  * 
+=======
+>>>>>>> origin/features/data/benjamin4
  */
 
 public class FenetrePrincipale extends JFrame implements MouseListener {
@@ -53,7 +56,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	public int secondPassed=6;
 	public int secondTotal=secondPassed;
 	private PanelDetailMeteo  f = new PanelDetailMeteo ();
-	private Countdown count = new Countdown(8);
+	private Countdown count = new Countdown(2);
 
 
 	// A effacer
@@ -63,7 +66,13 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 
 	/**
+<<<<<<< HEAD
 	 * constructor which defines size elements and start countdown
+=======
+	 * Constructor which defines size elements and start countdown
+	 * @author Khadidja
+	 * @author Audric
+>>>>>>> origin/features/data/benjamin4
 	 */
 	
 	public FenetrePrincipale()
@@ -95,13 +104,16 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	 * Main part
 	 * 
 	 * @param args
+	 * @author Khadidja
+	 * @author Audric
 	 */
 
 	public static void main(String[] args) throws SQLException, IOException {
 
 		FenetrePrincipale fenetre = new FenetrePrincipale();
-		//SQLite database = new SQLite();
-		//database.verifyDB();
+		SQLite database = new SQLite();
+		database.verifyDB();
+		
 		// Pour test Cyril
 		mySQL BigDatabase = new mySQL();
 		BigDatabase.Connexion();
@@ -149,7 +161,6 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 
 
-	@Override
 
 	/**
 	 * Event which detects mouse clicked and launch the big window OR come back
@@ -157,6 +168,11 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	 * 
 	 */
 
+/**
+ * Event which detects mouse clicked and launch the big window OR come back to icon window
+ * @author Khadidja
+ * @author Audric
+ */
 	public void mouseClicked(MouseEvent e) {
 
 		if (e.getSource() == this.icon) {
@@ -170,11 +186,13 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 			this.setLocationRelativeTo(null);
 			fenetre.addMouseListener(this);
 
-			// Mise à jour des paramètres de la fenêtre détail
-			// *******************************************************************************
-//			dataTransfer data = new dataTransfer();
+
+
+			// Mise à jour des paramètres de la fenêtre détail *******************************************************************************
+			dataTransfer data = new dataTransfer();
+			
+			// code à reinsérer quand la couche SQLLITE est terminé 
 //			data = data.dataFromSQLite();
-//
 //
 //			for (int i = 0; i < data.getSevenRecordsTab().length; i++) {
 //				
@@ -203,17 +221,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 //				// setting the new date for the whole data of the panel
 //				this.fenetre.listPanel.get(i).date.setText(data.getSevenRecordsTab()[i].getDateDay().toString());
 //			}
-			
-			
-
-			// en attente de la modif panelDetails PRESENTATION
-			// for (int i = 0; i < array.length; i++) {
-			// this.fenetre. = data.getSevenRecordsTab()[i].getTemp();
-			// this.fenetre. = data.getSevenRecordsTab()[i].getSpeed();
-			// this.fenetre. = data.getSevenRecordsTab()[i].getWindDirection();
-			// }
-
-
+//
 			this.setContentPane(fenetre);
 			this.validate();
 		}

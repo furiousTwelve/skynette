@@ -4,6 +4,7 @@ import java.sql.Blob;
 import java.sql.Date;
 
 /**
+<<<<<<< HEAD
  * This is the class which's got the main weather-records: - temperature -
  * pressure ...
  * 
@@ -15,6 +16,9 @@ import java.sql.Date;
  * - temperature <br>
  * - pressure ... >>>>>>> origin/features/data/benjamin3
  * 
+=======
+ * This is the class which's got the main weather-records:
+>>>>>>> origin/features/data/benjamin4
  * @author Mathieu
  */
 
@@ -37,6 +41,7 @@ public class Records {
 
 	/**
 	 * Constructor
+	 * @author Mathieu
 	 */
 	public Records() {
 		this.temp = 0;
