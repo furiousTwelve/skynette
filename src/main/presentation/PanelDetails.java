@@ -80,8 +80,6 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 
 	protected JLabel countRainingDays = new JLabel("13 jours");
 
-	// protected JLabel empty = new JLabel();
-
 	protected JLabel sunnyDaysIcone = new JLabel();
 
 	ImageIcon iconSun = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
@@ -591,6 +589,8 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 
 	}
 	
+	
+	//override used to set the new background on the panel
 	@Override
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
