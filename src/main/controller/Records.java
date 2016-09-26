@@ -1,24 +1,31 @@
 package main.controller;
+
+import java.sql.Blob;
+import java.sql.Date;
+
+
+
 /**
  * This is the class which's got the main weather-records:
- * 	- temperature
- * 	- pressure ...
+ * <br>	- temperature
+ * <br>	- pressure ...
  * @author Mathieu
  */
 
 public class Records {
 
-
-	public float temp; //temperature, Kelvin
+	private Date dateDay;
+	private float temp; //temperature, Kelvin
 	private float pressure; //atmospheric pressure at sea level, hPa
-	private int humidity; //humidity, %
 	private float speed; //wind speed, m/s
 	private float deg; // wind direction, degrees
 	private float rain; //rain volume for the least 3 hours
 	private int clouds; //cloudiness %
 	private int snow; //snow volume for the least 3 hour
 	private String weatherDescription; // Weather condition
-	private String windDirection = "";	
+	private String windDirection = "";
+	private Blob logoWeather;
+	private Blob logoWind = null;
 	
 
 	/**
@@ -50,16 +57,6 @@ public class Records {
 
 	public void setPressure(float pressure) {
 		this.pressure = pressure;
-	}
-
-
-	public int getHumidity() {
-		return humidity;
-	}
-
-
-	public void setHumidity(int humidity) {
-		this.humidity = humidity;
 	}
 
 
@@ -132,6 +129,35 @@ public class Records {
 		this.windDirection = windDirection;
 	}
 
-	
+	public Blob getLogoWeather() {
+		return logoWeather;
+	}
+
+
+	public void setLogoWeather(Blob logoWeather) {
+		this.logoWeather = logoWeather;
+	}
+
+
+	public Date getDateDay() {
+		return dateDay;
+	}
+
+
+	public void setDateDay(Date dateDay) {
+		this.dateDay = dateDay;
+	}
+
+
+	public Blob getLogoWind() {
+		return logoWind;
+	}
+
+
+	public void setLogoWind(Blob logoWind) {
+		this.logoWind = logoWind;
+	}
+
+
 
 }
