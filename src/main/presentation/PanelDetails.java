@@ -27,9 +27,10 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 
+
+import java.util.Date;
 
 /**
  * 
@@ -75,47 +76,44 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 
 	protected JLabel rainingDayIcon = new JLabel();
 
-	ImageIcon iconRain = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\rain-1.png").getImage()
+
+	ImageIcon iconRain = new ImageIcon(new ImageIcon("./icon_weather/rain-1.png").getImage()
 			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+
+
+
+	ImageIcon iconRain2 = new ImageIcon(new ImageIcon("./icon_weather/rain-1.png").getImage()
+			.getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+	
+
+	ImageIcon iconSun2 = new ImageIcon(new ImageIcon("./icon_weather/rain-1.png").getImage()
+			.getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+
 
 	protected JLabel countRainingDays = new JLabel("13 jours");
 
 	protected JLabel sunnyDaysIcone = new JLabel();
 
-	ImageIcon iconSun = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
-			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
 
-	protected JLabel countSunnygDays = new JLabel("275 jours ");
-
-	protected JLabel empty = new JLabel("       ", 10);
-
+	ImageIcon iconSun = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+	protected JLabel countSunnygDays = new JLabel("aucune info ");
+	protected JLabel empty = new JLabel();
 	protected JLabel temperatureIcone1 = new JLabel();
-
-	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
-	ImageIcon iconWind = new ImageIcon(new ImageIcon("./icon_weather/wind.png").getImage()
-			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
-	ImageIcon iconWindDir = new ImageIcon(new ImageIcon("./icon_weather/Wind Direction.png").getImage()
-			.getScaledInstance(70, 70, Image.SCALE_DEFAULT));
-
 	protected JLabel temperatureIcone2 = new JLabel();
-	ImageIcon icontemp2 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone3 = new JLabel();
-	ImageIcon icontemp3 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp3 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone4 = new JLabel();
-	ImageIcon icontemp4 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp4 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone5 = new JLabel();
-	ImageIcon icontemp5 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp5 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone6 = new JLabel();
-	ImageIcon icontemp6 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp6 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	protected JLabel temperatureIcone7 = new JLabel();
-	ImageIcon icontemp7 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage()
-			.getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp7 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp1 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon iconWind = new ImageIcon(new ImageIcon("./icon_weather/wind.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+	ImageIcon iconWindDir = new ImageIcon(new ImageIcon("./icon_weather/Wind Direction.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));	
+	ImageIcon icontemp2 = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 
 	protected JLabel temperature1 = new JLabel("27°");
 	protected JLabel temperature2 = new JLabel("25°");
@@ -156,7 +154,7 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	protected JLabel windIcone5 = new JLabel(iconWind);
 	protected JLabel windIcone6 = new JLabel(iconWind);
 	protected JLabel windIcone7 = new JLabel(iconWind);
-	
+
 	protected JLabel windDirIcone1 = new JLabel(iconWindDir);
 	protected JLabel windDirIcone2 = new JLabel(iconWindDir);
 	protected JLabel windDirIcone3 = new JLabel(iconWindDir);
@@ -175,8 +173,10 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 	protected JLabel coldestDayLabel = new JLabel("Coldest day of the year");
 	protected JLabel maxAvgTempLabel = new JLabel("Max temperatures' average");
 	protected JLabel minAvgTempLabel = new JLabel("Min temperatures' average");
+
 	
 	protected Image img;
+
 
 
 	// Layout to be used
@@ -189,11 +189,11 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 
 	BorderLayout b = new BorderLayout();
 
-	
-	//new colour
+
+	// new colour
 	Color background = new Color(0f, 0.3f, 1f, 0.5f);
-	
-	
+
+
 	/**
 	 * Constructor which call the run methods
 	 */
@@ -203,17 +203,18 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		run();
 	}
 
-	//Work in progress for the backgroundPanel
-//	public void paint(Graphics g)
-//	    {
-//	        // Draws the img to the BackgroundPanel.
-//	        g.drawImage(img, 0, 0, null);
-//	    }
-	
-	
+
+	// Work in progress for the backgroundPanel
+	// public void paint(Graphics g)
+	// {
+	// // Draws the img to the BackgroundPanel.
+	// g.drawImage(img, 0, 0, null);
+	// }
+
 	public JPanel createChartPanel() {
 		String titre = "";
-		String titre_x = "Hours/24h";
+		String titre_x = "Hour/24";
+
 		String titre_y = "temperature/ pressure";
 
 		XYDataset dataset = createDataset();
@@ -245,6 +246,32 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		dataset.addSeries(press);
 
 		return dataset;
+
+		/*
+		 * the methode to draw the graph using the data base
+		 *  try {
+		 * 
+		 * dataSource = (DataSource)new InitialContext().lookup("java:jdbc + the source");
+		 * } 
+		 * catch (sqlException e) { e.printStackTrace(); } if (dataSource !=
+		 * null)
+		 *  {
+		 * Connection connection;
+		 *  try { // Connection to datasource connection =dataSource.getConnection();
+		 
+		 * // Query statement setting Statement statement
+		 * =onnection.createStatement(); String Requete =
+		 * "SELECT temerature, pression drom nomTable where date = todate" ;to
+		 * verify with database team while(resultSet.next()) { //getString(n°of
+		 * the attribut (temperature, pression)
+		 * 
+		 * 
+		 * dataset.addValue(resultSet.getFloat(1),getFloat(2) ); }
+		 * connection.close();
+		 * 
+		 * } catch (SQLException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); } }
+		 */
 	}
 
 	public void run() {
@@ -256,12 +283,13 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		entete.add(ville);
 		entete.setBackground(Color.WHITE);
 
-		//work in progress for the background of the panel
-		img=Toolkit.getDefaultToolkit().createImage("./icon_weather/sky.jpg");
+		// work in progress for the background of the panel
+		img = Toolkit.getDefaultToolkit().createImage("./icon_weather/sky.jpg");
 
 		chartPanel = createChartPanel();
 		chartPanel.setPreferredSize(new java.awt.Dimension(1000, 300));
-		
+
+
 		temperatureIcone1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperatureIcone2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		temperatureIcone3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -306,11 +334,14 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		
 		chartPanel.setBackground(Color.WHITE);
 		panelGlobal.setLayout(b);
-		//panelGlobal.add(panelNorth, BorderLayout.NORTH);
+
+		// panelGlobal.add(panelNorth, BorderLayout.NORTH);
+
 		panelGlobal.add(panelCenter, BorderLayout.CENTER);
 		panelGlobal.add(panelSouth, BorderLayout.SOUTH);
 
 		// PanelNorth's Construction
+
 //		panelNorth.setLayout(g1);
 //		rainingDayIcon.setIcon(iconRain);
 //		sunnyDaysIcone.setIcon(iconSun);
@@ -336,6 +367,26 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 //		panelNorth.add(countSunnygDays);
 //		g1.setHgap(2000);
 
+		// panelNorth.setLayout(g1);
+		// rainingDayIcon.setIcon(iconRain);
+		// sunnyDaysIcone.setIcon(iconSun);
+		// panelNorth.add(rainingDayIcon);
+		// panelNorth.add(empty);
+		// panelNorth.add(empty);
+		// panelNorth.add(empty);
+		// panelNorth.add(empty);
+		// panelNorth.add(empty);
+		// panelNorth.add(sunnyDaysIcone);
+		//
+		// panelNorth.add(countRainingDays);
+		// panelNorth.add(empty);
+		// panelNorth.add(empty);
+		// panelNorth.add(empty);
+		//
+		// panelNorth.add(countSunnygDays);
+		// g1.setHgap(2000);
+
+
 		// setLayout for panelCenter's panels
 		panelCenter.setLayout(g);
 		panelDay_3.setLayout(g2);
@@ -355,11 +406,13 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		SimpleDateFormat formater = null;
 		Date today = new Date();
 		formater = new SimpleDateFormat("EEEE, d MMM yyyy");
-		
+
+
 		// panel 3 days ago
 		panelDay_3.setBackground(Color.lightGray);
 
-		long threeDaysAgo = today.getTime()-(3*1000*60*60*24);
+		long threeDaysAgo = today.getTime() - (3 * 1000 * 60 * 60 * 24);
+
 		JLabel date6 = new JLabel(formater.format(threeDaysAgo));
 		panelDay_3.add(date6);
 
@@ -374,8 +427,10 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		// panel 2 days ago
 
 		panelDay_2.setBackground(Color.lightGray);
-		
-		long twoDaysAgo = today.getTime()-(2*1000*60*60*24);
+
+
+		long twoDaysAgo = today.getTime() - (2 * 1000 * 60 * 60 * 24);
+
 		JLabel date5 = new JLabel(formater.format(twoDaysAgo));
 		panelDay_2.add(date5);
 
@@ -391,8 +446,10 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		// panel 1 day ago
 
 		panelDay_1.setBackground(Color.lightGray);
+
 		
 		long oneDayAgo = today.getTime()-(1000*60*60*24);
+
 		JLabel date4 = new JLabel(formater.format(oneDayAgo));
 		panelDay_1.add(date4);
 
@@ -406,7 +463,10 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelDay_1.add(windDirection3);
 
 		// panel of the day
-		
+
+
+
+
 		JLabel date = new JLabel(formater.format(today));
 		panelDay.add(date);
 
@@ -422,8 +482,9 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		// panel of the next day
 
 		panelNextDay1.setBackground(Color.lightGray);
-		
-		long nextDay = today.getTime()+(1000*60*60*24);
+
+		long nextDay = today.getTime() + (1000 * 60 * 60 * 24);
+
 		JLabel date1 = new JLabel(formater.format(nextDay));
 		panelNextDay1.add(date1);
 
@@ -439,8 +500,10 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		// panel 2 days after
 
 		panelNextDay2.setBackground(Color.lightGray);
-		
-		long twoDaysAfter = today.getTime()+(2*1000*60*60*24);
+
+
+		long twoDaysAfter = today.getTime() + (2 * 1000 * 60 * 60 * 24);
+
 		JLabel date2 = new JLabel(formater.format(twoDaysAfter));
 		panelNextDay2.add(date2);
 
@@ -456,8 +519,10 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		// panel 3 days after
 
 		panelNextDay3.setBackground(Color.lightGray);
-		
-		long threeDaysAfter = today.getTime()+(3*1000*60*60*24);
+
+
+		long threeDaysAfter = today.getTime() + (3 * 1000 * 60 * 60 * 24);
+
 		JLabel date3 = new JLabel(formater.format(threeDaysAfter));
 		panelNextDay3.add(date3);
 
@@ -470,6 +535,42 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		panelNextDay3.add(windDirIcone7);
 		panelNextDay3.add(windDirection7);
 		
+		date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		date.setFont(font2);
+		date1.setFont(font2);
+		date2.setFont(font2);
+		date3.setFont(font2);
+		date4.setFont(font2);
+		date5.setFont(font2);
+		date6.setFont(font2);
+		temperature1.setFont(font2);
+		temperature2.setFont(font2);
+		temperature3.setFont(font2);
+		temperature4.setFont(font2);
+		temperature5.setFont(font2);
+		temperature6.setFont(font2);
+		temperature7.setFont(font2);
+		windSpeed1.setFont(font2);
+		windSpeed2.setFont(font2);
+		windSpeed3.setFont(font2);
+		windSpeed4.setFont(font2);
+		windSpeed5.setFont(font2);
+		windSpeed6.setFont(font2);
+		windSpeed7.setFont(font2);
+		windDirection1.setFont(font2);
+		windDirection2.setFont(font2);
+		windDirection3.setFont(font2);
+		windDirection4.setFont(font2);
+		windDirection5.setFont(font2);
+		windDirection6.setFont(font2);
+		windDirection7.setFont(font2);
+
 		date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		date1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		date2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -550,7 +651,7 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		this.add(entete);
 		this.add(panelGlobal);
 		this.add(chartPanel);
-		
+
 	}
 
 	@Override
@@ -596,5 +697,7 @@ public class PanelDetails extends JPanel implements ActionListener, MouseListene
 		super.paintComponent(g);
         g.drawImage(img, 0, 0, null);
 	}
+
+	
 
 }

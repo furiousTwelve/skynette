@@ -44,20 +44,24 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 {
 	/* *************************** VARIABLES ********************** */
 	private PanelIcon icon = new PanelIcon();
-	private PanelDetails fenetre = new PanelDetails();
-	private Countdown count = new Countdown(2);
+
+	private PanelDetailMeteo fenetre = new PanelDetailMeteo();
 	DatasForIcon datas = new DatasForIcon();
 	Color backcolor = new Color(1f, 0f, 0f, 0f);
 	UpdateWindows updatewindows;
 	// Pour le 2e timer (actualisation icone)
 	public int secondPassed=6;
 	public int secondTotal=secondPassed;
+	private PanelDetailMeteo  f = new PanelDetailMeteo ();
+	private Countdown count = new Countdown(8);
+
 	
-	// A effacer
+	// A effacer	
 	public int minuteAff = 0;
 	public int secondeAff = 0;
 	String secondeAffS = "";
 	
+
 	/**
 	 *  constructor which defines size elements and start countdown
 	 */
@@ -71,7 +75,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
     	this.setUndecorated(true);
         this.getAccessibleContext();
 
-        this.setIconImage(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
+        this.setIconImage(new ImageIcon("./icon_weather/planet-earth.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
         this.setTitle("Skynette"); 
         icon.addMouseListener(this);
         this.setContentPane(icon);
@@ -83,6 +87,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
      // Timer actualisation icone
      	Timer timerIcon = new Timer();
      	timerIcon.scheduleAtFixedRate(tache, 1000, 1000);
+
 	}
 	 
 	/**
@@ -143,16 +148,17 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	}
 
 	@Override
+
 	/**
 	 * Event which detects mouse clicked and launch the big window OR come back to icon window
 	 * 
 	 */
-	public void mouseClicked(MouseEvent e) 
-	{
-		// the state is : I am a small icon and I want to be bigger to display all my stuff
-		if(e.getSource() == this.icon)
-		{
-			fenetre = new PanelDetails();
+
+
+	public void mouseClicked(MouseEvent e) {
+		if(e.getSource() == this.icon){
+			f = new PanelDetailMeteo ();
+
 			this.getContentPane().removeAll();
 			//Define size window based on user's screen size
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();		
