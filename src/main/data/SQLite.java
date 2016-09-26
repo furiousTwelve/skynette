@@ -81,7 +81,7 @@ public class SQLite{
  
     String chaine="";
     // to move to the git repertory later
-	String fichier ="U:/Partage/15-Projet Skynette/Donnees/script_creationBDDSQL_Final_1.2ben.sql";
+	String fichier ="./script_creationBDDSQL_Final_1.2ben";
 	
 	//Read the file	
 	try{

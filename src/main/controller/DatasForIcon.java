@@ -1,6 +1,6 @@
 package main.controller;
 
-import com.mysql.jdbc.Blob;
+import java.sql.Blob;
 
 /**
  * @author AnaisGueyte
