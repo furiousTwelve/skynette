@@ -67,11 +67,29 @@ public class mySQL {
 	{
 		ResultSet rs = null;
 		Records rec = null;
-		int j = 0;
+		
 		System.out.println("We generate here hahaha");
 		
 		String dateToExtract = dataToSend.getDate();
 		String hour = dateToExtract.substring(11,13);
+		
+		for(int i = 0; i < 7; i++)
+		{
+			// here we initialize records 
+			dataToSend.sevenRecordsTab[i] = new Records();
+			rec = new Records();
+			rec.setDateDay(null);
+			rec.setClouds(0);
+			rec.setDeg(0);
+			rec.setPressure(0);
+			rec.setRain(0);
+			rec.setSnow(0);
+			rec.setSpeed(0);
+			rec.setTemp(0);
+			rec.setHumidity(0);
+			rec.setLogoWeather(null);
+			dataToSend.sevenRecordsTab[i] = rec;
+		}
 		
 		try 
 		{
@@ -92,14 +110,14 @@ public class mySQL {
 				   + "ORDER BY dateTime;";
 		
 		System.out.println("ici");
+		
+		int j = 0;
 		try 
 		{
-			
 			rs = statement.executeQuery(sql);
 			System.out.println(hour);
 			while(rs.next())
 			{
-
 				// here we fill records 
 				rec = new Records();
 				rec.setDateDay(rs.getDate("dateTime"));
@@ -110,9 +128,17 @@ public class mySQL {
 				rec.setSnow(rs.getInt("snow"));
 				rec.setSpeed(rs.getFloat("windSpeed"));
 				rec.setTemp(rs.getFloat("temperature"));
+				rec.setHumidity(rs.getInt("humidity"));
 				rec.setLogoWeather( rs.getBlob("forecastImg"));
+				System.out.println(rec.getDateDay().toString());
+				System.out.println(rec.getClouds());
+				System.out.println(rec.getDeg());
+				System.out.println(rec.getPressure());
+				System.out.println(rec.getRain());
+				System.out.println(rec.getSnow());
 				
-				dataToSend.getSevenRecordsTab()[j] = rec;
+				
+				dataToSend.sevenRecordsTab[j] = rec;
 				System.out.println("1 row assigned to SQLite returns");
 				j++;
 			}

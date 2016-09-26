@@ -23,7 +23,7 @@ public class dataTransfer {
 	// ATTRIBUTES & CONSTRUCTOR(S)
 	//===============
 
-	private Records[] sevenRecordsTab;
+	public Records[] sevenRecordsTab;
 	private String cityName = "";
 	private String date;
 
@@ -34,7 +34,7 @@ public class dataTransfer {
 	public dataTransfer() 
 	{
 
-		//this.sevenRecordsTab = new Records[7];
+		this.sevenRecordsTab = new Records[7];
 
 		//Appel à la méthode de la couche données qui permet de transmettre toutes les données de la table weatherData (pour une date donnée) + city.cityName
 		//sevenRecordsTab = new Records[7];
@@ -62,7 +62,7 @@ public class dataTransfer {
 	 */
 	public dataTransfer(String date, String name) {
 
-		//this.sevenRecordsTab = new Records[7];
+		this.sevenRecordsTab = new Records[7];
 
 //		//just for testing with false values but doesn't seems to work !
 //		sevenRecordsTab[0].setTemp(30);
