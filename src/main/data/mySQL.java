@@ -22,7 +22,7 @@ public class mySQL {
 	
 	private Connection connection;
 	private Statement statement;
-	private String url= "jdbc:mysql://sta6101858:3306/skynette_1_0"; 
+	private String url= "jdbc:mysql://10.111.61.13:3306/skynette_1_0"; 
 	private String login = "cdi";
 	private String passwd = "cdi";
 	
@@ -108,11 +108,15 @@ public class mySQL {
 				   + "AND dateTime LIKE concat('%','" + hour + "','%') "
 				   + "AND City.cityName = 'Montpellier' "
 				   + "ORDER BY dateTime;";
+		
+		System.out.println("ici");
 		try 
 		{
 			rs = statement.executeQuery(sql);
+			System.out.println(hour);
 			while(rs.next())
 			{
+				System.out.println("ici3");
 				// here we fill records 
 				rec = new Records();
 				rec.setDateDay(rs.getDate("dateTime"));
@@ -126,7 +130,7 @@ public class mySQL {
 				rec.setTemp(rs.getFloat("temperature"));
 				rec.setBlob((Blob) rs.getBlob("forecastImg"));
 				
-				dataToSend.sevenRecordsTab[j] = rec;
+				dataToSend.getSevenRecordsTab()[j] = rec;
 				System.out.println("1 row assigned to SQLite returns");
 				j++;
 			}

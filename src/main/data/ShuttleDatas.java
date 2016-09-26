@@ -61,7 +61,7 @@ public class ShuttleDatas {
 
 		stmt = c.createStatement();
 
-		String sql = "SELECT forecastImg, temperature, windDirection, windSpeed FROM WeatherData INNER JOIN ImgTable ON weatherData.idimg = ImgTable.idimg WHERE datetime < NOW() ORDER BY datetime DESC LIMIT 1;";
+		String sql = "SELECT forecastImg, temperature, windDirection, windSpeed FROM WeatherData INNER JOIN ImgTable ON WeatherData.idImg = ImgTable.idImg WHERE dateTime < NOW() ORDER BY dateTime DESC LIMIT 1;";
 		ResultSet res = (ResultSet) stmt.executeQuery(sql);
 
 		// Not sure about the "WHERE datetime < NOW()" method to pick up the
