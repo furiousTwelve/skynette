@@ -80,7 +80,7 @@ public class dataTransfer {
 
 	/**
 	 * In order to update our SQLite BDD, we ask data from our MySQL BDD.
-	 * Giving two String, a date and a name of a city, this methods gives us a dataTransfert-Object who's got all the temperature and pression data 
+	 * Giving two String, a date and a city's name, this methods gives us a dataTransfert-Object who's got all the temperature and pression data 
 	 * @author Mathieu
 	 * @param date
 	 * @param nameCity
@@ -108,6 +108,12 @@ public class dataTransfer {
 		return dataToReturn;
 	}
 
+	/**
+	 * That's the method who's ask SQLite DBB for data, in order to dispatch them, after, in the presentation layer
+	 * @author Mathieu
+	 * @return dataTransfer
+	 * @param void
+	 */
 	public dataTransfer dataFromSQLite() {
 		dataTransfer dataFromSQLite = new dataTransfer();
 		
