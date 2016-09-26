@@ -49,17 +49,13 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	DatasForIcon datas = new DatasForIcon();
 	Color backcolor = new Color(1f, 0f, 0f, 0f);
 	UpdateWindows updatewindows;
-	// Pour le 2e timer (actualisation icone)
+	
+	// Data for the second timer that updates the widget
 	public int secondPassed=6;
 	public int secondTotal=secondPassed;
 	private PanelDetailMeteo  f = new PanelDetailMeteo ();
 	private Countdown count = new Countdown(8);
 
-	
-	// A effacer	
-	public int minuteAff = 0;
-	public int secondeAff = 0;
-	String secondeAffS = "";
 	
 
 	/**
@@ -110,7 +106,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	}
 
 
-	public static ImageIcon imageConvert(Blob imageDb) throws SQLException, IOException
+/*	public static ImageIcon imageConvert(Blob imageDb) throws SQLException, IOException
 	{
 		System.out.println(imageDb);
 		ImageIcon iconeImage = null;
@@ -145,7 +141,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 		return iconeImage;
 
 
-	}
+	}*/
 
 	@Override
 
@@ -246,24 +242,8 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	        	else
 	        	{
 	        		secondPassed--;
-	        		displayRemainingTime(secondPassed);
+	        		//displayRemainingTime(secondPassed);
 	        	}
 	        }
 	    };
-	    
-	    
-	    // A effacer
-	    public String displayRemainingTime(int sec)
-	    {
-			String remainingTime = "";
-	    	secondeAff = (sec%60);
-			minuteAff = (sec - secondeAff)/60;
-			if(secondeAff < 10)
-			{
-				secondeAffS = "0" + secondeAff;
-				remainingTime = minuteAff + ":" + secondeAffS;
-				System.out.println("Timer icon"+ minuteAff + ":" + secondeAffS);
-			}
-			return remainingTime;
-	    }
 }
