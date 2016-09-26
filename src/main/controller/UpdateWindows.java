@@ -18,10 +18,7 @@ public class UpdateWindows {
 	// ******* VARIABLES ******* //
 
 	DatasForIcon datas = new DatasForIcon();
-<<<<<<< HEAD
-	
-=======
->>>>>>> origin/features/controller/anais-33
+
 
 	// ******* METHOD ******* //
 
@@ -38,10 +35,7 @@ public class UpdateWindows {
 	 * @return Object type DataForIcon named "datas"
 	 * @throws SQLException
 	 */
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/features/controller/anais-33
 	public DatasForIcon updateIcon() throws SQLException {
 
 		ShuttleDatas shuttledatas = new ShuttleDatas();

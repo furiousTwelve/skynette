@@ -18,13 +18,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
-
 import org.sqlite.*;
-
-=======
->>>>>>> origin/features/controller/anais-33
 import main.controller.City;
 import main.controller.Records;
 import main.controller.dataTransfer;
@@ -35,26 +31,19 @@ public class SQLite {
 	protected Statement stmt = null;
 
 	public void verifyDB() {
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/features/controller/anais-33
 		File laBase = new File("./meteoSkynette.db");
 		if (laBase.exists()) {
 			// Run the insertion
 			System.out.println("Insertion en cours...");
 			Connexion();
 			dataTransfer data = new dataTransfer();
-<<<<<<< HEAD
-			//insertDataFromMySQL(data.getCityName(), data.getSevenRecordsTab());
-		} else {
-			try {
-				System.out.println("je me cree");
-=======
+
 			insertDataFromMySQL(data.getCityName(), data.getSevenRecordsTab());
 		} else {
 			try {
->>>>>>> origin/features/controller/anais-33
+				System.out.println("je me cree");
+
 				Connexion();
 				creationDB();
 			} catch (SQLException e) {
@@ -95,17 +84,12 @@ public class SQLite {
 	 * @version 1.0
 	 */
 	public void creationDB() throws SQLException {
-<<<<<<< HEAD
+
 		System.out.println("ici creation");
 		String chaine = "";
 		String fichier = "script_SQLite.sql";
 		// to move to the git repertory later
-=======
 
-		String chaine = "";
-		// to move to the git repertory later
-		String fichier = "./script_creationBDDSQL_Final_1.2ben";
->>>>>>> origin/features/controller/anais-33
 
 		// Read the file
 		try {
@@ -114,11 +98,11 @@ public class SQLite {
 			BufferedReader br = new BufferedReader(ipsr);
 			String ligne;
 			while ((ligne = br.readLine()) != null) {
-<<<<<<< HEAD
+
 				System.out.println(ligne);
-=======
-				// System.out.println(ligne);
->>>>>>> origin/features/controller/anais-33
+
+				
+
 				chaine += ligne + "\n";
 			}
 			br.close();
@@ -136,7 +120,7 @@ public class SQLite {
 	 */
 	// Insert data to our several Tabs
 	public void insertDataFromMySQL(String name, Records[] records) {
-<<<<<<< HEAD
+
 
 		for (int i = 0; i < records.length; i++) {
 			Date dateDay = records[i].getDateDay();
@@ -152,23 +136,7 @@ public class SQLite {
 					+ dateDay + " , " + temp + " , " + pressure + " , " + speed + " , " + direction + " , " + rain
 					+ " , " + cloud + " , " + snow + " , " + logo + ");";
 
-=======
 
-		for (int i = 0; i < records.length; i++) {
-			Date dateDay = records[i].getDateDay();
-			float temp = records[i].getTemp();
-			float pressure = records[i].getPressure();
-			float speed = records[i].getSpeed();
-			String direction = records[i].getWindDirection();
-			float rain = records[i].getRain();
-			int cloud = records[i].getClouds();
-			int snow = records[i].getSnow();
-			Blob logo = records[i].getLogoWeather();
-			String sql = "INSERT INTO WeatherData ( dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow, idImg) VALUES ("
-					+ dateDay + " , " + temp + " , " + pressure + " , " + speed + " , " + direction + " , " + rain
-					+ " , " + cloud + " , " + snow + " , " + logo + ");";
-
->>>>>>> origin/features/controller/anais-33
 			try {
 				int j = stmt.executeUpdate(sql);
 				// int j = stmt.executeUpdate("INSERT INTO WeatherData VALUES
@@ -179,10 +147,11 @@ public class SQLite {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
-<<<<<<< HEAD
+
+
+
 	// /**
 	// * This method allows to fetch datas for the main window
 	// * @author Benjamin Champetier
@@ -220,8 +189,7 @@ public class SQLite {
 	// return sevenRecords;
 	// }
 
-=======
->>>>>>> origin/features/controller/anais-33
+
 	/**
 	 * This method allows to fetch datas for the main window
 	 * 
@@ -229,16 +197,20 @@ public class SQLite {
 	 * @author Florent Valadier
 	 * @return sevenRecords Records[7]
 	 */
-<<<<<<< HEAD
-	public ArrayList<Records> DataForWindow() {
-		ArrayList<Records> sevenRecords = new ArrayList<Records>();
-=======
-	public Records[] DataForWindow() {
-		Records[] sevenRecords = new Records[7];
->>>>>>> origin/features/controller/anais-33
-		String sql = "SELECT dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow, idImg, imgWind FROM WeatherData ORDER BY dateDay;";
-		int i = 0;
-		try {
+
+  	
+  	/**
+  	 * This method allows to fetch datas for the main window
+  	 * @author Benjamin Champetier
+  	 * @author Florent Valadier
+  	 * @return sevenRecords Records[7]
+  	 */
+  	public ArrayList<Records> DataForWindow(){
+  		ArrayList<Records> sevenRecords = new ArrayList<Records>();
+  		String sql = "SELECT dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow, idImg, imgWind FROM WeatherData ORDER BY dateDay;";
+  		int i = 0;
+  		try {
+
 			ResultSet res = stmt.executeQuery(sql);
 			while (res.next()) {
 				Records rec = new Records();
@@ -280,20 +252,17 @@ public class SQLite {
 			int j = stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
-<<<<<<< HEAD
+
 			System.out.println("erreur !!!");
-=======
->>>>>>> origin/features/controller/anais-33
+
 		}
 	}
 
 	public void updatePreview(Blob iconeTemps, float temperature, String windDirection, Float windSpeed,
 			String idCity) {
-<<<<<<< HEAD
-		String sql = "UPDATE WeatherData SET iconeTemps = " + iconeTemps + ", temperature = " + temperature
-=======
+
 		String sql = "UPDATE Preview SET iconeTemps = " + iconeTemps + ", temperature = " + temperature
->>>>>>> origin/features/controller/anais-33
+
 				+ ", windDirection = '" + windDirection + "', windSpeed = " + windSpeed + " WHERE idCity = '" + idCity
 				+ "';";
 		try {

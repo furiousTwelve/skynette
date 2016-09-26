@@ -67,6 +67,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 	/**
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * constructor which defines size elements and start countdown
 =======
 	 * Constructor which defines size elements and start countdown
@@ -75,6 +76,10 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 >>>>>>> origin/features/data/benjamin4
 	 */
 	
+
+	 /*constructor which defines size elements and start countdown
+	 */	
+
 	public FenetrePrincipale()
 	{
 		this.setSize(new Dimension(150, 300));
@@ -190,6 +195,65 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 			// Mise à jour des paramètres de la fenêtre détail *******************************************************************************
 			dataTransfer data = new dataTransfer();
+			data = data.dataFromSQLite();
+
+//			for (int i = 0; i < data.getSevenRecordsTab().length; i++) {
+//				
+//				// setting the new weather icon
+//				ImageIcon imageIconWeather = new ImageIcon(); 
+//				try {
+//					imageIconWeather = Tools.imageConvert(data.getSevenRecordsTab()[i].getLogoWeather());
+//				} catch (SQLException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				} catch (IOException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//				this.fenetre.listPanel.get(i).weatherDaysIcone.setIcon(imageIconWeather);
+//				
+//				// setting the new temperature
+//				this.fenetre.listPanel.get(i).temperature.setText(String.valueOf(data.getSevenRecordsTab()[i].getTemp()));
+//				
+//				// setting the new wind direction
+//				this.fenetre.listPanel.get(i).windDirection.setText(data.getSevenRecordsTab()[i].getWindDirection());
+//				
+//				// setting the new wind-speed
+//				this.fenetre.listPanel.get(i).windSpeed.setText(String.valueOf(data.getSevenRecordsTab()[i].getSpeed()));
+//				
+//				// setting the new date for the whole data of the panel
+//				this.fenetre.listPanel.get(i).date.setText(data.getSevenRecordsTab()[i].getDateDay().toString());
+//			}
+			
+			for (int i = 0; i < data.getListRecords().size(); i++) {
+				
+				// setting the new weather icon
+				ImageIcon imageIconWeather = new ImageIcon(); 
+				try {
+					imageIconWeather = Tools.imageConvert(data.getListRecords().get(i).getLogoWeather());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				this.fenetre.listPanel.get(i).weatherDaysIcone.setIcon(imageIconWeather);
+				
+				// setting the new temperature
+				this.fenetre.listPanel.get(i).temperature.setText(String.valueOf(data.getListRecords().get(i).getTemp()));
+				
+				// setting the new wind direction
+				this.fenetre.listPanel.get(i).windDirection.setText(data.getListRecords().get(i).getWindDirection());
+				
+				// setting the new wind-speed
+				this.fenetre.listPanel.get(i).windSpeed.setText(String.valueOf(data.getListRecords().get(i).getSpeed()));
+				
+				// setting the new date for the whole data of the panel
+				this.fenetre.listPanel.get(i).date.setText(data.getListRecords().get(i).getDateDay().toString());
+			}
+			
+
 			
 			// code à reinsérer quand la couche SQLLITE est terminé 
 //			data = data.dataFromSQLite();
