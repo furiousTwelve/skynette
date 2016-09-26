@@ -103,17 +103,12 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 		//SQLite database = new SQLite();
 		//database.verifyDB();
 		// Pour test Cyril
-//		mySQL BigDatabase = new mySQL();
-//		BigDatabase.Connexion();
+		mySQL BigDatabase = new mySQL();
+		BigDatabase.Connexion();
 
 	}
 
 
-/*	public static ImageIcon imageConvert(Blob imageDb) throws SQLException, IOException
-	{
-
-
-	}
 
 	public static ImageIcon imageConvert(Blob imageDb) throws SQLException, IOException {
 
@@ -149,7 +144,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 		return iconeImage;
 
 
-	}*/
+	}
 
 
 
