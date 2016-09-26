@@ -21,7 +21,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 
 	private PanelIcon icon = new PanelIcon();
-	private PanelDetails f = new PanelDetails();
+	private PanelDetailMeteo  f = new PanelDetailMeteo ();
 	private Countdown count = new Countdown(8);
 	
 	
@@ -55,7 +55,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource() == this.icon){
-			f = new PanelDetails();
+			f = new PanelDetailMeteo ();
 			this.getContentPane().removeAll();
 			this.setSize(new Dimension(2000, 1000));
 			this.setLocationRelativeTo(null);
