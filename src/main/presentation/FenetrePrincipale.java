@@ -1,6 +1,5 @@
 package main.presentation;
 
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
@@ -30,18 +29,16 @@ import main.controller.dataTransfer;
 import main.data.SQLite;
 import main.data.mySQL;
 
-
-
-
 /**
- * Sets the main window of the application that will manage the interaction of the panels
+ * Sets the main window of the application that will manage the interaction of
+ * the panels
+ * 
  * @author Khadidja
  * @author Audric
-
+ * 
  */
 
-public class FenetrePrincipale extends JFrame implements MouseListener 
-{
+public class FenetrePrincipale extends JFrame implements MouseListener {
 	/* *************************** VARIABLES ********************** */
 	private PanelIcon icon = new PanelIcon();
 
@@ -50,52 +47,50 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 	Color backcolor = new Color(1f, 0f, 0f, 0f);
 	UpdateWindows updatewindows;
 	// Pour le 2e timer (actualisation icone)
-	public int secondPassed=6;
-	public int secondTotal=secondPassed;
-	private PanelDetailMeteo  f = new PanelDetailMeteo ();
+	public int secondPassed = 6;
+	public int secondTotal = secondPassed;
+
 	private Countdown count = new Countdown(8);
 
-	
-	// A effacer	
+	// A effacer
 	public int minuteAff = 0;
 	public int secondeAff = 0;
 	String secondeAffS = "";
-	
 
 	/**
-	 *  constructor which defines size elements and start countdown
+	 * constructor which defines size elements and start countdown
 	 */
-	
-	public  FenetrePrincipale()
-	{
+
+	public FenetrePrincipale() {
 		this.setSize(new Dimension(150, 300));
 		int x = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
 		int y = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
-		this.setLocation(x-150, y-300);
-    	this.setUndecorated(true);
-        this.getAccessibleContext();
+		this.setLocation(x - 150, y - 300);
+		this.setUndecorated(true);
+		this.getAccessibleContext();
 
-        this.setIconImage(new ImageIcon("./icon_weather/planet-earth.png").getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-        this.setTitle("Skynette"); 
-        icon.addMouseListener(this);
-        this.setContentPane(icon);
-        this.setVisible(true);
-        setOpacity(0.95f);
-        this.setBackground(backcolor);
-        
-        count.start();
-     // Timer actualisation icone
-     	Timer timerIcon = new Timer();
-     	timerIcon.scheduleAtFixedRate(tache, 1000, 1000);
+		this.setIconImage(new ImageIcon("./icon_weather/planet-earth.png").getImage().getScaledInstance(90, 90,
+				Image.SCALE_DEFAULT));
+		this.setTitle("Skynette");
+		icon.addMouseListener(this);
+		this.setContentPane(icon);
+		this.setVisible(true);
+		setOpacity(0.95f);
+		this.setBackground(backcolor);
+
+		count.start();
+		// Timer actualisation icone
+		Timer timerIcon = new Timer();
+		timerIcon.scheduleAtFixedRate(tache, 1000, 1000);
 
 	}
-	 
+
 	/**
 	 * Main part
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) throws SQLException, IOException {
-
 
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		SQLite database = new SQLite();
@@ -103,167 +98,149 @@ public class FenetrePrincipale extends JFrame implements MouseListener
 		// Pour test Cyril
 		mySQL BigDatabase = new mySQL();
 		BigDatabase.Connexion();
-		
-		
-		
 
 	}
 
-
-	public static ImageIcon imageConvert(Blob imageDb) throws SQLException, IOException
-	{
+	public static ImageIcon imageConvert(Blob imageDb) throws SQLException, IOException {
 		System.out.println(imageDb);
 		ImageIcon iconeImage = null;
 		File fichierTemp = new File("c:/imgtemp.png");
-//		File fichierTemp2 = new File();
+		// File fichierTemp2 = new File();
 		String str = "imgtemp";
 		File fichierTemp2 = fichierTemp.createTempFile(str, "png", new File("c:/"));
-		byte[] imgData = null ;
-		BufferedImage bImageFromConvert = null; 
-		if(imageDb != null){
+		byte[] imgData = null;
+		BufferedImage bImageFromConvert = null;
+		if (imageDb != null) {
 			System.out.println("salut 2");
-			imgData = imageDb.getBytes(1,(int)imageDb.length());
+			imgData = imageDb.getBytes(1, (int) imageDb.length());
 			InputStream in = new ByteArrayInputStream(imgData);
 			try {
 				System.out.println("salut 3");
 				bImageFromConvert = ImageIO.read(in);
 				ImageIO.write(bImageFromConvert, "png", fichierTemp2);
-				iconeImage= new ImageIcon(fichierTemp2.getPath());
-				
+				iconeImage = new ImageIcon(fichierTemp2.getPath());
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		else{
+		} else {
 			System.out.println("salut 4");
-			iconeImage =  new ImageIcon("JobJob.png");
+			iconeImage = new ImageIcon("JobJob.png");
 		}
-		
+
 		boolean effacer = fichierTemp2.delete();
 		System.out.println(effacer);
 		return iconeImage;
-
 
 	}
 
 	@Override
 
 	/**
-	 * Event which detects mouse clicked and launch the big window OR come back to icon window
+	 * Event which detects mouse clicked and launch the big window OR come back
+	 * to icon window
 	 * 
 	 */
 
-
 	public void mouseClicked(MouseEvent e) {
-		if(e.getSource() == this.icon){
-			f = new PanelDetailMeteo ();
+		if (e.getSource() == this.icon) {
+			fenetre = new PanelDetailMeteo();
 
 			this.getContentPane().removeAll();
-			//Define size window based on user's screen size
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();		
+			// Define size window based on user's screen size
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			this.setSize(screenSize);
 			this.setLocationRelativeTo(null);
 			fenetre.addMouseListener(this);
-			
-			
-			// Mise à jour des paramètres de la fenêtre détail *******************************************************************************
+
+			// Mise à jour des paramètres de la fenêtre détail
+			// *******************************************************************************
 			dataTransfer data = new dataTransfer();
 			data = data.dataFromSQLite();
-// en attente de la modif panelDetails PRESENTATION			
-//			for (int i = 0; i < array.length; i++) {
-//				this.fenetre. = data.getSevenRecordsTab()[i].getTemp();
-//				this.fenetre. = data.getSevenRecordsTab()[i].getSpeed();
-//				this.fenetre. = data.getSevenRecordsTab()[i].getWindDirection();
-//			}
-			
-			
+			// en attente de la modif panelDetails PRESENTATION
+			// for (int i = 0; i < array.length; i++) {
+			// this.fenetre. = data.getSevenRecordsTab()[i].getTemp();
+			// this.fenetre. = data.getSevenRecordsTab()[i].getSpeed();
+			// this.fenetre. = data.getSevenRecordsTab()[i].getWindDirection();
+			// }
+
 			this.setContentPane(fenetre);
 			this.validate();
 		}
-		
-		// the state is : I aM big window and I want to be small to display only an icon
-		if(e.getSource() == this.fenetre)
-		{
+
+		// the state is : I aM big window and I want to be small to display only
+		// an icon
+		if (e.getSource() == this.fenetre) {
 			icon = new PanelIcon();
 			this.getContentPane().removeAll();
 			this.setSize(new Dimension(150, 300));
 			int x = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
 			int y = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
-			this.setLocation(x-150, y-300);
+			this.setLocation(x - 150, y - 300);
 			icon.addMouseListener(this);
 			this.setContentPane(icon);
 			this.validate();
 		}
 	}
 
-
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
 
-
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
-	
-	 public TimerTask tache = new TimerTask() 
-	    {     
-	    	/**
-	    	 * Decrements the seconds left in second Countdown for icon update.
-	    	 * When countdown finished,icons will be update
-	    	 * @author Anais & Cyril
-	    	 */
-	        @Override
-	        public void run() 
-	        {
-	        	if(secondPassed <= 0)
-	        	{
-	        		secondPassed = secondTotal;
-	        		updatewindows = new UpdateWindows();
-	        		try {
-						updatewindows.updateIcon();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
 
-	        	}
-	        	else
-	        	{
-	        		secondPassed--;
-	        		displayRemainingTime(secondPassed);
-	        	}
-	        }
-	    };
-	    
-	    
-	    // A effacer
-	    public String displayRemainingTime(int sec)
-	    {
-			String remainingTime = "";
-	    	secondeAff = (sec%60);
-			minuteAff = (sec - secondeAff)/60;
-			if(secondeAff < 10)
-			{
-				secondeAffS = "0" + secondeAff;
-				remainingTime = minuteAff + ":" + secondeAffS;
-				System.out.println("Timer icon"+ minuteAff + ":" + secondeAffS);
+	public TimerTask tache = new TimerTask() {
+		/**
+		 * Decrements the seconds left in second Countdown for icon update. When
+		 * countdown finished,icons will be update
+		 * 
+		 * @author Anais & Cyril
+		 */
+		@Override
+		public void run() {
+			if (secondPassed <= 0) {
+				secondPassed = secondTotal;
+				updatewindows = new UpdateWindows();
+				try {
+					updatewindows.updateIcon();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+			} else {
+				secondPassed--;
+				displayRemainingTime(secondPassed);
 			}
-			return remainingTime;
-	    }
+		}
+	};
+
+	// A effacer
+	public String displayRemainingTime(int sec) {
+		String remainingTime = "";
+		secondeAff = (sec % 60);
+		minuteAff = (sec - secondeAff) / 60;
+		if (secondeAff < 10) {
+			secondeAffS = "0" + secondeAff;
+			remainingTime = minuteAff + ":" + secondeAffS;
+			System.out.println("Timer icon" + minuteAff + ":" + secondeAffS);
+		}
+		return remainingTime;
+	}
 }
