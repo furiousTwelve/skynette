@@ -26,13 +26,15 @@ public class PanelMeteo extends JPanel implements  MouseListener{
 	protected JLabel temperatureIcone1 = new JLabel();
 	ImageIcon iconWind = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\wind.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 	ImageIcon icontemp = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+	ImageIcon iconWindDirection = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\NorthWest.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 	protected JLabel weatherDaysIcone = new JLabel(icontemp);
 	protected JLabel temperature = new JLabel("27°");
 	protected JLabel windDirection = new JLabel(" NNO ");
 	protected JLabel windSpeed = new JLabel("13km/h");
 	protected JLabel windIcone = new JLabel(iconWind);
+	protected JLabel WindDir = new JLabel(iconWindDirection);
 	protected JLabel date = new JLabel(" ");
-	GridLayout g2 = new GridLayout(6, 1);
+	GridLayout g2 = new GridLayout(7, 1);
     
 	public PanelMeteo() {
 
@@ -42,7 +44,8 @@ public class PanelMeteo extends JPanel implements  MouseListener{
 		this.add(temperature);
 		this.add(windIcone);
 		this.add(windSpeed);
-		this.add(windSpeed);
+		this.add(WindDir);
+		this.add(windDirection);
 		this.setPreferredSize(new java.awt.Dimension(200, 500));
 		this.setBackground(new Color(1f, 1f, 1f, 0.7f));
 
