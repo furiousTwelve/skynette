@@ -139,41 +139,6 @@ public class SQLite{
   		
   	}
   	
-//  	/**
-//  	 * This method allows to fetch datas for the main window
-//  	 * @author Benjamin Champetier
-//  	 * @author Florent Valadier
-//  	 * @return sevenRecords Records[7]
-//  	 */
-//  	public Records[] DataForWindow(){
-//  		Records[] sevenRecords = new Records[7];
-//  		String sql = "SELECT dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow, idImg, imgWind FROM WeatherData ORDER BY dateDay;";
-//  		int i = 0;
-//  		try {
-//			ResultSet res = stmt.executeQuery(sql);
-//			while(res.next()){
-//				Records rec = new Records();
-//				rec.setDateDay(res.getDate("dateDay"));
-//				rec.setTemp(res.getFloat("temperature"));
-//				rec.setPressure(res.getFloat("pressure"));
-//				rec.setSpeed(res.getFloat("windSpeed"));
-//				rec.setWindDirection(res.getString("windDirection"));
-//				rec.setRain(res.getFloat("rain"));
-//				rec.setClouds(res.getInt("clouds"));
-//				rec.setSnow(res.getInt("snow"));
-//				rec.setLogoWeather(res.getBlob("idImg"));
-//				rec.setLogoWind(res.getBlob("imgWind"));
-//				sevenRecords[i] = rec;
-//			}
-//		} 
-//		catch (SQLException e) 
-//		{
-//			e.printStackTrace();
-//		}
-//  		
-//		return sevenRecords;
-//  	}
-  	
   	/**
   	 * This method allows to fetch datas for the main window
   	 * @author Benjamin Champetier
