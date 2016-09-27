@@ -36,10 +36,12 @@ public class SQLite {
 		if (laBase.exists()) {
 			// Run the insertion
 			System.out.println("Insertion en cours...");
-			Connexion();
-			dataTransfer data = new dataTransfer();
+			//Connexion();
+			
+			// Pourquoi ce code ? on demande juste de vérifier la DB sinon création... Cyril
+			//dataTransfer data = new dataTransfer();
 
-			insertDataFromMySQL(data.getCityName(), data.getSevenRecordsTab());
+			//insertDataFromMySQL(data.getCityName(), data.getSevenRecordsTab());
 		} else {
 			try {
 				System.out.println("je me cree");
@@ -62,20 +64,30 @@ public class SQLite {
 	public void Connexion() {
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:meteoSkynette.db");
+			this.c = DriverManager.getConnection("jdbc:sqlite:meteoSkynette.db");
 		} catch (Exception e) {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
-		System.out.println("Creation database successfully, well done !");
-		try {
-			stmt = c.createStatement();
+		//System.out.println("Creation database successfully, well done !");
+		try {			
+			this.stmt = this.c.createStatement();
+			System.out.println("valeur stmt :"+stmt);
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
 
 	}
+	
+	public void close() {
+        try {
+            this.c.close();
+            this.stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 	/**
 	 * This will run the script that will create the tables
@@ -109,7 +121,9 @@ public class SQLite {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
+		
 		stmt.executeUpdate(chaine);
+		
 	}
 
 	/**
@@ -119,34 +133,55 @@ public class SQLite {
 	 * @version 1.0
 	 */
 	// Insert data to our several Tabs
-	public void insertDataFromMySQL(String name, Records[] records) {
-
-
-		for (int i = 0; i < records.length; i++) {
-			Date dateDay = records[i].getDateDay();
-			float temp = records[i].getTemp();
-			float pressure = records[i].getPressure();
-			float speed = records[i].getSpeed();
-			String direction = records[i].getWindDirection();
-			float rain = records[i].getRain();
-			int cloud = records[i].getClouds();
-			int snow = records[i].getSnow();
-			Blob logo = records[i].getLogoWeather();
-			String sql = "INSERT INTO Preview ( dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow, idImg) VALUES ("
-					+ dateDay + " , " + temp + " , " + pressure + " , " + speed + " , " + direction + " , " + rain
-					+ " , " + cloud + " , " + snow + " , " + logo + ");";
-
-
+	public void insertDataFromMySQL(String name,ArrayList<Records>  records) {
+		 
+		System.out.println("insert data : nom de la ville :"+name);
+		
+		this.Connexion();
+		System.out.println("ouvre connection");
+		for (int i = 0; i < records.size(); i++) {
+			
+			
+			
+			System.out.println(records.get(i).getDateDay());
+			System.out.println(records.get(i).getTemp());
+			System.out.println(records.get(i).getPressure());
+			System.out.println(records.get(i).getSpeed());
+			System.out.println(records.get(i).getWindDirection());
+			System.out.println(records.get(i).getRain());
+			System.out.println(records.get(i).getClouds());
+			System.out.println(records.get(i).getLogoWeather());
+			
+			Date dateDay = records.get(i).getDateDay();
+			float temp = records.get(i).getTemp();
+			float pressure = records.get(i).getPressure();
+			float speed = records.get(i).getSpeed();
+			String direction = records.get(i).getWindDirection();
+			float rain = records.get(i).getRain();
+			int cloud = records.get(i).getClouds();
+			int snow = records.get(i).getSnow();
+			Blob logo = records.get(i).getLogoWeather();
+			String sql = "INSERT INTO WeatherData (dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow) VALUES ('"
+					+ dateDay + "' , " + temp + " , " + pressure + " , " + speed + " ,'" + direction + "' , " + rain
+					+ " , " + cloud + " , " + snow + ");";
+			
+System.out.println("requete : "+sql);
+			System.out.println("valeur stmt :"+this.stmt);
+			
 			try {
-				int j = stmt.executeUpdate(sql);
-				// int j = stmt.executeUpdate("INSERT INTO WeatherData VALUES
-				// (idWD, dateTime, temperature, windspeed, windDirection,
-				// gustMax, rainfall, presssure, snow, clouds, humidity, idCity,
-				// idImg )");
+				
+				int j = this.stmt.executeUpdate(sql);
+				System.out.println("valeur de j :"+j);
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
+			
+			
 		}
+		System.out.println("je ferme la connection");
+		this.close();
 	}
 
 
@@ -207,29 +242,37 @@ public class SQLite {
   	 */
   	public ArrayList<Records> DataForWindow(){
   		ArrayList<Records> sevenRecords = new ArrayList<Records>();
-  		String sql = "SELECT dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow, idImg, imgWind FROM WeatherData ORDER BY dateDay;";
+  		this.Connexion();
+  		String sql = "SELECT dateDay, temperature, pressure, windSpeed, windDirection, rainfall, clouds, snow, idImg FROM WeatherData ORDER BY dateDay;";
   		int i = 0;
   		try {
-
+  			System.out.println("avant select");
 			ResultSet res = stmt.executeQuery(sql);
+			System.out.println("valeur stmt "+stmt);
+			System.out.println("valeur res :"+res.getRow());
 			while (res.next()) {
+				System.out.println("valeur i"+i);
+				System.out.println("valeur temp"+res.getFloat("temperature"));
+				i++;
 				Records rec = new Records();
-				rec.setDateDay(res.getDate("dateDay"));
+			//	rec.setDateDay(res.getDate("dateDay"));
 				rec.setTemp(res.getFloat("temperature"));
 				rec.setPressure(res.getFloat("pressure"));
 				rec.setSpeed(res.getFloat("windSpeed"));
 				rec.setWindDirection(res.getString("windDirection"));
-				rec.setRain(res.getFloat("rain"));
+				rec.setRain(res.getFloat("rainfall"));
 				rec.setClouds(res.getInt("clouds"));
 				rec.setSnow(res.getInt("snow"));
-				rec.setLogoWeather(res.getBlob("idImg"));
-				rec.setLogoWind(res.getBlob("imgWind"));
+			//	rec.setLogoWeather(res.getBlob("idImg"));
+			//	rec.setLogoWind(res.getBlob("imgWind"));
 				sevenRecords.add(rec);
+				System.out.println("ca passe");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+  		
+  	//	this.close();
 		return sevenRecords;
 	}
 

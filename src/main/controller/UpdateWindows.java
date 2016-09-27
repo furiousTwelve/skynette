@@ -37,14 +37,10 @@ public class UpdateWindows {
 	 */
 
 	public DatasForIcon updateIcon() throws SQLException {
-<<<<<<< HEAD
 
 		ShuttleDatas shuttledatas = new ShuttleDatas();
 		datas = shuttledatas.fetchFreshData();
-=======
-          ShuttleDatas shuttledatas = new ShuttleDatas(); 
-		  datas = shuttledatas.fetchFreshData();
->>>>>>> origin/features/presentation/derniere_version2
+
 
 		return datas;
 	}

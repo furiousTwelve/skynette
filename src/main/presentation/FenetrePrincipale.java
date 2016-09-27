@@ -37,10 +37,6 @@ import main.data.mySQL;
  * 
  * @author Khadidja
  * @author Audric
-<<<<<<< HEAD
- * 
-=======
->>>>>>> origin/features/data/benjamin4
  */
 
 public class FenetrePrincipale extends JFrame implements MouseListener {
@@ -57,7 +53,7 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 	public int secondPassed=6;
 	public int secondTotal=secondPassed;
 	private PanelDetailMeteo  f = new PanelDetailMeteo ();
-	private Countdown count = new Countdown(2);
+	private Countdown count = new Countdown(10);
 
 
 	// A effacer
@@ -67,14 +63,9 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 
 
 	/**
-<<<<<<< HEAD
-<<<<<<< HEAD
-	 * constructor which defines size elements and start countdown
-=======
 	 * Constructor which defines size elements and start countdown
 	 * @author Khadidja
 	 * @author Audric
->>>>>>> origin/features/data/benjamin4
 	 */
 	
 
@@ -99,8 +90,8 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 		setOpacity(0.98f);
 		this.setBackground(backcolor);
 
-//		count.start();
-//		// Timer actualisation icone
+		count.start();
+		// Timer actualisation icone
 //		Timer timerIcon = new Timer();
 //		timerIcon.scheduleAtFixedRate(tache, 1000, 1000);
 
@@ -198,12 +189,12 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 			dataTransfer data = new dataTransfer();
 			data = data.dataFromSQLite();
 
-//			for (int i = 0; i < data.getSevenRecordsTab().length; i++) {
+//			for (int i = 0; i < data.getListRecords().size(); i++) {
 //				
 //				// setting the new weather icon
 //				ImageIcon imageIconWeather = new ImageIcon(); 
 //				try {
-//					imageIconWeather = Tools.imageConvert(data.getSevenRecordsTab()[i].getLogoWeather());
+//					imageIconWeather = Tools.imageConvert(data.getListRecords().get(i).getLogoWeather());
 //				} catch (SQLException e1) {
 //					// TODO Auto-generated catch block
 //					e1.printStackTrace();
@@ -214,16 +205,16 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 //				this.fenetre.listPanel.get(i).weatherDaysIcone.setIcon(imageIconWeather);
 //				
 //				// setting the new temperature
-//				this.fenetre.listPanel.get(i).temperature.setText(String.valueOf(data.getSevenRecordsTab()[i].getTemp()));
+//				this.fenetre.listPanel.get(i).temperature.setText(String.valueOf(data.getListRecords().get(i).getTemp()));
 //				
 //				// setting the new wind direction
-//				this.fenetre.listPanel.get(i).windDirection.setText(data.getSevenRecordsTab()[i].getWindDirection());
+//				this.fenetre.listPanel.get(i).windDirection.setText(data.getListRecords().get(i).getWindDirection());
 //				
 //				// setting the new wind-speed
-//				this.fenetre.listPanel.get(i).windSpeed.setText(String.valueOf(data.getSevenRecordsTab()[i].getSpeed()));
+//				this.fenetre.listPanel.get(i).windSpeed.setText(String.valueOf(data.getListRecords().get(i).getSpeed()));
 //				
 //				// setting the new date for the whole data of the panel
-//				this.fenetre.listPanel.get(i).date.setText(data.getSevenRecordsTab()[i].getDateDay().toString());
+//				this.fenetre.listPanel.get(i).date.setText(data.getListRecords().get(i).getDateDay().toString());
 //			}
 			
 			for (int i = 0; i < data.getListRecords().size(); i++) {
@@ -251,7 +242,13 @@ public class FenetrePrincipale extends JFrame implements MouseListener {
 				this.fenetre.listPanel.get(i).windSpeed.setText(String.valueOf(data.getListRecords().get(i).getSpeed()));
 				
 				// setting the new date for the whole data of the panel
-				this.fenetre.listPanel.get(i).date.setText(data.getListRecords().get(i).getDateDay().toString());
+		//		this.fenetre.listPanel.get(i).date.setText(data.getListRecords().get(i).getDateDay().toString());
+				
+				System.out.println(data.getListRecords().get(i).getTemp());
+				System.out.println(data.getListRecords().get(i).getWindDirection());
+				System.out.println(data.getListRecords().get(i).getSpeed());
+			//	System.out.println(data.getListRecords().get(i).getDateDay().toString());
+				
 			}
 			
 

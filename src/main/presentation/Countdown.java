@@ -79,6 +79,7 @@ public class Countdown
 	        		panicone.setPreferredSize(new Dimension(200,200));
 
 	        		dataTransfer dataTransfer = new dataTransfer();
+	        		dataTransfer dataToReturn;
 	        		
 	        		Date date = new Date();
 	        		String reportDate ="";
@@ -87,7 +88,7 @@ public class Countdown
 	        		reportDate = Tools.arrondirDate(date);
 	        		System.out.println("Report new Date :" + reportDate);
 	        		
-	        		dataTransfer.updateSQLite(reportDate, "Montpellier");
+	        		dataToReturn = dataTransfer.updateSQLite(reportDate, "Montpellier");
 	        	}
 	        	else
 	        	{

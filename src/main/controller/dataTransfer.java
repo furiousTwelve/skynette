@@ -58,11 +58,7 @@ public class dataTransfer {
 
 	/**
 	 * Constructor with two parameters
-<<<<<<< HEAD
-	 * 
-=======
 	 * @author Mathieu
->>>>>>> origin/features/data/benjamin4
 	 * @param date
 	 * @param name
 	 */
@@ -130,13 +126,15 @@ public class dataTransfer {
 		for (int i = 0; i < dataToReturn.listRecords.size(); i++) {
 			System.out.println("Test " + i);
 			float degreeeees = dataToReturn.getListRecords().get(i).getDeg();
-			// dataToReturn.getSevenRecordsTab()[i].setWindDirection(Tools.convertDegreesToDirection(degreeeees));
+		
 			dataToReturn.getListRecords().get(i).setWindDirection(Tools.convertDegreesToDirection(degreeeees));
-			System.out.println("Conversion degreeeeees en Direction : " + degreeeees + " -----> "
-					+ dataToReturn.getSevenRecordsTab()[i].getWindDirection());
+			System.out.println("Conversion degreeeeees en Direction : " + degreeeees + " -----> "	+ dataToReturn.getSevenRecordsTab()[i].getWindDirection());
 		}
 
 		System.out.println("Test updateSQLite : Fin");
+		// Code cyril
+		SQLite smallDatabase = new SQLite();
+		smallDatabase.insertDataFromMySQL(nameCity, dataToReturn.listRecords);
 
 		return dataToReturn;
 	}
@@ -151,8 +149,11 @@ public class dataTransfer {
 	 */
 	public dataTransfer dataFromSQLite() {
 		dataTransfer dataFromSQLite = new dataTransfer();
+		SQLite smallDatabase = new SQLite();		
+		ArrayList<Records> sevenRecords = smallDatabase.DataForWindow();
+		dataFromSQLite.listRecords =sevenRecords;
 
-		SQLite SQLiteObject = new SQLite();
+		//SQLite SQLiteObject = new SQLite();
 		// dataFromSQLite.setSevenRecordsTab(SQLiteObject.DataForWindow());
 		//dataFromSQLite.setListRecords(SQLiteObject.DataForWindow());
 
