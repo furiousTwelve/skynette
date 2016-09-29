@@ -28,21 +28,15 @@ public class ShuttleDatas {
 	// ******* METHOD ******* //
 
 	/**
-	 * 
 	 * This method connects to the SQLite database to fetch 4 datas
-	 * 
 	 * @author AnaisGueyte
 	 * @date 22/09/2016
 	 * @version Skynette 0.1
-	 * 
-	 * 
-	 *
 	 */
-
-	public DatasForIcon fetchFreshData() throws SQLException {
+	public DatasForIcon fetchFreshData() throws SQLException 
+	{
 		SQLite lighterBDD = new SQLite();
 		lighterBDD.Connexion();
-
 
 		String sql = "SELECT iconeTemps, temperature, windDirection, windSpeed FROM Preview";
 

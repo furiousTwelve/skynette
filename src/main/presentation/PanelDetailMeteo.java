@@ -224,7 +224,6 @@ public class PanelDetailMeteo extends JPanel
 		panelCenter.setOpaque(false);
 		chartPanel.setBackground(new Color(1f, 1f, 1f, 0.7f));
 		panelGlobal.setLayout(b);
-
 		// PanelNorth's Construction
 		panelNorth.setLayout(g1);
 		rainingDayIcon.setIcon(iconRain);
@@ -238,14 +237,11 @@ public class PanelDetailMeteo extends JPanel
 		countSunnyDays.setFont(new Font("Arial", Font.BOLD, 20));
 		panelNorth.add(countSunnyDays);
 		g.setHgap(1200);
-
 		// setLayout for panelCenter's panels
 		panelCenter.setLayout(g);
 		panelDay.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
-
 		// panelCenter's Construction
 		header.setPreferredSize(new java.awt.Dimension(900, 50));
-
 		panelCenter.add(panelDay_3);
 		panelCenter.add(panelDay_2);
 		panelCenter.add(panelDay_1);
@@ -253,7 +249,6 @@ public class PanelDetailMeteo extends JPanel
 		panelCenter.add(panelNextDay1);
 		panelCenter.add(panelNextDay2);
 		panelCenter.add(panelNextDay3);
-
 		showDate();
 		// space between columns,
 		g.setHgap(50);

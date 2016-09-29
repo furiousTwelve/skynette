@@ -4,31 +4,21 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- *
- * PanelMeteo is the class who will describe the weather's information for a
- * week
- *
- *
+ * PanelMeteo is the class which will describe the weather's information for a week
  * @author khadidja
  * @author Damien
  * @author audric
- * 
- * 
  */
 
-public class PanelMeteo extends JPanel implements MouseListener {
-
+public class PanelMeteo extends JPanel implements MouseListener 
+{
 	protected JPanel panelDay = new JPanel();
 	protected JLabel sunnyDaysIcon = new JLabel();
 	protected JLabel temperatureIcone1 = new JLabel();
@@ -45,17 +35,13 @@ public class PanelMeteo extends JPanel implements MouseListener {
 	protected JLabel WindDir = new JLabel(iconWindDirection);
 	protected JLabel date = new JLabel(" ");
 	GridLayout g2 = new GridLayout(7, 1);
-
-    
-
 	Font font1 = new Font("Arial", Font.BOLD, 16);
 	Font font = new Font("Arial", Font.BOLD, 20);
 
 	/**
 	 * The constructor of the PanelMeteo, defines different weather's
-	 * informations for a week
+	 * information for a week
 	 */
-
 	public PanelMeteo() {
 
 		this.setLayout(g2);

@@ -10,19 +10,17 @@ import main.controller.Records;
 import main.controller.dataTransfer;
 
 /**
- * 
  * @author Lionel Chialvo et Martinez Alban
  * @version 1.0
  * @date 26/09/2016
- *
  */
-public class mySQL {
-
+public class mySQL 
+{
 	private Connection connection;
 	private Statement statement;
-	private String url = "jdbc:mysql://10.111.61.13:3306/skynette_1_0";
-	private String login = "cdi";
-	private String passwd = "cdi";
+	private String url = "jdbc:mysql://10.111.61.13:3306/skynette_1_0"; //FIXME : -> constants
+	private String login = "cdi"; //FIXME : -> constants
+	private String passwd = "cdi"; //FIXME : -> constants
 
 	/**
 	 * Method using driver for database connexion
@@ -33,7 +31,7 @@ public class mySQL {
 	 */
 	public void Connexion() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver"); //FIXME : -> constants
 			connection = DriverManager.getConnection(url, login, passwd);
 			System.out.println("Connexion mysql ok");
 		} catch (Exception e) {
@@ -90,7 +88,7 @@ public class mySQL {
 		}
 
 		// Fill the 7 rows needed with the search request
-		String sql = "SELECT * FROM WeatherData " + "INNER JOIN ImgTable ON ImgTable.idImg = WeatherData.idImg "
+		String sql = "SELECT * FROM WeatherData " + "INNER JOIN ImgTable ON ImgTable.idImg = WeatherData.idImg "  //FIXME : -> change to stocked procedure
 				+ "INNER JOIN City ON City.idCity = WeatherData.idCity "
 				+ "WHERE dateTime between date_sub(now(), interval 3 day) AND date_add(now(), interval 3 day) "
 				+ "AND dateTime LIKE concat('%','" + hour + "','%') " + "AND City.cityName = 'Montpellier' "

@@ -32,7 +32,7 @@ public class SQLite {
 
 	public void verifyDB() {
 
-		File laBase = new File("./meteoSkynette.db");
+		File laBase = new File("./meteoSkynette.db"); //FIXME : -> constants
 		if (laBase.exists()) {
 			// Run the insertion
 			System.out.println("Insertion en cours...");
@@ -63,8 +63,8 @@ public class SQLite {
 	 */
 	public void Connexion() {
 		try {
-			Class.forName("org.sqlite.JDBC");
-			this.c = DriverManager.getConnection("jdbc:sqlite:meteoSkynette.db");
+			Class.forName("org.sqlite.JDBC"); //FIXME : -> constants
+			this.c = DriverManager.getConnection("jdbc:sqlite:meteoSkynette.db"); //FIXME : -> constants
 		} catch (Exception e) {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
@@ -99,7 +99,7 @@ public class SQLite {
 
 		System.out.println("ici creation");
 		String chaine = "";
-		String fichier = "script_SQLite.sql";
+		String fichier = "script_SQLite.sql"; //FIXME : -> constants
 		// to move to the git repertory later
 
 
@@ -139,10 +139,8 @@ public class SQLite {
 		
 		this.Connexion();
 		System.out.println("ouvre connection");
-		for (int i = 0; i < records.size(); i++) {
-			
-			
-			
+		for (int i = 0; i < records.size(); i++) 
+		{
 			System.out.println(records.get(i).getDateDay());
 			System.out.println(records.get(i).getTemp());
 			System.out.println(records.get(i).getPressure());

@@ -4,21 +4,11 @@ import java.sql.Blob;
 import java.sql.Date;
 
 /**
-<<<<<<< HEAD
- * This is the class which's got the main weather-records: - temperature -
- * pressure ...
- * 
- * ======= import java.sql.Blob; import java.sql.Date;
- * 
  * 
  * 
  * /** This is the class which's got the main weather-records: <br>
  * - temperature <br>
- * - pressure ... >>>>>>> origin/features/data/benjamin3
- * 
-=======
- * This is the class which's got the main weather-records:
->>>>>>> origin/features/data/benjamin4
+ * - pressure ... 
  * @author Mathieu
  */
 
