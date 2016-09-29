@@ -33,9 +33,9 @@ public class PanelMeteo extends JPanel implements MouseListener {
 	protected JLabel sunnyDaysIcon = new JLabel();
 	protected JLabel temperatureIcone1 = new JLabel();
 	
-	ImageIcon iconWind = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\wind.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
-	ImageIcon icontemp = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\sun.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-	ImageIcon iconWindDirection = new ImageIcon(new ImageIcon("..\\..\\git\\skynette\\icon_weather\\NorthWest.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+	ImageIcon iconWind = new ImageIcon(new ImageIcon("./icon_weather/wind.png").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+	ImageIcon icontemp = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+	ImageIcon iconWindDirection = new ImageIcon(new ImageIcon("./icon_weather/NorthWest.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 
 	protected JLabel weatherDaysIcone = new JLabel(icontemp);
 	protected JLabel temperature = new JLabel("27°");

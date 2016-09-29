@@ -30,32 +30,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- * 
+ * this window must describ the weather for montpellier city for seven days, lets' start!
  * @author khadidja
  * @author Damien
  * @author audric
- * 
- *
- *         this window must describ the weather for montpellier city for seven
- *         days, lets' start!
- *
  */
 
-public class PanelDetailMeteo extends JPanel {
-
-	protected JPanel entete = new JPanel();
-	protected JPanel panelGlobal = new JPanel(); // panelGlobal contains all the
-													// composents
-
-	protected JPanel panelNorth = new JPanel(); // panelNorth situated in the
-												// orth of panelGlobal
-												//
-
-	protected JPanel panelCenter = new JPanel(); // panelNorth situated in the
-													// center of panelGlobal
-	protected JPanel panelSouth = new JPanel(); // panelNorth situated in the
-												// south of panelGlobal
-
+public class PanelDetailMeteo extends JPanel 
+{
+	protected JPanel header = new JPanel();
+	protected JPanel panelGlobal = new JPanel(); // panelGlobal contains all the composents
+	protected JPanel panelNorth = new JPanel(); // panelNorth situated in the north of panelGlobal					
+	protected JPanel panelCenter = new JPanel(); // panelNorth situated in the center of panelGlobal
+	protected JPanel panelSouth = new JPanel(); // panelNorth situated in the south of panelGlobal
 	protected ArrayList<PanelMeteo> listPanel = new ArrayList<>();
 	protected PanelMeteo panelDay_3 = new PanelMeteo();
 	protected PanelMeteo panelDay_2 = new PanelMeteo();
@@ -64,45 +51,28 @@ public class PanelDetailMeteo extends JPanel {
 	protected PanelMeteo panelNextDay1 = new PanelMeteo();
 	protected PanelMeteo panelNextDay2 = new PanelMeteo();
 	protected PanelMeteo panelNextDay3 = new PanelMeteo();
-
 	// DOOOM
 	protected Image img;
-
 	protected PanelsSouth panelSouth1 = new PanelsSouth();
 	protected PanelsSouth panelSouth2 = new PanelsSouth();
 	protected PanelsSouth panelSouth3 = new PanelsSouth();
 	protected PanelsSouth panelSouth4 = new PanelsSouth();
-
 	protected JPanel chartPanel = new JPanel();
-	protected JLabel ville = new JLabel(" Montpellier town - France ");
-
+	protected JLabel town = new JLabel(" Montpellier town - France ");
 	protected JLabel rainingDayIcon = new JLabel();
-
-	ImageIcon iconRain = new ImageIcon(
-			new ImageIcon("./icon_weather/rain-1.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
-
+	ImageIcon iconRain = new ImageIcon(new ImageIcon("./icon_weather/rain-1.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
 	protected JLabel countRainingDays = new JLabel("43 Days");
-
 	// protected JLabel empty = new JLabel();
 	protected JLabel sunnyDaysIcone = new JLabel();
-
-	ImageIcon iconSun = new ImageIcon(
-			new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+	ImageIcon iconSun = new ImageIcon(new ImageIcon("./icon_weather/sun.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
 	protected JLabel countSunnyDays = new JLabel(" 322 Days ");
 	protected JLabel empty = new JLabel();
-	
-	ImageIcon iconWind = new ImageIcon(
-			new ImageIcon("./icon_weather/wind.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
-			
+	ImageIcon iconWind = new ImageIcon(new ImageIcon("./icon_weather/wind.png").getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));	
 	protected JLabel HotestDay = new JLabel(" 39°");
 	protected JLabel coldestDay = new JLabel(" 2°");
-
-
 	protected JLabel maxTemperatureAverage = new JLabel("25°");
 	protected JLabel minTemperatureAverage = new JLabel("15°");
-
 	protected Font font;
-
 	// Layout to be used
 	GridLayout g = new GridLayout(1, 7);
 	GridLayout g1 = new GridLayout(2, 3);
@@ -110,14 +80,22 @@ public class PanelDetailMeteo extends JPanel {
 	GridLayout g3 = new GridLayout(3, 7);
 	GridLayout g4 = new GridLayout(1, 4);
 	GridLayout g5 = new GridLayout(2, 1);
-
 	BorderLayout b = new BorderLayout(30,30);
 
-	public PanelDetailMeteo() {
+	/**
+	 * Constructor : just run the panel 
+	 */
+	public PanelDetailMeteo() 
+	{
 		run();
 	}
 
-	public JPanel createChartPanel() {
+	/**
+	 * Create a panel for chart content
+	 * @return chartPanel with a chart
+	 */
+	public JPanel createChartPanel() 
+	{
 		String titre = "";
 		String titre_x = "Hours/24h";
 		String titre_y = "temperature/ pressure";
@@ -127,7 +105,12 @@ public class PanelDetailMeteo extends JPanel {
 		return new ChartPanel(chart);
 	}
 
-	protected XYDataset createDataset() {
+	/**
+	 * Draw the graph from data extract from database
+	 * @return XYDataset with data
+	 */
+	protected XYDataset createDataset() 
+	{
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		XYSeries temp = new XYSeries("temperature ");
 		XYSeries press = new XYSeries("pressure ");
@@ -185,9 +168,12 @@ public class PanelDetailMeteo extends JPanel {
 		 */
 	}
 
-	// this methode will print date on each panelMeteo
 
-	public void showDate() {
+	/**
+	 * print date on each panelMeteo 
+	 */
+	public void showDate() 
+	{
 		SimpleDateFormat formater = null;
 		Date today = new Date();
 		formater = new SimpleDateFormat("yyyy mm dd");
@@ -200,11 +186,13 @@ public class PanelDetailMeteo extends JPanel {
 			listPanel.get(i).date.setText(formater.format(today.getTime() + (j * calcul)));
 			j++;
 		}
-
 	}
 
-	public void run() {
-
+	/**
+	 * Update the seven panels with data
+	 */
+	public void run() 
+	{
 		// this list will be used to update the 7 panels' meteo
 		listPanel.add(panelDay_3);
 		listPanel.add(panelDay_2);
@@ -213,33 +201,23 @@ public class PanelDetailMeteo extends JPanel {
 		listPanel.add(panelNextDay1);
 		listPanel.add(panelNextDay2);
 		listPanel.add(panelNextDay3);
-
 		// BAckground
-
 		img = Toolkit.getDefaultToolkit().createImage("./icon_weather/sky.jpg");
-
 		// center the label in the rows of the gridlayout
-
 		rainingDayIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		ville.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		town.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		sunnyDaysIcone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		countRainingDays.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		countSunnyDays.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
 		font = new Font("Arial", Font.BOLD, 36);
-		ville.setFont(font);
-
-		entete.add(ville);
-		entete.setBackground(Color.WHITE);
+		town.setFont(font);
+		header.add(town);
+		header.setBackground(Color.WHITE);
 		chartPanel = createChartPanel();
 		chartPanel.setPreferredSize(new java.awt.Dimension(500, 200));
-
 		panelCenter.setBackground(Color.WHITE);
-
 		this.setBackground(Color.WHITE);
-
 		// this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-
 		panelNorth.setBackground(new Color(1f, 1f, 1f, 0.7f));
 		panelSouth.setOpaque(false);
 		panelGlobal.setOpaque(false);
@@ -252,7 +230,7 @@ public class PanelDetailMeteo extends JPanel {
 		rainingDayIcon.setIcon(iconRain);
 		sunnyDaysIcone.setIcon(iconSun);
 		panelNorth.add(rainingDayIcon);
-		panelNorth.add(ville);
+		panelNorth.add(town);
 		panelNorth.add(sunnyDaysIcone);
 		countRainingDays.setFont(new Font("Arial", Font.BOLD, 20));
 		panelNorth.add(countRainingDays);
@@ -263,12 +241,10 @@ public class PanelDetailMeteo extends JPanel {
 
 		// setLayout for panelCenter's panels
 		panelCenter.setLayout(g);
-
 		panelDay.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
 
 		// panelCenter's Construction
-
-		entete.setPreferredSize(new java.awt.Dimension(900, 50));
+		header.setPreferredSize(new java.awt.Dimension(900, 50));
 
 		panelCenter.add(panelDay_3);
 		panelCenter.add(panelDay_2);
@@ -313,44 +289,52 @@ public class PanelDetailMeteo extends JPanel {
 		this.setBackground(Color.WHITE);
 
 
-    	countRainingDays.addMouseListener(new MouseAdapter(){
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			super.mouseEntered(e);
-			countRainingDays.setText(" Total number of rainy days in the year" );
-			
-			countRainingDays.setForeground(Color.BLUE);
-		}
-		@Override
-		public void mouseExited(MouseEvent e) {
-			super.mouseExited(e);
-	 
-			countRainingDays.setText(" 43 Days" );
-			countRainingDays.setFont(new Font("Arial", Font.BOLD, 20));
-			countRainingDays.setForeground(Color.BLACK);
-}
-	});
-	countSunnyDays.addMouseListener(new MouseAdapter(){
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			super.mouseEntered(e);
-			countSunnyDays.setText(" Total number of sunny days in the year" );
-			countSunnyDays.setForeground(Color.RED);
-		}
-		@Override
-		public void mouseExited(MouseEvent e) {
-			super.mouseExited(e);
-	 
-			countSunnyDays.setText(" 322 Days" );
-			countSunnyDays.setFont(new Font("Arial", Font.BOLD, 20));
-			countSunnyDays.setForeground(Color.BLACK);
-}
-	});
-}
+    	countRainingDays.addMouseListener(new MouseAdapter()
+    	{
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				super.mouseEntered(e);
+				countRainingDays.setText(" Total number of rainy days in the year" );
+				
+				countRainingDays.setForeground(Color.BLUE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				super.mouseExited(e);
+		 
+				countRainingDays.setText(" 43 Days" );
+				countRainingDays.setFont(new Font("Arial", Font.BOLD, 20));
+				countRainingDays.setForeground(Color.BLACK);
+			}
+    	});
+    	
+    	countSunnyDays.addMouseListener(new MouseAdapter()
+    	{
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				super.mouseEntered(e);
+				countSunnyDays.setText(" Total number of sunny days in the year" );
+				countSunnyDays.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				super.mouseExited(e);
+		 
+				countSunnyDays.setText(" 322 Days" );
+				countSunnyDays.setFont(new Font("Arial", Font.BOLD, 20));
+				countSunnyDays.setForeground(Color.BLACK);
+			}
+    	});
+	} // end run()
 	
 
 	@Override
-	protected void paintComponent(Graphics g) {
+	protected void paintComponent(Graphics g) 
+	{
 		super.paintComponent(g);
 		g.drawImage(img, 0, 0, null);
 	}
